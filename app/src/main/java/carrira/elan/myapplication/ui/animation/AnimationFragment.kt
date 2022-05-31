@@ -11,13 +11,7 @@ import androidx.navigation.Navigation
 import carrira.elan.myapplication.R
 
 class AnimationFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = AnimationFragment()
-    }
-
     private val viewModel: AnimationViewModel by viewModels()
-    private lateinit var handler : Handler
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
