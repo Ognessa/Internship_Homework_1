@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import carrira.elan.myapplication.R
 
@@ -23,19 +24,14 @@ class AnimationFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.fragment_animation, container, false)
-        return view
-    }
-    override fun onResume() {
-        super.onResume()
-        handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            val action = AnimationFragmentDirections.actionAnimationFragmentToLoginFragment()
-            view?.let { Navigation.findNavController(it).navigate(action) }
-        }, 5000)
-    }
+        viewModel.moveToLoginFragment()
+        viewModel.isValid().observe(viewLifecycleOwner, Observer {
+            if(it){
+                val action = AnimationFragmentDirections.actionAnimationFragmentToLoginFragment()
+                Navigation.findNavController(view).navigate(action)
+            }
+        })
 
-    override fun onDestroy() {
-        super.onDestroy()
-        handler.removeCallbacksAndMessages(null)
+        return view
     }
 }
