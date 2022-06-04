@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Lesson 1</string>
 
+    <string name="poll_title">Mathematics</string>
+    <string name="start_poll">Start poll</string>
+
+    <string name="poll_result">Correct answers: %s</string>
+
 </resources>

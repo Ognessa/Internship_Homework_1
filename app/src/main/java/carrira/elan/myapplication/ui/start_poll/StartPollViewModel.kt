@@ -1,4 +1,4 @@
-package carrira.elan.myapplication.ui
+package carrira.elan.myapplication.ui.start_poll
 
 import androidx.lifecycle.ViewModel
 

@@ -4,7 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/animationFragment">
+    app:startDestination="@id/startPollFragment">
 
 
+    <fragment
+        android:id="@+id/startPollFragment"
+        android:name="carrira.elan.myapplication.ui.start_poll.StartPollFragment"
+        android:label="fragment_start_poll"
+        tools:layout="@layout/fragment_start_poll" >
+        <action
+            android:id="@+id/action_startPollFragment_to_poolFragment"
+            app:destination="@id/poolFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poolFragment"
+        android:name="carrira.elan.myapplication.ui.poll.PollFragment"
+        android:label="fragment_pool"
+        tools:layout="@layout/fragment_poll" >
+        <action
+            android:id="@+id/action_poolFragment_to_poolResultFragment"
+            app:destination="@id/poolResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poolResultFragment"
+        android:name="carrira.elan.myapplication.ui.poll_result.PollResultFragment"
+        android:label="fragment_pool_result"
+        tools:layout="@layout/fragment_poll_result" />
 </navigation>

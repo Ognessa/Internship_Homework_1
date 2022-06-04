@@ -1,4 +1,4 @@
-package carrira.elan.myapplication.ui
+package carrira.elan.myapplication.ui.poll
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import carrira.elan.myapplication.R
 
-class StartPollFragment : Fragment() {
+class PollFragment : Fragment() {
 
     companion object {
-        fun newInstance() = StartPollFragment()
+        fun newInstance() = PollFragment()
     }
 
-    private lateinit var viewModel: StartPollViewModel
+    private lateinit var viewModel: PollViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.fragment_start_poll, container, false)
+        return inflater.inflate(R.layout.fragment_poll, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StartPollViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PollViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
