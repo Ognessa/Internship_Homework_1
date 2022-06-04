@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="carrira.elan.myapplication.ui.login.LoginViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/login_margin"
@@ -10,8 +20,10 @@
         android:id="@+id/ll_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_top_margin"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/login_top_margin">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,14 +34,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tv_login"/>
+                android:text="@string/tv_login" />
 
             <EditText
                 android:id="@+id/et_enter_login"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
-                android:hint="@string/et_login_hint"/>
+                android:hint="@string/et_login_hint" />
 
         </LinearLayout>
 
@@ -43,14 +55,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tv_pass"/>
+                android:text="@string/tv_pass" />
 
             <EditText
                 android:id="@+id/et_enter_pass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
-                android:hint="@string/et_pass_hint"/>
+                android:hint="@string/et_pass_hint" />
 
         </LinearLayout>
 
@@ -58,18 +70,18 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_login"/>
+            android:text="@string/btn_login" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_login_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_container"
         android:background="@drawable/correct_login_background"
-        android:layout_marginTop="0dp"
         android:padding="@dimen/login_hint_padding"
+        android:text=""
         android:textColor="@color/white"
-        android:visibility="invisible"/>
+        app:layout_constraintTop_toBottomOf="@+id/ll_container" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
