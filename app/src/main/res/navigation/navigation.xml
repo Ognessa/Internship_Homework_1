@@ -6,18 +6,5 @@
     android:id="@+id/navigation"
     app:startDestination="@id/animationFragment">
 
-    <fragment
-        android:id="@+id/animationFragment"
-        android:name="carrira.elan.myapplication.ui.animation.AnimationFragment"
-        android:label="fragment_animation"
-        tools:layout="@layout/fragment_animation" >
-        <action
-            android:id="@+id/action_animationFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="carrira.elan.myapplication.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+
 </navigation>
