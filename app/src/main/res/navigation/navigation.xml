@@ -14,20 +14,38 @@
         tools:layout="@layout/fragment_start_poll" >
         <action
             android:id="@+id/action_startPollFragment_to_poolFragment"
-            app:destination="@id/poolFragment" />
+            app:destination="@id/poolFirstPageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/poolFragment"
-        android:name="carrira.elan.myapplication.ui.poll.PollFragment"
+        android:id="@+id/poolFirstPageFragment"
+        android:name="carrira.elan.myapplication.ui.pages.poll_first_page.PollFirstPageFragment"
         android:label="fragment_pool"
-        tools:layout="@layout/fragment_poll" >
+        tools:layout="@layout/fragment_poll_first_page" >
         <action
-            android:id="@+id/action_poolFragment_to_poolResultFragment"
-            app:destination="@id/poolResultFragment" />
+            android:id="@+id/action_poolFirstPageFragment_to_pollSecondPageFragment"
+            app:destination="@id/pollSecondPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/poolResultFragment"
         android:name="carrira.elan.myapplication.ui.poll_result.PollResultFragment"
         android:label="fragment_pool_result"
         tools:layout="@layout/fragment_poll_result" />
+    <fragment
+        android:id="@+id/pollSecondPageFragment"
+        android:name="carrira.elan.myapplication.ui.pages.poll_second_page.PollSecondPageFragment"
+        android:label="fragment_poll_second_page"
+        tools:layout="@layout/fragment_poll_second_page" >
+        <action
+            android:id="@+id/action_pollSecondPageFragment_to_pollThirdPageFragment"
+            app:destination="@id/pollThirdPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pollThirdPageFragment"
+        android:name="carrira.elan.myapplication.ui.pages.poll_third_page.PollThirdPageFragment"
+        android:label="fragment_poll_third_page"
+        tools:layout="@layout/fragment_poll_third_page" >
+        <action
+            android:id="@+id/action_pollThirdPageFragment_to_poolResultFragment"
+            app:destination="@id/poolResultFragment" />
+    </fragment>
 </navigation>

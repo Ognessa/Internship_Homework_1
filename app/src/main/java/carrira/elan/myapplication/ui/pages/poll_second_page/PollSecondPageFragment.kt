@@ -1,4 +1,4 @@
-package carrira.elan.myapplication.ui.poll
+package carrira.elan.myapplication.ui.pages.poll_second_page
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import carrira.elan.myapplication.R
 
-class PollFragment : Fragment() {
+class PollSecondPageFragment : Fragment() {
 
     companion object {
-        fun newInstance() = PollFragment()
+        fun newInstance() = PollSecondPageFragment()
     }
 
-    private lateinit var viewModel: PollViewModel
+    private lateinit var viewModel: PollSecondPageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.fragment_poll, container, false)
+        return inflater.inflate(R.layout.fragment_poll_second_page, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PollViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PollSecondPageViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
