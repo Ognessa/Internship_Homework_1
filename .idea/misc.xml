@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_poll_first_page.xml" value="0.20572916666666666" />
         <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_poll_result.xml" value="0.20572916666666666" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_poll_second_page.xml" value="0.20572916666666666" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_poll_third_page.xml" value="0.20572916666666666" />
         <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_pool.xml" value="0.20572916666666666" />
         <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_start_poll.xml" value="0.20572916666666666" />
         <entry key="..\:/Projects/Android/MyApplication/app/src/main/res/drawable/correct_login_background.xml" value="0.1845" />

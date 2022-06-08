@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import carrira.elan.myapplication.R
 import carrira.elan.myapplication.databinding.FragmentStartPollBinding
 
@@ -26,7 +26,7 @@ class StartPollFragment : Fragment() {
         //Navigate to PollFragment
         binding.btnStartPoll.setOnClickListener{
             val action = StartPollFragmentDirections.actionStartPollFragmentToPoolFragment()
-            binding.root.findNavController().navigate(action)
+            findNavController().navigate(action)
         }
 
         return binding.root

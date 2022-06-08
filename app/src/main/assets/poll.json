@@ -1,0 +1,44 @@
+{
+  "poll" : [
+    {
+      "id" : 1,
+      "type" : "quiz",
+      "question" : "Знайти значення числового виразу:\n5 + 10",
+      "answers" : ["0", "15", "2", "5"],
+      "correct_answer" : 1
+    },
+    {
+      "id" : 2,
+      "type" : "several_answers",
+      "question" : "Розв'язати рівняння:\nx^2 = 4",
+      "answers" : ["-2", "-1", "0", "2"],
+      "correct_answers" : [0, 3]
+    },
+    {
+      "id" : 3,
+      "type" : "enter_answer",
+      "question" : "Знайти значення числового виразу:\n(10 / 2) ^ 2",
+      "correct_answer" : "25"
+    },
+    {
+      "id" : 4,
+      "type" : "quiz",
+      "question" : "Знайти значення числового виразу:\n48 / 3 * 2",
+      "answers" : ["32", "24", "2", "56"],
+      "correct_answer" : 0
+    },
+    {
+      "id" : 5,
+      "type" : "several_answers",
+      "question" : "Розв'язати рівняння:\n(x + 6) * (x - 7) = -22",
+      "answers" : ["-6", "-4", "5", "7"],
+      "correct_answers" : [1, 2]
+    },
+    {
+      "id" : 6,
+      "type" : "enter_answer",
+      "question" : "Розв'язати рівняння:\nx^2 - 4x + 4 = 0",
+      "correct_answer" : "2"
+    }
+  ]
+}
