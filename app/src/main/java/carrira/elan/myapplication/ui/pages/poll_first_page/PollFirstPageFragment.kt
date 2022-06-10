@@ -2,14 +2,13 @@ package carrira.elan.myapplication.ui.pages.poll_first_page
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import carrira.elan.myapplication.JSONHelper
 import carrira.elan.myapplication.R
 import carrira.elan.myapplication.databinding.FragmentPollFirstPageBinding
@@ -27,14 +26,11 @@ class PollFirstPageFragment : Fragment() {
         binding.pollFirstPageViewModel = viewModel
 
         val context = requireContext()
-        val quizModelList = JSONHelper(context).getAllQuestions().getQuizModelList()
-        for(it in quizModelList){
-            val textView = TextView(context)
-            textView.text = it.getQuestion()
-            binding.llPollContainer.addView(textView)
-            binding.llPollContainer.addView(viewModel.createRadioGroup(context, it))
+        val adapter = context.let{
+            FirstPageRVAdapter(JSONHelper(it).getAllQuestions().getQuizModelList(), it)
         }
-        //TODO check answers
+        binding.rvPollContainer.layoutManager = LinearLayoutManager(context)
+        binding.rvPollContainer.adapter = adapter
 
         binding.btnNext.setOnClickListener {
             val action = PollFirstPageFragmentDirections.actionPoolFirstPageFragmentToPollSecondPageFragment()

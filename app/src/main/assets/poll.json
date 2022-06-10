@@ -5,40 +5,69 @@
       "type" : "quiz",
       "question" : "Знайти значення числового виразу:\n5 + 10",
       "answers" : ["0", "15", "2", "5"],
-      "correct_answer" : 1
+      "correct_answer" : 1,
+      "user_answer" : 0
     },
     {
       "id" : 2,
       "type" : "several_answers",
       "question" : "Розв'язати рівняння:\nx^2 = 4",
       "answers" : ["-2", "-1", "0", "2"],
-      "correct_answers" : [0, 3]
+      "correct_answers" : [0, 3],
+      "user_answers" : [false, false, false, false]
     },
     {
       "id" : 3,
       "type" : "enter_answer",
       "question" : "Знайти значення числового виразу:\n(10 / 2) ^ 2",
-      "correct_answer" : "25"
+      "correct_answer" : "25",
+      "user_answer" : ""
     },
     {
       "id" : 4,
       "type" : "quiz",
       "question" : "Знайти значення числового виразу:\n48 / 3 * 2",
       "answers" : ["32", "24", "2", "56"],
-      "correct_answer" : 0
+      "correct_answer" : 0,
+      "user_answer" : 0
     },
     {
       "id" : 5,
       "type" : "several_answers",
       "question" : "Розв'язати рівняння:\n(x + 6) * (x - 7) = -22",
       "answers" : ["-6", "-4", "5", "7"],
-      "correct_answers" : [1, 2]
+      "correct_answers" : [1, 2],
+      "user_answers" : [false, false, false, false]
     },
     {
       "id" : 6,
       "type" : "enter_answer",
       "question" : "Розв'язати рівняння:\nx^2 - 4x + 4 = 0",
-      "correct_answer" : "2"
+      "correct_answer" : "2",
+      "user_answer" : ""
+    },
+    {
+      "id" : 7,
+      "type" : "quiz",
+      "question" : "Знайти значення числового виразу:\n36 * 2 / 10",
+      "answers" : ["7", "2", "7.2", "5.6"],
+      "correct_answer" : 2,
+      "user_answer" : 0
+    },
+    {
+      "id" : 8,
+      "type" : "several_answers",
+      "question" : "Розв'язати рівняння:\nx^4 - 5*x^2 + 6 = 0",
+      "answers" : ["-√3", "-√2", "√2", "√3"],
+      "correct_answers" : [0, 1, 2, 3],
+      "user_answers" : [false, false, false, false]
+    },
+    {
+      "id" : 9,
+      "type" : "enter_answer",
+      "question" : "Знайти значення числового виразу:\n4 * 4 - 4",
+      "correct_answer" : "12",
+      "user_answer" : ""
     }
   ]
 }

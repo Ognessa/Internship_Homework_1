@@ -1,14 +1,17 @@
 <resources>
-    <string name="app_name">Lesson 1</string>
+    <string name="app_name">Lesson 2</string>
 
-    <string name="poll_title">Mathematics</string>
-    <string name="start_poll">Start poll</string>
+    <string name="poll_title">Математика</string>
+    <string name="start_poll">Почати тест</string>
 
-    <string name="btn_text_next">Next</string>
-    <string name="btn_text_finish">Finish</string>
+    <string name="btn_text_next">Наступна</string>
+    <string name="btn_text_finish">Закінчити</string>
+    <string name="btn_text_return_to_start">Повернутися на старт</string>
 
-    <string name="hint_text">Enter answer</string>
+    <string name="hint_text">Ввести відповідь</string>
 
-    <string name="poll_result">Correct answers: %s</string>
+    <string name="temp_question_text">Some question text</string>
+
+    <string name="poll_result">Правильних відповідей: %s</string>
 
 </resources>

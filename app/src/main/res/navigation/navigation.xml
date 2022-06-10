@@ -29,7 +29,11 @@
         android:id="@+id/poolResultFragment"
         android:name="carrira.elan.myapplication.ui.poll_result.PollResultFragment"
         android:label="fragment_pool_result"
-        tools:layout="@layout/fragment_poll_result" />
+        tools:layout="@layout/fragment_poll_result" >
+        <action
+            android:id="@+id/action_poolResultFragment_to_startPollFragment"
+            app:destination="@id/startPollFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pollSecondPageFragment"
         android:name="carrira.elan.myapplication.ui.pages.poll_second_page.PollSecondPageFragment"
