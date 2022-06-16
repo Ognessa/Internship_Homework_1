@@ -8,5 +8,9 @@
         android:id="@+id/splashFragment"
         android:name="com.onix.internship.ui.splash.SplashFragment"
         android:label="SplashFragment" />
+    <fragment
+        android:id="@+id/ticTacToeFragment"
+        android:name="com.onix.internship.ui.tictactoe.TicTacToeFragment"
+        android:label="TicTacToeFragment" />
 
 </navigation>

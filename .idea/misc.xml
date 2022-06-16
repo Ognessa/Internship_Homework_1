@@ -9,9 +9,10 @@
         <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/drawable/online_indicator.xml" value="0.199" />
         <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/auth_fragment.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/splash_fragment.xml" value="0.20572916666666666" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/tic_tac_toe_fragment.xml" value="0.20572916666666666" />
         <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/menu/main_menu.xml" value="0.20572916666666666" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
