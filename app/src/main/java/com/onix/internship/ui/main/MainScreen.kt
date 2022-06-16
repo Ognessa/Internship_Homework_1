@@ -31,20 +31,4 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun setObservers() {}
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_log_out -> {
-                viewModel.logOut()
-                showFragment(R.id.authFragment, clearStack = true)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
 }
