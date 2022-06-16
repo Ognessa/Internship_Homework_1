@@ -1,9 +1,6 @@
 package com.onix.internship.ui.main
 
 import android.content.Intent
-import android.content.res.Configuration
-import android.view.Menu
-import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.onix.internship.R
@@ -21,14 +18,9 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         navHostFragment.navController
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-    }
-
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
     }
 
     override fun setObservers() {}
-
 }
