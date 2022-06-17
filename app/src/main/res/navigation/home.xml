@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
     app:startDestination="@id/splashFragment">
 
@@ -11,6 +12,20 @@
     <fragment
         android:id="@+id/ticTacToeFragment"
         android:name="com.onix.internship.ui.tictactoe.TicTacToeFragment"
-        android:label="TicTacToeFragment" />
+        android:label="TicTacToeFragment" >
+        <argument
+            android:name="userSymbol"
+            app:argType="com.onix.internship.ui.tictactoe.Symbol"
+            android:defaultValue="CROSS" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameMenuFragment"
+        android:name="com.onix.internship.ui.menu.GameMenuFragment"
+        android:label="fragment_game_menu"
+        tools:layout="@layout/fragment_game_menu" >
+        <action
+            android:id="@+id/action_gameMenuFragment_to_ticTacToeFragment"
+            app:destination="@id/ticTacToeFragment" />
+    </fragment>
 
 </navigation>

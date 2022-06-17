@@ -3,7 +3,6 @@ package com.onix.internship.ui.tictactoe
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
@@ -34,7 +33,7 @@ class TicTacToeView @JvmOverloads constructor(
     val paintSize = 10.0f
     lateinit var canvas : Canvas
 
-    val ticTacToeCells = mutableListOf<TicTacToeCell>()
+    var ticTacToeObject : TicTacToeObject = TicTacToeViewModel().ticTacToeObject
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
@@ -43,51 +42,25 @@ class TicTacToeView @JvmOverloads constructor(
         typeface = Typeface.create( "", Typeface.BOLD)
     }
 
-    init{
-        val x0 = 0.0f
-        val x1 = (width/3).toFloat()
-        val x2 = (width/3*2).toFloat()
-        val x3 = width.toFloat()
-
-        val y0 = 0.0f
-        val y1 = (height/3).toFloat()
-        val y2 = (height/3*2).toFloat()
-        val y3 = height.toFloat()
-
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x0, y0, x1, y1) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x1, y0, x2, y1) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x2, y0, x3, y1) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x0, y1, x1, y2) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x1, y1, x2, y2) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x2, y1, x3, y2) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x0, y2, x1, y3) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x1, y2, x2, y3) ))
-        ticTacToeCells.add(TicTacToeCell( Symbol.EMPTY, Cell(x2, y2, x3, y3) ))
-    }
-
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         this.canvas = canvas
         drawCells()
-        ticTacToeCells.forEach { it ->
-            when(it.symbol){
-                Symbol.CIRCLE -> drawCircle(it.cell)
-                Symbol.CROSS -> drawCross(it.cell)
+        if(ticTacToeObject.getTicTacToeCells().isNotEmpty()){
+            ticTacToeObject.getTicTacToeCells().forEach { it ->
+                when(it.symbol){
+                    Symbol.CIRCLE -> drawCircle(it.cell)
+                    Symbol.CROSS -> drawCross(it.cell)
+                }
             }
         }
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-
-        when(event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                updateGame(event.x, event.y)
+        if(event.action == MotionEvent.ACTION_DOWN){
+                ticTacToeObject.userTouchUpdate(event.x, event.y)
                 invalidate()
-            }
-            MotionEvent.ACTION_MOVE -> {}
-            MotionEvent.ACTION_UP -> {}
         }
-
         return true
     }
 
@@ -111,7 +84,7 @@ class TicTacToeView @JvmOverloads constructor(
         canvas.drawCircle(cx, cy, r, paint)
     }
 
-    private fun drawCross(cell : Cell){
+    private fun drawCross(cell : Cell) {
         canvas.drawLine(
             cell.startX + symbolsPadding,
             cell.startY + symbolsPadding,
@@ -124,18 +97,5 @@ class TicTacToeView @JvmOverloads constructor(
             cell.startX + symbolsPadding,
             cell.endY - symbolsPadding,
             paint)
-    }
-
-    fun updateGame(x : Float, y : Float){
-        for(i in 0 until ticTacToeCells.size){
-            val cell = ticTacToeCells[i] .cell
-            if((cell.startX <= x && x <= cell.endX)
-                && (cell.startY <= y && y <= cell.endY)
-                && ticTacToeCells[i] .symbol == Symbol.EMPTY){
-                ticTacToeCells[i] = TicTacToeCell(Symbol.CROSS, cell)
-            }
-        }
-        ticTacToeCells.forEach { it ->
-            Log.d("DEBUG", "${ticTacToeCells.indexOf(it)}: ${it.symbol}")}
     }
 }

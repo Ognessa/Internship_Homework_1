@@ -17,10 +17,4 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             supportFragmentManager.findFragmentById(R.id.homeHostNavFragment) as NavHostFragment
         navHostFragment.navController
     }
-
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-    }
-
-    override fun setObservers() {}
 }
