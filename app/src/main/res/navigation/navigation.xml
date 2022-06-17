@@ -4,7 +4,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/animationFragment">
+    app:startDestination="@id/startPollFragment">
 
 
+    <fragment
+        android:id="@+id/startPollFragment"
+        android:name="carrira.elan.myapplication.ui.start_poll.StartPollFragment"
+        android:label="fragment_start_poll"
+        tools:layout="@layout/fragment_start_poll" >
+        <action
+            android:id="@+id/action_startPollFragment_to_poolFragment"
+            app:destination="@id/poolFirstPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poolFirstPageFragment"
+        android:name="carrira.elan.myapplication.ui.pages.poll_first_page.PollFirstPageFragment"
+        android:label="fragment_pool"
+        tools:layout="@layout/fragment_poll_first_page" >
+        <action
+            android:id="@+id/action_poolFirstPageFragment_to_pollSecondPageFragment"
+            app:destination="@id/pollSecondPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/poolResultFragment"
+        android:name="carrira.elan.myapplication.ui.poll_result.PollResultFragment"
+        android:label="fragment_pool_result"
+        tools:layout="@layout/fragment_poll_result" >
+        <action
+            android:id="@+id/action_poolResultFragment_to_startPollFragment"
+            app:destination="@id/startPollFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pollSecondPageFragment"
+        android:name="carrira.elan.myapplication.ui.pages.poll_second_page.PollSecondPageFragment"
+        android:label="fragment_poll_second_page"
+        tools:layout="@layout/fragment_poll_second_page" >
+        <action
+            android:id="@+id/action_pollSecondPageFragment_to_pollThirdPageFragment"
+            app:destination="@id/pollThirdPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pollThirdPageFragment"
+        android:name="carrira.elan.myapplication.ui.pages.poll_third_page.PollThirdPageFragment"
+        android:label="fragment_poll_third_page"
+        tools:layout="@layout/fragment_poll_third_page" >
+        <action
+            android:id="@+id/action_pollThirdPageFragment_to_poolResultFragment"
+            app:destination="@id/poolResultFragment" />
+    </fragment>
 </navigation>
