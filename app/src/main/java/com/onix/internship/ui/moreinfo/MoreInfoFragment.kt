@@ -1,32 +1,31 @@
 package com.onix.internship.ui.moreinfo
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.onix.internship.R
+import com.onix.internship.arch.BaseFragment
+import com.onix.internship.databinding.MoreInfoFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MoreInfoFragment : Fragment() {
+class MoreInfoFragment : BaseFragment<MoreInfoFragmentBinding>(R.layout.more_info_fragment) {
 
-    companion object {
-        fun newInstance() = MoreInfoFragment()
-    }
-
-    private lateinit var viewModel: MoreInfoViewModel
+    override val viewModel: MoreInfoViewModel by viewModel()
+    private val args : MoreInfoFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.more_info_fragment, container, false)
-    }
+        val view = super.onCreateView(inflater, container, savedInstanceState)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MoreInfoViewModel::class.java)
-        // TODO: Use the ViewModel
+        val scanResult = args.scanResult
+        binding.tvInfo.text = scanResult.toString().replace(",", "\n")
+
+        return view
     }
 
 }

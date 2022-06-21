@@ -1,7 +1,6 @@
 package com.onix.internship.ui.moreinfo
 
-import androidx.lifecycle.ViewModel
+import com.onix.internship.arch.BaseViewModel
 
-class MoreInfoViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class MoreInfoViewModel : BaseViewModel() {
 }
