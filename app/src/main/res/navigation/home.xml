@@ -8,5 +8,9 @@
         android:id="@+id/splashFragment"
         android:name="com.onix.internship.ui.splash.SplashFragment"
         android:label="SplashFragment" />
+    <fragment
+        android:id="@+id/wifiFragment"
+        android:name="com.onix.internship.ui.wifi.WifiFragment"
+        android:label="WifiFragment" />
 
 </navigation>
