@@ -8,4 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="colorPaint">#FF000000</color>
+    <color name="colorBackground">#FFFFFFFF</color>
+
+    <color name="cross_color">#980000</color>
+    <color name="circle_color">#000075</color>
+
 </resources>

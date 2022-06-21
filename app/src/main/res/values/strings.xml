@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name">Tic Tac Toe</string>
+
+    <string name="lose">You lose</string>
+    <string name="win">You win</string>
+    <string name="restart">Restart game</string>
+
+    <string name="choose_symbol">Choose your symbol X or O</string>
+    <string name="hint">With X symbol you can go first</string>
 </resources>
