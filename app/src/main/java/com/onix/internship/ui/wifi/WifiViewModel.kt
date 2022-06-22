@@ -1,6 +1,5 @@
 package com.onix.internship.ui.wifi
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -16,9 +15,9 @@ class WifiViewModel(appWifiManager : AppWifiManager) : BaseViewModel() {
     init {
         viewModelScope.launch {
             while (true){
-                delay(3000)
                 appWifiManager.wifiManager.startScan()
                 _dataList.postValue(appWifiManager.getResultList())
+                delay(1000)
             }
         }
     }
