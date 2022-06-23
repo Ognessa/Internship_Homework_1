@@ -8,5 +8,23 @@
         android:id="@+id/splashFragment"
         android:name="com.onix.internship.ui.splash.SplashFragment"
         android:label="SplashFragment" />
+    <fragment
+        android:id="@+id/wifiFragment"
+        android:name="com.onix.internship.ui.wifi.WifiFragment"
+        android:label="WifiFragment" >
+        <action
+            android:id="@+id/action_wifiFragment_to_moreInfoFragment"
+            app:destination="@id/moreInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moreInfoFragment"
+        android:name="com.onix.internship.ui.moreinfo.MoreInfoFragment"
+        android:label="MoreInfoFragment" >
+        <argument
+            android:name="scanResult"
+            app:argType="android.net.wifi.ScanResult"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
 </navigation>
