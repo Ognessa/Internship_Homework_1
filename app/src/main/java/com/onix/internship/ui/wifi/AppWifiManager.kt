@@ -1,15 +1,18 @@
 package com.onix.internship.ui.wifi
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
+import android.os.Build
 import android.util.Log
-import java.util.*
+import androidx.annotation.RequiresApi
 import kotlin.collections.ArrayList
 import kotlin.math.abs
+import kotlin.random.Random
 
 class AppWifiManager(context : Context){
     val wifiManager : WifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
@@ -25,9 +28,8 @@ class AppWifiManager(context : Context){
     }
 
     init {
-        wifiManager.startScan()
-        context.registerReceiver(wifiReceiver,
-            IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
+        //wifiManager.startScan()
+        //context.registerReceiver(wifiReceiver, IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION))
     }
 
     fun getResultList() : ArrayList<WifiData> {

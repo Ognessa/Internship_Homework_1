@@ -37,12 +37,12 @@ class WifiFragment : BaseFragment<WifiFragmentBinding>(R.layout.wifi_fragment),
         return view
     }
 
-    override fun setObservers() {
+    /*override fun setObservers() {
         viewModel.dataList.observe(this){
             clearScreen()
             createItems(it, requireContext())
         }
-    }
+    }*/
 
     fun createItems(list : ArrayList<WifiData>, context: Context){
         list.forEach { item ->

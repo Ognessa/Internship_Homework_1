@@ -10,6 +10,6 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { SplashViewModel() }
     viewModel { MainViewModel() }
-    viewModel { WifiViewModel(appWifiManager = get()) }
+    viewModel { WifiViewModel(get()) }
     viewModel { MoreInfoViewModel() }
 }
