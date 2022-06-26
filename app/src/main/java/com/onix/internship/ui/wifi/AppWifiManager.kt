@@ -1,18 +1,11 @@
 package com.onix.internship.ui.wifi
 
-import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.net.wifi.ScanResult
 import android.net.wifi.WifiManager
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
-import kotlin.collections.ArrayList
 import kotlin.math.abs
-import kotlin.random.Random
 
 class AppWifiManager(context : Context){
     val wifiManager : WifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
