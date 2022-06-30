@@ -4,8 +4,6 @@ import com.onix.internship.arch.BaseViewModel
 import com.onix.internship.arch.lifecycle.SingleLiveEvent
 import com.onix.internship.parser.DictionaryXmlParser
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.withContext
 
 class SplashViewModel(dictionaryXmlParser: DictionaryXmlParser) : BaseViewModel() {

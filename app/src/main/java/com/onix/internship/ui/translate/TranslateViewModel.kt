@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import com.onix.internship.arch.BaseViewModel
 import com.onix.internship.parser.DictionaryXmlParser
 
-class TranslateViewModel(val dictionaryXmlParser: DictionaryXmlParser) : BaseViewModel() {
+class TranslateViewModel(private val dictionaryXmlParser: DictionaryXmlParser) : BaseViewModel() {
 
     private val _history = MutableLiveData<ArrayList<String>>(arrayListOf())
     val history : LiveData<ArrayList<String>> get() = _history
-    val HISTORY_SIZE = 16
+    private val HISTORY_SIZE = 16
 
     fun updateHistory(key: String, value : ArrayList<String>){
         val string = "$key - ${value[0]}"

@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
-import com.onix.internship.arch.ext.navigate
 import com.onix.internship.databinding.FragmentResultBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

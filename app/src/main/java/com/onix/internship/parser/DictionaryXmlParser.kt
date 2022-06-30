@@ -11,7 +11,7 @@ class DictionaryXmlParser(val context : Context) {
     fun parseAllDicts() {
         val dictNames = context.resources.getStringArray(R.array.dictionaries)
         dictionary.clear()
-        dictionary.put(dictNames[0], parseDict("ua_pol.xdxf"))
+        dictionary[dictNames[0]] = parseDict("ua_pol.xdxf")
     }
 
     private fun parseDict(title : String): HashMap<String, ArrayList<String>> {
@@ -46,13 +46,13 @@ class DictionaryXmlParser(val context : Context) {
                     "ar" -> {
                         value = text.substring(text.indexOf('-')+1, text.length).lowercase()
                         if(list.containsKey(key)){
-                            val arrayList = list.get(key)
+                            val arrayList = list[key]
                             arrayList!!.add(value)
-                            list.put(key, arrayList)
+                            list[key] = arrayList
                         }
                         else{
-                            val arrayList = arrayListOf<String>(value)
-                            list.put(key, arrayList)
+                            val arrayList = arrayListOf(value)
+                            list[key] = arrayList
                         }
                     }
                 }
@@ -65,8 +65,8 @@ class DictionaryXmlParser(val context : Context) {
 
     fun getValue(currentDict : String, key : String): ArrayList<String>?{
         if(dictionary.containsKey(currentDict)
-            && dictionary.get(currentDict)!!.containsKey(key))
-            return dictionary.get(currentDict)?.get(key)
+            && dictionary[currentDict]!!.containsKey(key))
+            return dictionary[currentDict]?.get(key)
 
         return null
     }
