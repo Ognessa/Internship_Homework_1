@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/drawable/background.xml" value="0.21" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_blank.xml" value="0.20572916666666666" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_result.xml" value="0.22" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/fragment_translate.xml" value="0.16880341880341881" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/history_item.xml" value="0.20572916666666666" />
+        <entry key="..\:/Projects/Android/Internship_Homework_1/app/src/main/res/layout/splash_fragment.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
