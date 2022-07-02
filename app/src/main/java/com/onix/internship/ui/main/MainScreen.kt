@@ -1,5 +1,6 @@
 package com.onix.internship.ui.main
 
+import android.content.Intent
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.onix.internship.R
@@ -17,4 +18,9 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         navHostFragment.navController
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+    }
+
+    override fun setObservers() {}
 }

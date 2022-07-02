@@ -3,40 +3,64 @@ package com.onix.internship.ui.translate
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.onix.internship.arch.BaseViewModel
+import com.onix.internship.data.HistoryItem
 import com.onix.internship.parser.DictionaryXmlParser
 
-class TranslateViewModel(private val dictionaryXmlParser: DictionaryXmlParser) : BaseViewModel() {
+class TranslateViewModel(dictionaryXmlParser: DictionaryXmlParser) : BaseViewModel() {
 
-    private val _history = MutableLiveData<ArrayList<String>>(arrayListOf())
-    val history : LiveData<ArrayList<String>> get() = _history
     private val HISTORY_SIZE = 16
+    private val dictionaries = dictionaryXmlParser.dictionary
 
-    fun updateHistory(key: String, value : ArrayList<String>){
-        val string = "$key - ${value[0]}"
+    private val _history = MutableLiveData<ArrayList<HistoryItem>>(arrayListOf())
+    val history : LiveData<ArrayList<HistoryItem>> get() = _history
+
+    private val _currentDict = MutableLiveData(dictionaries.first().title)
+    val currentDict : LiveData<String> get() = _currentDict
+
+    fun updateHistory(item : HistoryItem){
         val array = _history.value
         if(array != null){
-            if(array.contains(string)){
-                array.remove(string)
-                array.add(string)
+            var hasSameItem = false
+            var index = 0
+            array.forEach {
+                if(it.isSameHistoryItems(item)){
+                    hasSameItem = true
+                    index = array.indexOf(it)
+                }
             }
-            else if(array.size == HISTORY_SIZE){
-                array.removeFirst()
-                array.add(string)
+            if(hasSameItem){
+                array.removeAt(index)
+                array.add(item)
             }
-            else array.add(string)
+            else{
+                if(array.size == HISTORY_SIZE){
+                    array.removeFirst()
+                    array.add(item)
+                }
+                else array.add(item)
+            }
         }
-        else _history.postValue(arrayListOf(string))
+        else _history.postValue(arrayListOf(item))
     }
 
-    fun findWord(dictionary : String, key : String) : ArrayList<String>?{
-        return dictionaryXmlParser.getValue(dictionary, key)
+    fun changeDict(title: String){
+        _currentDict.postValue(title)
     }
 
-    fun arrayListToString(array : ArrayList<String>) : String{
-        var string = ""
-        array.forEach {
-            string += "$it\n"
+    fun getDictsTitles(): ArrayList<String> {
+        val list = arrayListOf<String>()
+        dictionaries.forEach { list.add(it.title) }
+        return list
+    }
+
+    fun findWord(title : String, key : String) : Array<String> {
+        var resultList : Array<String> = arrayOf()
+
+        dictionaries.forEach {
+            if (it.title == title)
+                resultList = it.findWord(key).toTypedArray()
         }
-        return string
+
+        return resultList
     }
 }

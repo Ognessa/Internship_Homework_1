@@ -3,18 +3,12 @@
 
     <string name="btn_translate_text">Виконати переклад</string>
     <string name="et_enter_word_hint">Введіть слово для перекладу</string>
-
     <string name="dictionaries_menu_title">Словник:</string>
+
     <string name="word_title">Запит:</string>
     <string name="result_title">Варіанти перекладу:</string>
 
     <string name="alert_title">Оберіть словник:</string>
     <string name="close_btn_text">Закрити</string>
-
     <string name="translate_error">Неможливо перекласти</string>
-
-    <string-array name="dictionaries">
-        <item>українсько-польський</item>
-    </string-array>
-
 </resources>

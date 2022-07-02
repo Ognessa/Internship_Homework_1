@@ -12,7 +12,7 @@ class SplashViewModel(dictionaryXmlParser: DictionaryXmlParser) : BaseViewModel(
 
     init {
         onLoading(true)
-        launch{
+        launch {
             withContext(Dispatchers.IO){
                 dictionaryXmlParser.parseAllDicts()
                 initEvent.postValue(true)

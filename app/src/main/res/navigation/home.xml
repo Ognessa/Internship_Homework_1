@@ -25,7 +25,8 @@
             app:argType="string" />
         <argument
             android:name="value"
-            app:argType="string" />
+            app:argType="string[]" />
     </fragment>
+
 
 </navigation>

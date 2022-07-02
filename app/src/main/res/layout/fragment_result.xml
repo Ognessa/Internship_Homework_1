@@ -36,10 +36,10 @@
             android:text="@string/result_title"
             android:textSize="@dimen/title_text_size" />
 
-        <TextView
-            android:id="@+id/tv_result"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_results"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

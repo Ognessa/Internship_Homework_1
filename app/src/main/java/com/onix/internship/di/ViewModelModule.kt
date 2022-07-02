@@ -10,6 +10,6 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { MainViewModel() }
-    viewModel { TranslateViewModel(get()) }
     viewModel { ResultViewModel() }
+    viewModel { TranslateViewModel(get()) }
 }

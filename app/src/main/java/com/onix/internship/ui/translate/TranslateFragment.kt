@@ -5,15 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.ScrollView
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.onix.internship.data.HistoryItem
 import com.onix.internship.databinding.FragmentTranslateBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TranslateFragment : BaseFragment<FragmentTranslateBinding>(R.layout.fragment_translate) {
 
@@ -27,26 +30,36 @@ class TranslateFragment : BaseFragment<FragmentTranslateBinding>(R.layout.fragme
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        val dictArray = requireContext().resources.getStringArray(R.array.dictionaries)
-        binding.tvDictionary.text = dictArray[0]
+        val dictArray = viewModel.getDictsTitles()
 
-        binding.tvDictionary.setOnClickListener { changeDict(binding.tvDictionary, dictArray) }
-        binding.btnFindWord.setOnClickListener { findWord(binding.cl) }
+        binding.tvDictionary.setOnClickListener { changeDictDialog(dictArray) }
+        binding.btnFindWord.setOnClickListener { findWord(binding) }
 
+        //adjust RecyclerView
         val layoutManager = LinearLayoutManager(requireContext())
         layoutManager.reverseLayout = true
+        layoutManager.stackFromEnd = true
         binding.rvHistory.layoutManager = layoutManager
+        binding.rvHistory.addItemDecoration(
+            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
         binding.rvHistory.adapter = adapter
+
         return view
     }
 
     override fun setObservers() {
+        //observe history list
         viewModel.history.observe(this){
             adapter.setContent(it)
         }
+        //observe directory title changed
+        viewModel.currentDict.observe(this){
+            binding.tvDictionary.text = it
+        }
     }
 
-    private fun changeDict(tvDict : TextView, dictArray : Array<out String>){
+    //show dialog with dictionaries list
+    private fun changeDictDialog(dictArray : ArrayList<String>){
         val context = requireContext()
         val scroll = ScrollView(context)
         val rg= RadioGroup(context)
@@ -54,12 +67,9 @@ class TranslateFragment : BaseFragment<FragmentTranslateBinding>(R.layout.fragme
         dictArray.forEach { item ->
             val rb = RadioButton(context)
             rb.text = item
-
-            rb.setOnClickListener {
-                tvDict.text = item
-            }
-
             rg.addView(rb)
+            if(viewModel.currentDict.value == item) rb.isChecked = true
+            rb.setOnClickListener { viewModel.changeDict(item) }
         }
         scroll.addView(rg)
 
@@ -74,16 +84,16 @@ class TranslateFragment : BaseFragment<FragmentTranslateBinding>(R.layout.fragme
         alert.show()
     }
 
-    private fun findWord(cl : ConstraintLayout){
+    private fun findWord(binding: FragmentTranslateBinding){
         val key = binding.etEnterWord.text.toString().lowercase()
         val value = viewModel.findWord(binding.tvDictionary.text.toString(), key)
-        if(value != null){
-            viewModel.updateHistory(key, value)
+
+        if(value.isNotEmpty()){
+            viewModel.updateHistory(HistoryItem(binding.tvDictionary.text.toString(), key, value.first()))
             val action = TranslateFragmentDirections
-                .actionTranslateFragmentToResultFragment(key, viewModel.arrayListToString(value))
+                .actionTranslateFragmentToResultFragment(key, value)
             findNavController().navigate(action)
         }
-        else
-            Snackbar.make(cl, R.string.translate_error, Snackbar.LENGTH_SHORT).show()
+        else Snackbar.make(binding.cl, R.string.translate_error, Snackbar.LENGTH_SHORT).show()
     }
 }
