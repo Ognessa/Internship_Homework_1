@@ -9,7 +9,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { SplashViewModel() }
+    viewModel { SplashViewModel(get()) }
     viewModel { MainViewModel() }
     viewModel { MainMenuViewModel() }
     viewModel { GameViewModel() }
