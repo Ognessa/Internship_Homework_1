@@ -7,6 +7,50 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.onix.internship.ui.mainmenu.MainMenuFragment"
+        android:label="MainMenuFragment" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.onix.internship.ui.game.GameFragment"
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_pauseFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:destination="@id/pauseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pauseFragment"
+        android:name="com.onix.internship.ui.pause.PauseFragment"
+        android:label="PauseFragment" >
+        <action
+            android:id="@+id/action_pauseFragment_to_gameFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_pauseFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment"/>
+    </fragment>
 
 </navigation>

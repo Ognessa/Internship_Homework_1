@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/main_menu_back"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/black_translucent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/padding_30"
+        android:paddingRight="@dimen/padding_40"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_start"
+            style="@style/MenuButton"
+            android:text="@string/start_menu_item_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_load"
+            style="@style/MenuButton"
+            android:text="@string/load_menu_item_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_Pref"
+            style="@style/MenuButton"
+            android:text="@string/preferences_menu_item_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_about"
+            style="@style/MenuButton"
+            android:text="@string/about_menu_item_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_help"
+            style="@style/MenuButton"
+            android:text="@string/help_menu_item_text" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_quit"
+            style="@style/MenuButton"
+            android:text="@string/quit_menu_item_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TitleText"
+            android:textColor="@color/yellow"
+            android:text="@string/app_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/StandartText"
+            android:textColor="@color/yellow"
+            android:text="@string/annotation" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

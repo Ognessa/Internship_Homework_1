@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_game_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_menu_back"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/characte_height"
+            android:src="@drawable/sylvie_blue_giggle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_height"
+            android:layout_marginLeft="@dimen/margin_40"
+            android:layout_marginRight="@dimen/margin_40"
+            android:scaleType="fitXY"
+            android:src="@drawable/dialog_btn_idle_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingLeft="@dimen/padding_120"
+            android:paddingRight="@dimen/padding_120"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name"
+                style="@style/TitleText"
+                android:textColor="@color/white"
+                android:text="Silvia"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_text"
+                style="@style/StandartText"
+                android:textColor="@color/white"
+                android:text="Silvia"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_pause_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/yellow"
+            android:src="@drawable/ic_baseline_menu_24"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

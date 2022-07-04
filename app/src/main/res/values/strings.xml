@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Lesson 6</string>
+    <string name="app_name">The Question</string>
+    <string name="annotation">Android Studio Chipmunk</string>
+
+    <string name="start_menu_item_text">Start</string>
+    <string name="load_menu_item_text">Load</string>
+    <string name="preferences_menu_item_text">Preferences</string>
+    <string name="about_menu_item_text">About</string>
+    <string name="help_menu_item_text">Help</string>
+    <string name="quit_menu_item_text">Quit</string>
+
+    <string name="continue_menu_item_text">Continue</string>
+    <string name="restart_menu_item_text">Restart</string>
+
 </resources>
