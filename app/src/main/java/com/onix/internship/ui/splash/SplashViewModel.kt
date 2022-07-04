@@ -2,19 +2,21 @@ package com.onix.internship.ui.splash
 
 import com.onix.internship.arch.BaseViewModel
 import com.onix.internship.arch.lifecycle.SingleLiveEvent
-import kotlinx.coroutines.delay
+import com.onix.internship.parser.DictionaryXmlParser
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class SplashViewModel(
-
-) : BaseViewModel() {
+class SplashViewModel(dictionaryXmlParser: DictionaryXmlParser) : BaseViewModel() {
 
     val initEvent = SingleLiveEvent<Boolean>()
 
     init {
         onLoading(true)
         launch {
-            delay(1000)
-            initEvent.postValue(true)
+            withContext(Dispatchers.IO){
+                dictionaryXmlParser.parseAllDicts()
+                initEvent.postValue(true)
+            }
         }
     }
 
