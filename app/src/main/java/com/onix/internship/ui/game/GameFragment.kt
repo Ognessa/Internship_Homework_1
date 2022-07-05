@@ -24,7 +24,15 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
 
         binding.fabPauseMenu.setOnClickListener { showPauseMenu(binding) }
 
+        binding.llTextContainer.setOnClickListener { viewModel.nextLine() }
+
         return view
+    }
+
+    override fun setObservers() {
+        viewModel.currentText.observe(this){
+            binding.tvText.text = it
+        }
     }
 
     fun showPauseMenu(binding: GameFragmentBinding){

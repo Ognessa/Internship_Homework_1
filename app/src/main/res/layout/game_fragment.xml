@@ -16,11 +16,13 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/characte_height"
+            android:layout_height="0dp"
             android:src="@drawable/sylvie_blue_giggle"
+            android:layout_marginTop="@dimen/margin_40"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -35,11 +37,12 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
+            android:id="@+id/ll_text_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:orientation="vertical"
             android:paddingLeft="@dimen/padding_120"
             android:paddingRight="@dimen/padding_120"
-            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -48,14 +51,14 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_name"
                 style="@style/TitleText"
-                android:textColor="@color/white"
-                android:text="Silvia"/>
+                android:text="Silvia"
+                android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_text"
                 style="@style/StandartText"
-                android:textColor="@color/white"
-                android:text="Silvia"/>
+                android:text="Silvia"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
