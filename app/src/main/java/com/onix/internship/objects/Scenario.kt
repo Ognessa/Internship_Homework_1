@@ -17,8 +17,8 @@ import androidx.annotation.ColorInt
     UPDATE_VARIABLE -> change value of some variable
     */
 enum class Actions{
-    PLAY_MUSIC, SCENE, SHOW_WITH, SHOW, ANIMATION,
-    MENU, JUMP, CHANGE_TEXT, IF, UPDATE_VARIABLE
+    PLAY_MUSIC, SCENE, SHOW, ANIMATION, MENU,
+    MENU_TITLE, JUMP, CHANGE_TEXT, IF, UPDATE_VARIABLE, RETURN
 }
 
 data class GameVariable(
@@ -30,20 +30,24 @@ data class Character(
     val name : String,
     @ColorInt val color : Int)
 
+data class GameMenuButton(
+    val title : String,
+    val jump : String
+)
+
 data class GameString(
     val action : Actions,
     val line : String)
 
 data class GameLabel(val title : String){
     private val gameStrings = arrayListOf<GameString>()
+    private val gameMenu = arrayListOf<GameMenuButton>()
 
-    fun getGameStrings(): ArrayList<GameString> {
-        return gameStrings
-    }
+    fun getGameStrings(): ArrayList<GameString> { return gameStrings }
+    fun addGameString(item : GameString){ gameStrings.add(item) }
 
-    fun addGameString(item : GameString){
-        gameStrings.add(item)
-    }
+    fun getGameMenu(): ArrayList<GameMenuButton> { return gameMenu }
+    fun addGameMenuButton(item : GameMenuButton){ gameMenu.add(item) }
 }
 
 class Scenario(val context : Context) {
@@ -69,6 +73,9 @@ class Scenario(val context : Context) {
             Log.d("DEBUG", it.title)
             it.getGameStrings().forEach { i ->
                 Log.d("DEBUG", "${i.action} : ${i.line}")
+            }
+            it.getGameMenu().forEach { i ->
+                Log.d("DEBUG", "${i.title} -> ${i.jump}")
             }
         }
     }
@@ -118,65 +125,80 @@ class Scenario(val context : Context) {
 
     private fun getGameLabels(list: MutableList<String>){
         var gameLabel = GameLabel("")
+        var buttonTitle = ""
 
         list.forEach {
             if(it.contains("label")){
                 if(gameLabel.title.isNotEmpty()){ scenario.add(gameLabel) }
                 gameLabel = GameLabel(it.substring(it.indexOf(" ") + 1, it.indexOf(":")))
-                Log.d("DEBUG", "1")
             }
             else{
-                gameLabel.addGameString(getGameString(it))
-                Log.d("DEBUG", "3")
+                if(gameLabel.getGameStrings().isNotEmpty() && gameLabel.getGameStrings().last().action == Actions.MENU_TITLE) {
+                    if(buttonTitle.isEmpty())
+                        buttonTitle = it.trim()
+                    else{
+                        val jump = it.trim().split(" ")[1]
+                        gameLabel.addGameMenuButton(GameMenuButton(buttonTitle, jump))
+                        buttonTitle = ""
+                    }
+                }
+                else
+                    updateGameLabel(gameLabel, it)
             }
         }
 
         scenario.add(gameLabel)
     }
 
-    private fun getGameString(currentStr : String): GameString {
+    private fun updateGameLabel(gameLabel : GameLabel, currentStr : String) {
         val regex = "([\"\'])(?:(?=(\\\\?))\\2.)*?\\1".toRegex() //get text inside quotes
 
-        var action = Actions.CHANGE_TEXT
         var line = currentStr.trim()
-
         val firstWord = line.split(" ")[0]
+        lateinit var gameString : GameString
 
         when(true){
             firstWord.contains("play") ->{
                 line = regex.find(line)?.groupValues?.getOrNull(0)?.replace("\"", "").toString()
-                action = Actions.PLAY_MUSIC
+                gameString = GameString(Actions.PLAY_MUSIC, line)
             }
             firstWord.contains("scene") -> {
                 line = getTitle(line)
-                action = Actions.SCENE
+                gameString = GameString(Actions.SCENE, line)
             }
             firstWord.contains("show") -> {
                 line = getTitle(line)
-                action = Actions.SHOW
+                gameString = GameString(Actions.SHOW, line)
             }
             firstWord.contains("with") -> {
                 line = getTitle(line)
-                action = Actions.ANIMATION
+                gameString = GameString(Actions.ANIMATION, line)
             }
             firstWord.contains("menu") -> {
-                action = Actions.MENU
+                gameString = GameString(Actions.MENU, line)
             }
-            firstWord.contains("jump")-> {
-                line = getTitle(line)
-                action = Actions.JUMP
+            firstWord.contains("jump") -> {
+                gameString = GameString(Actions.JUMP, line)
             }
             firstWord.contains("$") -> {
-                action = Actions.UPDATE_VARIABLE
+                gameString = GameString(Actions.UPDATE_VARIABLE, line)
             }
             firstWord.contains("if") -> {
                 line = getTitle(line)
-                action = Actions.IF
+                gameString = GameString(Actions.IF, line)
             }
-            else -> {}
+            firstWord.contains("return") -> {
+                line = getTitle(line)
+                gameString = GameString(Actions.RETURN, line)
+            }
+            else -> {
+                if(gameLabel.getGameStrings().isNotEmpty() && gameLabel.getGameStrings().last().action == Actions.MENU)
+                    gameString = GameString(Actions.MENU_TITLE, line)
+                else
+                    gameString = GameString(Actions.CHANGE_TEXT, line)
+            }
         }
-
-        return GameString(action, line)
+        gameLabel.addGameString(gameString)
     }
 
     private fun getTitle(line : String): String {
