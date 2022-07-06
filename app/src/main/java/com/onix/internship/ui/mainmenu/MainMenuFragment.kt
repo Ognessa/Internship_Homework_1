@@ -22,6 +22,7 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         binding.btnStart.setOnClickListener { startGame() }
+        binding.btnQuit.setOnClickListener { activity?.finish() }
 
         return view
     }

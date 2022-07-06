@@ -22,6 +22,8 @@ class PauseFragment : BaseFragment<FragmentPauseBinding>(R.layout.fragment_pause
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         binding.btnContinue.setOnClickListener { continueGame() }
+        binding.btnContinue.setOnClickListener { continueGame() }
+        binding.btnQuit.setOnClickListener { activity?.finish() }
 
         return view
     }

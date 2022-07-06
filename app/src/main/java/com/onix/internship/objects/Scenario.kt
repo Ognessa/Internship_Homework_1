@@ -134,8 +134,10 @@ class Scenario(val context : Context) {
             }
             else{
                 if(gameLabel.getGameStrings().isNotEmpty() && gameLabel.getGameStrings().last().action == Actions.MENU_TITLE) {
-                    if(buttonTitle.isEmpty())
+                    if(buttonTitle.isEmpty()) {
                         buttonTitle = it.trim()
+                        buttonTitle = buttonTitle.subSequence(buttonTitle.indexOf("\"") + 1, buttonTitle.lastIndexOf("\"")).toString()
+                    }
                     else{
                         val jump = it.trim().split(" ")[1]
                         gameLabel.addGameMenuButton(GameMenuButton(buttonTitle, jump))
@@ -178,7 +180,7 @@ class Scenario(val context : Context) {
                 gameString = GameString(Actions.MENU, line)
             }
             firstWord.contains("jump") -> {
-                gameString = GameString(Actions.JUMP, line)
+                gameString = GameString(Actions.JUMP, line.split(" ")[1])
             }
             firstWord.contains("$") -> {
                 gameString = GameString(Actions.UPDATE_VARIABLE, line)

@@ -1,5 +1,7 @@
 package com.onix.internship.ui.game
 
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +39,30 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
         viewModel.currentText.observe(this){
             binding.tvText.text = it
         }
+        viewModel.currentCharacter.observe(this){
+            binding.tvName.text = it.name
+            binding.tvName.setTextColor(it.color)
+        }
+        viewModel.currentScene.observe(this) {
+            if (!it.isNullOrEmpty() && it != "black"){
+                val drawable = requireContext().resources.getDrawable(requireContext().resources
+                    .getIdentifier(it, "drawable", requireContext().packageName), null)
+                binding.ivGameBackground.setImageDrawable(drawable)
+            }
+            else{
+                binding.ivGameBackground.setImageDrawable(null)
+            }
+        }
+        viewModel.currentCharacterImage.observe(this){
+            if(!it.isNullOrEmpty()){
+                val drawable = requireContext().resources.getDrawable(requireContext().resources
+                    .getIdentifier(it, "drawable", requireContext().packageName), null)
+                binding.ivCharacter.setImageDrawable(drawable)
+            }
+            else{
+                binding.ivCharacter.setImageDrawable(null)
+            }
+        }
         viewModel.hasMenu.observe(this){
             if(it){
                 showDialogMenu(binding)
@@ -47,10 +73,16 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
                 binding.llTextContainer.isClickable = true
             }
         }
+        viewModel.returnEvent.observe(this){ returnToMainMenu() }
     }
 
     private fun showPauseMenu(){
         val action = GameFragmentDirections.actionGameFragmentToPauseFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun returnToMainMenu(){
+        val action = GameFragmentDirections.actionGameFragmentToMainMenuFragment()
         findNavController().navigate(action)
     }
 

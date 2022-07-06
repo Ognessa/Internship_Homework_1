@@ -23,6 +23,7 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/gameFragment"
             app:popUpToInclusive="false" />
     </fragment>
     <fragment
@@ -31,11 +32,16 @@
         android:label="GameFragment" >
         <action
             android:id="@+id/action_gameFragment_to_pauseFragment"
+            app:destination="@id/pauseFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
-            app:destination="@id/pauseFragment" />
+            app:popUpTo="@id/pauseFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment"
+            app:popUpTo="@id/mainMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/pauseFragment"
@@ -43,14 +49,16 @@
         android:label="PauseFragment" >
         <action
             android:id="@+id/action_pauseFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out"
-            app:destination="@id/gameFragment" />
+            app:popUpTo="@id/gameFragment" />
         <action
             android:id="@+id/action_pauseFragment_to_mainMenuFragment"
-            app:destination="@id/mainMenuFragment"/>
+            app:destination="@id/mainMenuFragment"
+            app:popUpTo="@id/mainMenuFragment" />
     </fragment>
 
 </navigation>
