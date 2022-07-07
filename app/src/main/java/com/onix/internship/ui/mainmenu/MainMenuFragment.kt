@@ -27,7 +27,7 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
         return view
     }
 
-    fun startGame(){
+    private fun startGame(){
         val action = MainMenuFragmentDirections.actionMainMenuFragmentToGameFragment()
         findNavController().navigate(action)
     }

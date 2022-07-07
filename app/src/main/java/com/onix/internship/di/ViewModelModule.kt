@@ -13,5 +13,5 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { MainMenuViewModel() }
     viewModel { GameViewModel(get()) }
-    viewModel { PauseViewModel() }
+    viewModel { PauseViewModel(get()) }
 }

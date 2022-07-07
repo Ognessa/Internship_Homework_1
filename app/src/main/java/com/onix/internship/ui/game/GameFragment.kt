@@ -1,25 +1,19 @@
 package com.onix.internship.ui.game
 
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.ContextThemeWrapper
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.findNavController
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
-import com.onix.internship.databinding.DialogButtonBinding
 import com.onix.internship.databinding.GameFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.jar.Attributes
 
 class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
 
     override val viewModel: GameViewModel by viewModel()
-    var pause_flag = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -77,6 +71,7 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
     }
 
     private fun showPauseMenu(){
+        viewModel.savePosition()
         val action = GameFragmentDirections.actionGameFragmentToPauseFragment()
         findNavController().navigate(action)
     }

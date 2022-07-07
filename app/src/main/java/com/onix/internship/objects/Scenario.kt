@@ -2,7 +2,6 @@ package com.onix.internship.objects
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import androidx.annotation.ColorInt
 
 /**
@@ -55,6 +54,11 @@ class Scenario(val context : Context) {
     val characters = arrayListOf<Character>()
     val variables = arrayListOf<GameVariable>()
 
+    var currentLabel = ""
+    var currentLine = -1
+    var currentScene = ""
+    var currentCharacterImage = ""
+
     fun parseScenario(){
         var listOfLines = mutableListOf<String> ()
         context.assets.open("scenario.rpy").bufferedReader().useLines {
@@ -64,20 +68,16 @@ class Scenario(val context : Context) {
             }
         }
 
+        //clear to avoid duplicates
+        scenario.clear()
+        characters.clear()
+        variables.clear()
+
         listOfLines = getCharacters(listOfLines)
         listOfLines = getVariables(listOfLines)
 
         getGameLabels(listOfLines)
-
-        scenario.forEach {
-            Log.d("DEBUG", it.title)
-            it.getGameStrings().forEach { i ->
-                Log.d("DEBUG", "${i.action} : ${i.line}")
-            }
-            it.getGameMenu().forEach { i ->
-                Log.d("DEBUG", "${i.title} -> ${i.jump}")
-            }
-        }
+        currentLabel = scenario.first().title
     }
 
     private fun getCharacters(list: MutableList<String>): MutableList<String> {
@@ -194,10 +194,11 @@ class Scenario(val context : Context) {
                 gameString = GameString(Actions.RETURN, line)
             }
             else -> {
-                if(gameLabel.getGameStrings().isNotEmpty() && gameLabel.getGameStrings().last().action == Actions.MENU)
-                    gameString = GameString(Actions.MENU_TITLE, line)
-                else
-                    gameString = GameString(Actions.CHANGE_TEXT, line)
+                gameString =
+                    if(gameLabel.getGameStrings().isNotEmpty() && gameLabel.getGameStrings().last().action == Actions.MENU)
+                        GameString(Actions.MENU_TITLE, line)
+                    else
+                        GameString(Actions.CHANGE_TEXT, line)
             }
         }
         gameLabel.addGameString(gameString)

@@ -9,6 +9,8 @@
     <string name="help_menu_item_text">Help</string>
     <string name="quit_menu_item_text">Quit</string>
 
+    <string name="music_pref">Music:</string>
+
     <string name="continue_menu_item_text">Continue</string>
     <string name="restart_menu_item_text">Restart</string>
 

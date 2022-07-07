@@ -22,13 +22,20 @@ class PauseFragment : BaseFragment<FragmentPauseBinding>(R.layout.fragment_pause
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         binding.btnContinue.setOnClickListener { continueGame() }
-        binding.btnContinue.setOnClickListener { continueGame() }
+        binding.btnRestart.setOnClickListener { restartGame() }
         binding.btnQuit.setOnClickListener { activity?.finish() }
 
         return view
     }
 
-    fun continueGame(){
+    private fun continueGame(){
+        viewModel.stepBack()
+        val action = PauseFragmentDirections.actionPauseFragmentToGameFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun restartGame(){
+        viewModel.clearData()
         val action = PauseFragmentDirections.actionPauseFragmentToGameFragment()
         findNavController().navigate(action)
     }

@@ -12,112 +12,107 @@ import com.onix.internship.objects.GameMenuButton
 import com.onix.internship.objects.GameString
 import com.onix.internship.objects.Scenario
 
-class GameViewModel(val scenario: Scenario) : BaseViewModel() {
+class GameViewModel(private val scenario: Scenario) : BaseViewModel() {
 
     //Character name and color
     private val _currentCharacter = MutableLiveData<Character>()
-    val currentCharacter : LiveData<Character> get() = _currentCharacter
+    val currentCharacter: LiveData<Character> get() = _currentCharacter
 
     //Just text
     private val _currentText = MutableLiveData<String>()
-    val currentText : LiveData<String> get() = _currentText
+    val currentText: LiveData<String> get() = _currentText
 
     //scene background
     private val _currentScene = MutableLiveData<String>()
-    val currentScene : LiveData<String> get() = _currentScene
+    val currentScene: LiveData<String> get() = _currentScene
 
     //character image
     private val _currentCharacterImage = MutableLiveData<String>()
-    val currentCharacterImage : LiveData<String> get() = _currentCharacterImage
+    val currentCharacterImage: LiveData<String> get() = _currentCharacterImage
 
     //return to main menu
     val returnEvent = SingleLiveEvent<Boolean>()
 
     //show dialog menu
     private val _hasMenu = MutableLiveData<Boolean>()
-    val hasMenu : LiveData<Boolean> get() = _hasMenu
+    val hasMenu: LiveData<Boolean> get() = _hasMenu
 
-
-
-    val data = scenario.scenario
-    var currentLabel = data.first().title
-    var currentLine = -1
+    //list with scenario of this story
+    private val data = scenario.scenario
 
     init {
+        _currentScene.postValue(scenario.currentScene)
+        _currentCharacterImage.postValue(scenario.currentCharacterImage)
+        Log.d(
+            "DEBUG",
+            "${_currentCharacterImage.value} ${scenario.currentLine} ${scenario.currentLabel}"
+        )
         nextLine()
     }
 
-    fun nextLine(){
-        currentLine++
+    fun nextLine() {
+        scenario.currentLine++
+        val currentLine = scenario.currentLine
         val lines = getCurrentLines()
+        var line = lines[currentLine].line
 
-        if(currentLine < lines.size){
-            when(lines[currentLine].action){
-                Actions.CHANGE_TEXT -> {
-                    var line = lines[currentLine].line
-                    val character = findCharacter(line.first().toString())
-                    _currentCharacter.postValue(character)
-                    line = line.subSequence(line.indexOf("\"") + 1, line.lastIndexOf("\"")).toString()
-                    _currentText.postValue(line)
-                }
-                Actions.SCENE -> {
-                    val line = lines[currentLine].line
-                    _currentScene.postValue(line)
-                    _currentCharacterImage.postValue(null)
-                    nextLine()
-                }
-                Actions.SHOW -> {
-                    val line = lines[currentLine].line
-                    _currentCharacterImage.postValue(line)
-                    nextLine()
-                }
-                Actions.MENU_TITLE -> {
-                    _hasMenu.postValue(true)
-                    var line = lines[currentLine].line
-                    val character = findCharacter(line.first().toString())
-                    _currentCharacter.postValue(character)
-                    line = line.subSequence(line.indexOf("\"") + 1, line.lastIndexOf("\"")).toString()
-                    _currentText.postValue(line)
-                }
-                Actions.JUMP -> {
-                    jump(lines.last().line)
-                }
-                Actions.RETURN -> {
-                    returnEvent.postValue(true)
-                }
-                else -> {
-                    nextLine()
-                }
+        when (lines[currentLine].action) {
+            Actions.CHANGE_TEXT -> {
+                val character = findCharacter(line.first().toString())
+                _currentCharacter.postValue(character)
+                line = line.subSequence(line.indexOf("\"") + 1, line.lastIndexOf("\"")).toString()
+                _currentText.postValue(line)
+            }
+            Actions.SCENE -> {
+                _currentScene.postValue(line)
+                _currentCharacterImage.postValue(null)
+                nextLine()
+            }
+            Actions.SHOW -> {
+                _currentCharacterImage.postValue(line)
+                nextLine()
+            }
+            Actions.MENU_TITLE -> {
+                _hasMenu.postValue(true)
+                val character = findCharacter(line.first().toString())
+                _currentCharacter.postValue(character)
+                line = line.subSequence(line.indexOf("\"") + 1, line.lastIndexOf("\"")).toString()
+                _currentText.postValue(line)
+            }
+            Actions.JUMP -> {
+                jump(lines.last().line)
+            }
+            Actions.RETURN -> {
+                clearData()
+                returnEvent.postValue(true)
+            }
+            else -> {
+                nextLine()
             }
         }
     }
 
-    fun getCurrentText() {
-        val lines = getCurrentLines()
-        _currentText.postValue(lines[currentLine].line)
-    }
-
-    fun jump(label : String){
+    fun jump(label: String) {
         _hasMenu.postValue(false)
-        currentLine = -1
-        currentLabel= label
+        scenario.currentLine = -1
+        scenario.currentLabel = label
         nextLine()
     }
 
-    fun getCurrentLines() : ArrayList<GameString>{
+    private fun getCurrentLines(): ArrayList<GameString> {
         val lines = arrayListOf<GameString>()
         data.forEach {
-            if(it.title == currentLabel){
+            if (it.title == scenario.currentLabel) {
                 lines.addAll(it.getGameStrings())
             }
         }
         return lines
     }
 
-    fun findCharacter(nameKey : String): Character {
+    private fun findCharacter(nameKey: String): Character {
         var character = Character("", "", Color.WHITE)
         scenario.characters.forEach {
-            if(it.key == nameKey)
+            if (it.key == nameKey)
                 character = it
         }
         return character
@@ -126,7 +121,7 @@ class GameViewModel(val scenario: Scenario) : BaseViewModel() {
     fun getMenuButtons(): ArrayList<GameMenuButton> {
         val buttonsList = arrayListOf<GameMenuButton>()
         data.forEach {
-            if(it.title == currentLabel){
+            if (it.title == scenario.currentLabel) {
                 buttonsList.addAll(it.getGameMenu())
                 Log.d("DEBUG", "Success, ${it.title}")
             }
@@ -134,4 +129,20 @@ class GameViewModel(val scenario: Scenario) : BaseViewModel() {
         return buttonsList
     }
 
+    fun savePosition() {
+        if (_currentScene.value.isNullOrEmpty())
+            scenario.currentScene = ""
+        else
+            scenario.currentScene = _currentScene.value.toString()
+
+        if (_currentCharacterImage.value.isNullOrEmpty())
+            scenario.currentCharacterImage = ""
+        else
+            scenario.currentCharacterImage = _currentCharacterImage.value.toString()
+    }
+
+    private fun clearData() {
+        scenario.currentLine = -1
+        scenario.currentLabel = scenario.scenario.first().title
+    }
 }
