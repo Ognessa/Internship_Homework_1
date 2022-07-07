@@ -1,5 +1,6 @@
 package com.onix.internship.ui.game
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,30 +34,26 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
         viewModel.currentText.observe(this){
             binding.tvText.text = it
         }
+
         viewModel.currentCharacter.observe(this){
             binding.tvName.text = it.name
             binding.tvName.setTextColor(it.color)
         }
+
         viewModel.currentScene.observe(this) {
-            if (!it.isNullOrEmpty() && it != "black"){
-                val drawable = requireContext().resources.getDrawable(requireContext().resources
-                    .getIdentifier(it, "drawable", requireContext().packageName), null)
-                binding.ivGameBackground.setImageDrawable(drawable)
-            }
-            else{
+            if (!it.isNullOrEmpty() && it != "black")
+                binding.ivGameBackground.setImageDrawable(getDrawableByName(it))
+            else
                 binding.ivGameBackground.setImageDrawable(null)
-            }
         }
-        viewModel.currentCharacterImage.observe(this){
-            if(!it.isNullOrEmpty()){
-                val drawable = requireContext().resources.getDrawable(requireContext().resources
-                    .getIdentifier(it, "drawable", requireContext().packageName), null)
-                binding.ivCharacter.setImageDrawable(drawable)
-            }
-            else{
+
+        viewModel.currentCharacterImage.observe(this) {
+            if (!it.isNullOrEmpty())
+                binding.ivCharacter.setImageDrawable(getDrawableByName(it))
+            else
                 binding.ivCharacter.setImageDrawable(null)
-            }
         }
+
         viewModel.hasMenu.observe(this){
             if(it){
                 showDialogMenu(binding)
@@ -67,6 +64,7 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
                 binding.llTextContainer.isClickable = true
             }
         }
+
         viewModel.returnEvent.observe(this){ returnToMainMenu() }
     }
 
@@ -90,6 +88,11 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
             button.setOnClickListener { i -> viewModel.jump(it.jump) }
             binding.llDialogContainer.addView(layout)
         }
+    }
+
+    private fun getDrawableByName(name : String) : Drawable{
+        return requireContext().resources.getDrawable(requireContext().resources
+            .getIdentifier(name, "drawable", requireContext().packageName), null)
     }
 
 }

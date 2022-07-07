@@ -30,13 +30,15 @@ class PauseFragment : BaseFragment<FragmentPauseBinding>(R.layout.fragment_pause
 
     private fun continueGame(){
         viewModel.stepBack()
-        val action = PauseFragmentDirections.actionPauseFragmentToGameFragment()
-        findNavController().navigate(action)
+        findNavController().navigate(
+            PauseFragmentDirections.actionPauseFragmentToGameFragment()
+        )
     }
 
     private fun restartGame(){
         viewModel.clearData()
-        val action = PauseFragmentDirections.actionPauseFragmentToGameFragment()
-        findNavController().navigate(action)
+        findNavController().navigate(
+            PauseFragmentDirections.actionPauseFragmentToGameFragment()
+        )
     }
 }

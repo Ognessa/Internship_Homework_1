@@ -1,9 +1,13 @@
 package com.onix.internship.services
 
 import android.app.Service
+import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.IBinder
+import com.onix.internship.R
+
 
 class BackgroundSoundService : Service() {
     private lateinit var player: MediaPlayer
@@ -14,11 +18,8 @@ class BackgroundSoundService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        val afd = applicationContext.assets.openFd("illurock.opus")
-        player = MediaPlayer()
-        player.setDataSource(afd.fileDescriptor)
+        player = MediaPlayer.create(applicationContext, R.raw.illurock)
         player.isLooping = true // Set looping
-        player.setVolume(100f, 100f)
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {

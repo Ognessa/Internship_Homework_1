@@ -14,9 +14,14 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override val viewModel: MainViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         startService(Intent(this, BackgroundSoundService::class.java))
+    }
+
+    override fun onPause() {
+        stopService(Intent(this, BackgroundSoundService::class.java))
+        super.onPause()
     }
 
     override val navController: NavController by lazy {
