@@ -85,7 +85,7 @@ class GameFragment : BaseFragment<GameFragmentBinding>(R.layout.game_fragment) {
             val layout = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_button, null)
             val button = layout.findViewById<AppCompatButton>(R.id.btn_dialog)
             button.text = it.title
-            button.setOnClickListener { i -> viewModel.jump(it.jump) }
+            button.setOnClickListener { _ -> viewModel.jump(it.jump) }
             binding.llDialogContainer.addView(layout)
         }
     }

@@ -52,7 +52,7 @@ data class GameLabel(val title : String){
 class Scenario(val context : Context) {
     val scenario = mutableListOf<GameLabel>()
     val characters = arrayListOf<Character>()
-    val variables = arrayListOf<GameVariable>()
+    private val variables = arrayListOf<GameVariable>()
 
     var currentLabel = ""
     var currentLine = -1

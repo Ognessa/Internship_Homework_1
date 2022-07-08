@@ -3,10 +3,7 @@
     <string name="annotation">Android Studio Chipmunk</string>
 
     <string name="start_menu_item_text">Start</string>
-    <string name="load_menu_item_text">Load</string>
     <string name="preferences_menu_item_text">Preferences</string>
-    <string name="about_menu_item_text">About</string>
-    <string name="help_menu_item_text">Help</string>
     <string name="quit_menu_item_text">Quit</string>
 
     <string name="music_pref">Music:</string>

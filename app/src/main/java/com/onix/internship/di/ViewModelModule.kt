@@ -12,6 +12,6 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { MainViewModel() }
     viewModel { MainMenuViewModel() }
-    viewModel { GameViewModel(get()) }
-    viewModel { PauseViewModel(get()) }
+    viewModel { GameViewModel(get(), get()) }
+    viewModel { PauseViewModel(get(), get()) }
 }

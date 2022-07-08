@@ -23,22 +23,27 @@ class PauseFragment : BaseFragment<FragmentPauseBinding>(R.layout.fragment_pause
 
         binding.btnContinue.setOnClickListener { continueGame() }
         binding.btnRestart.setOnClickListener { restartGame() }
-        binding.btnQuit.setOnClickListener { activity?.finish() }
+        binding.btnQuit.setOnClickListener { requireActivity().finish() }
+        binding.ivMusic.setOnClickListener { viewModel.playOrStopMusic() }
 
         return view
     }
 
+    override fun setObservers() {
+        //change music sound image
+        viewModel.musicStatus.observe(this){
+            val drawableId = if(it) R.drawable.ic_music_on else R.drawable.ic_music_off
+            binding.ivMusic.setImageDrawable(requireContext().getDrawable(drawableId))
+        }
+    }
+
     private fun continueGame(){
         viewModel.stepBack()
-        findNavController().navigate(
-            PauseFragmentDirections.actionPauseFragmentToGameFragment()
-        )
+        findNavController().navigate(PauseFragmentDirections.actionPauseFragmentToGameFragment())
     }
 
     private fun restartGame(){
         viewModel.clearData()
-        findNavController().navigate(
-            PauseFragmentDirections.actionPauseFragmentToGameFragment()
-        )
+        findNavController().navigate(PauseFragmentDirections.actionPauseFragmentToGameFragment())
     }
 }

@@ -6,13 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.onix.internship.arch.BaseViewModel
 import com.onix.internship.arch.lifecycle.SingleLiveEvent
-import com.onix.internship.objects.Actions
-import com.onix.internship.objects.Character
-import com.onix.internship.objects.GameMenuButton
-import com.onix.internship.objects.GameString
-import com.onix.internship.objects.Scenario
+import com.onix.internship.objects.*
 
-class GameViewModel(private val scenario: Scenario) : BaseViewModel() {
+class GameViewModel(private val scenario: Scenario, val player: MusicPlayer) : BaseViewModel() {
 
     //Character name and color
     private val _currentCharacter = MutableLiveData<Character>()
@@ -57,6 +53,10 @@ class GameViewModel(private val scenario: Scenario) : BaseViewModel() {
         var line = lines[currentLine].line
 
         when (lines[currentLine].action) {
+            Actions.PLAY_MUSIC -> {
+                player.playMusic()
+                nextLine()
+            }
             Actions.CHANGE_TEXT -> {
                 val character = findCharacter(line.first().toString())
                 _currentCharacter.postValue(character)
@@ -84,6 +84,7 @@ class GameViewModel(private val scenario: Scenario) : BaseViewModel() {
             }
             Actions.RETURN -> {
                 clearData()
+                player.stopMusic()
                 returnEvent.postValue(true)
             }
             else -> {

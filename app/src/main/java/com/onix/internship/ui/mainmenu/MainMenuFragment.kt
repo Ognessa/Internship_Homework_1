@@ -22,14 +22,13 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         binding.btnStart.setOnClickListener { startGame() }
-        binding.btnQuit.setOnClickListener { activity?.finish() }
+        binding.btnQuit.setOnClickListener { requireActivity().finish() }
 
         return view
     }
 
     private fun startGame(){
-        val action = MainMenuFragmentDirections.actionMainMenuFragmentToGameFragment()
-        findNavController().navigate(action)
+        findNavController().navigate(MainMenuFragmentDirections.actionMainMenuFragmentToGameFragment())
     }
 
 }

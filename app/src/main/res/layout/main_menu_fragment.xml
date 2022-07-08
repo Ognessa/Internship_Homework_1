@@ -30,26 +30,6 @@
             android:text="@string/start_menu_item_text" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_load"
-            style="@style/MenuButton"
-            android:text="@string/load_menu_item_text" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_Pref"
-            style="@style/MenuButton"
-            android:text="@string/preferences_menu_item_text" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_about"
-            style="@style/MenuButton"
-            android:text="@string/about_menu_item_text" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_help"
-            style="@style/MenuButton"
-            android:text="@string/help_menu_item_text" />
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_quit"
             style="@style/MenuButton"
             android:text="@string/quit_menu_item_text" />
