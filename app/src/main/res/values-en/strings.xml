@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Task Manager</string>
 
     <string name="home_fragment_text">Home screen: currently under development</string>
     <string name="activity_fragment_text">Activity screen: currently under development</string>
     <string name="folder_fragment_text">Folder screen: currently under development</string>
 
     <string name="tab_menu_text">•</string>
+
 </resources>
