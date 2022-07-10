@@ -7,4 +7,40 @@
 
     <string name="tab_menu_text">•</string>
 
+    <string name="search_hint">Search for task</string>
+    <string name="task">Task</string>
+    <string name="month">Month</string>
+    <string name="day">Today</string>
+
+    <string name="empty_task_list_text">You don`t have any schedule today.\nTap the plus button to create new to-do.</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="description">Description</string>
+    <string name="type">Type</string>
+    <string name="tags">Tags</string>
+    <string name="add_new_tag">+ Add new tag</string>
+
+    <string name="btn_create">Create</string>
+
+    <string name="align_left">Align left</string>
+    <string name="align_center">Center</string>
+    <string name="align_straight">Straight</string>
+    <string name="align_right">Align right</string>
+    <string name="list">List</string>
+
+    <string name="type_personal">Personal</string>
+    <string name="type_private">Private</string>
+    <string name="type_secret">Secret</string>
+
+    <string name="new_tag">New Tag</string>
+
+    <string name="edit_time">Edit Time</string>
+
+
+
 </resources>

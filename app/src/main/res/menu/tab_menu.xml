@@ -12,6 +12,10 @@
         android:title="@string/tab_menu_text" />
 
     <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+
+    <item
         android:id="@+id/activityFragment"
         android:icon="@drawable/ic_activity"
         android:title="@string/tab_menu_text" />
