@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="standart_text_size">18sp</dimen>
+    <dimen name="title_text_size">23sp</dimen>
+
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_40">40dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="padding_120">120dp</dimen>
+
+    <dimen name="dialog_height">120dp</dimen>
+
+    <dimen name="characte_height">380dp</dimen>
+
+    <dimen name="icon_size">50dp</dimen>
+
+</resources>

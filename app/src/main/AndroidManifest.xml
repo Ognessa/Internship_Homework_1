@@ -11,7 +11,7 @@
         android:theme="@style/Theme.internship">
         <activity
             android:name=".ui.main.MainScreen"
-            android:screenOrientation="sensor"
+            android:screenOrientation="sensorLandscape"
             android:configChanges="orientation"
             android:windowSoftInputMode="stateHidden"
             android:exported="true">
