@@ -18,9 +18,14 @@
     <string name="save">Save</string>
 
     <string name="title">Title</string>
+    <string name="title_hint">Enter title here</string>
+
     <string name="date">Date</string>
     <string name="time">Time</string>
+
     <string name="description">Description</string>
+    <string name="description_hint">Enter description here</string>
+
     <string name="type">Type</string>
     <string name="tags">Tags</string>
     <string name="add_new_tag">+ Add new tag</string>

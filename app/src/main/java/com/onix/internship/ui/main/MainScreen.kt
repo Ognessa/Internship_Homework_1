@@ -7,6 +7,7 @@ import com.onix.internship.arch.BaseActivity
 import com.onix.internship.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override val viewModel: MainViewModel by viewModel()

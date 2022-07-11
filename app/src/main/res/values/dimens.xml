@@ -5,8 +5,11 @@
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
 
     <dimen name="padding_12">12dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_40">40dp</dimen>
 
     <dimen name="shape_radius">15dp</dimen>
 
