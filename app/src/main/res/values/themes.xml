@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
 
         <item name="android:textColor">@color/dark_purple</item>
+        <item name="android:editTextColor">@color/dark_purple</item>
 
     </style>
 
@@ -52,4 +53,12 @@
         <item name="android:textSize">@dimen/font_size_12</item>
     </style>
 
+    <style name="EditText">
+        <item name = "android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="RadioButton">
+        <item name="android:textColor">@drawable/radio_btn_text_color</item>
+        <item name="android:button">@drawable/radio_btn_drawable</item>
+    </style>
 </resources>

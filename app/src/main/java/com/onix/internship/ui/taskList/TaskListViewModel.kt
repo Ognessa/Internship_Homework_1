@@ -9,13 +9,12 @@ import kotlin.collections.ArrayList
 class TaskListViewModel : BaseViewModel(){
 
     private val WEEK_DAYS_COUNT = 7
-    val weekDay : SimpleDateFormat = SimpleDateFormat("EEE")
-    val weekDayNum : SimpleDateFormat = SimpleDateFormat("dd")
-    val weekMounth : SimpleDateFormat = SimpleDateFormat("MMMM")
-    //TODO send selected data to Add Task
+    private val weekDay : SimpleDateFormat = SimpleDateFormat("EEE")
+    private val weekDayNum : SimpleDateFormat = SimpleDateFormat("dd")
+    private val weekMounth : SimpleDateFormat = SimpleDateFormat("MMMM")
 
-    var currentDay :  String
-    var currentMounth :  String
+    var currentDay :  String = ""
+    var currentMounth :  String = ""
 
     init {
         val c = Calendar.getInstance()
@@ -36,5 +35,4 @@ class TaskListViewModel : BaseViewModel(){
 
         return list
     }
-
 }

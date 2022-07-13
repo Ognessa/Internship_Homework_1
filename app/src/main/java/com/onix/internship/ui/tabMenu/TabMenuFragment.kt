@@ -16,7 +16,6 @@ import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
 import com.onix.internship.databinding.CalendarDialogBinding
 import com.onix.internship.databinding.TabMenuFragmentBinding
-import com.onix.internship.databinding.WeekDaysItemBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -49,7 +48,7 @@ class TabMenuFragment : BaseFragment<TabMenuFragmentBinding>(R.layout.tab_menu_f
         return view
     }
 
-    fun showCalendarDialog(){
+    private fun showCalendarDialog(){
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.calendar_dialog, null)
         val binding = CalendarDialogBinding.bind(view)
 
@@ -59,15 +58,18 @@ class TabMenuFragment : BaseFragment<TabMenuFragmentBinding>(R.layout.tab_menu_f
         val alert = builder.create()
         alert.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
+        binding.cvCalendar.setOnDateChangeListener { calendarView, year, mouth, day ->
+            viewModel.setSelectedCalendarDate(year, mouth, day)
+        }
         binding.btnCansel.setOnClickListener { alert.cancel() }
-        binding.btnSave.setOnClickListener { showAddTaskFragment(alert) }
+        binding.btnSave.setOnClickListener { showAddTaskFragment(alert, viewModel.getSelectedCalendarDate()) }
 
         alert.show()
     }
 
-    fun showAddTaskFragment(alert : AlertDialog){
+    private fun showAddTaskFragment(alert : AlertDialog, currentDate : String){
         alert.cancel()
-        findNavController().navigate(TabMenuFragmentDirections.actionTabMenuFragmentToAddTaskFragment())
+        findNavController().navigate(TabMenuFragmentDirections.actionTabMenuFragmentToAddTaskFragment(currentDate))
     }
 
 }

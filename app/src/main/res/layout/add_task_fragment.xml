@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/title_hint"
-                android:background="@android:color/transparent"/>
+                style="@style/EditText"/>
 
             <TextView
                 style="@style/AddTaskHint"
@@ -44,7 +44,7 @@
                 android:id="@+id/tv_plan_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_light_calendar" />
+                app:drawableRightCompat="@drawable/ic_light_calendar" />
 
             <TextView
                 style="@style/AddTaskHint"
@@ -59,17 +59,19 @@
                 android:weightSum="2">
 
                 <TextView
+                    android:id="@+id/tv_from_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="07:00 AM"
+                    android:text="00:00"
                     android:textAlignment="center" />
 
                 <TextView
+                    android:id="@+id/tv_to_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="07:30 AM"
+                    android:text="00:00"
                     android:textAlignment="center" />
 
             </LinearLayout>
@@ -80,12 +82,34 @@
                 android:layout_height="wrap_content"
                 android:text="@string/description" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_plan_description"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/description_hint"
-                android:background="@android:color/transparent"/>
+                app:layout_constraintTop_toBottomOf="@id/cv_calendar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_plan_description"
+                    style="@style/EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/description_hint"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_description_context_menu"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_description_context_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_three_dots"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 style="@style/AddTaskHint"
@@ -103,18 +127,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/RadioButton"
                     android:text="@string/type_personal" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/RadioButton"
                     android:text="@string/type_private" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/RadioButton"
                     android:text="@string/type_secret" />
 
             </RadioGroup>
@@ -124,6 +151,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tags" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_add_new_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_new_tag_btn"
+                android:background="@android:color/transparent"/>
 
         </LinearLayout>
 

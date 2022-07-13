@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_addTaskFragment_to_tabMenuFragment"
             app:destination="@id/tabMenuFragment" />
+        <argument
+            android:name="currentDate"
+            app:argType="string" />
     </fragment>
 
 </navigation>

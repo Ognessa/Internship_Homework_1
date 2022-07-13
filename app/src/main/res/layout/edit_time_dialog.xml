@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_back"
+    android:padding="@dimen/padding_30"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_time"
+        android:textAlignment="center"
+        android:layout_marginBottom="@dimen/margin_40"
+        android:textSize="@dimen/font_size_18"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/cv_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/np_hour_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:np_textColor="@color/dark_purple"
+            app:np_selectedTextColor="@color/dark_purple"
+            app:np_dividerColor="@android:color/transparent"
+            android:textSize="@dimen/font_size_14"
+            app:np_formatter="%02d"
+            app:np_min="00"
+            app:np_max="23"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_size_20"
+            android:text="h"/>
+
+        <com.shawnlin.numberpicker.NumberPicker
+            android:id="@+id/np_minutes_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:np_textColor="@color/dark_purple"
+            app:np_selectedTextColor="@color/dark_purple"
+            app:np_dividerColor="@android:color/transparent"
+            android:textSize="@dimen/font_size_14"
+            app:np_formatter="%02d"
+            app:np_min="00"
+            app:np_max="59"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_size_20"
+            android:text="m"/>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/margin_40"
+        android:layout_marginBottom="@dimen/margin_40"
+        app:layout_constraintTop_toBottomOf="@id/cv_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remonder_mode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ring_mode"
+            android:drawableRight="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        app:layout_constraintTop_toBottomOf="@id/cv_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cansel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            android:layout_weight="1"
+            style="@style/BorderButton"
+            android:text="@string/cancel"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            style="@style/Button"
+            android:layout_weight="1"
+            android:text="@string/save"/>
+
+    </LinearLayout>
+</LinearLayout>
+</layout>

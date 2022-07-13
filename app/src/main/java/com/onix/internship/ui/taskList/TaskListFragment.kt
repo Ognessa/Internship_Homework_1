@@ -1,5 +1,6 @@
 package com.onix.internship.ui.taskList
 
+import android.app.ActionBar
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +13,6 @@ import com.onix.internship.databinding.TaskListFragmentBinding
 import com.onix.internship.databinding.WeekDaysItemBinding
 import com.onix.internship.objects.WeekDayItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.collections.ArrayList
 
 class TaskListFragment : BaseFragment<TaskListFragmentBinding>(R.layout.task_list_fragment){
 

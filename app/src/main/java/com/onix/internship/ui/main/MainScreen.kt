@@ -18,4 +18,7 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         navHostFragment.navController
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
 }
