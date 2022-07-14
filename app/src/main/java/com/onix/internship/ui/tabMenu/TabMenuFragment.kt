@@ -58,10 +58,10 @@ class TabMenuFragment : BaseFragment<TabMenuFragmentBinding>(R.layout.tab_menu_f
         val alert = builder.create()
         alert.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        binding.cvCalendar.setOnDateChangeListener { calendarView, year, mouth, day ->
+        binding.cvCalendar.setOnDateChangeListener { _, year, mouth, day ->
             viewModel.setSelectedCalendarDate(year, mouth, day)
         }
-        binding.btnCansel.setOnClickListener { alert.cancel() }
+        binding.btnCancel.setOnClickListener { alert.cancel() }
         binding.btnSave.setOnClickListener { showAddTaskFragment(alert, viewModel.getSelectedCalendarDate()) }
 
         alert.show()

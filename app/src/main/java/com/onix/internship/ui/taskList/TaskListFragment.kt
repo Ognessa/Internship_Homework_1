@@ -1,6 +1,5 @@
 package com.onix.internship.ui.taskList
 
-import android.app.ActionBar
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater

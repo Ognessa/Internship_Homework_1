@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/addTaskFragment"
         android:name="com.onix.internship.ui.addTask.AddTaskFragment"
-        android:label="add_task_fragment"
+        android:label="Add Task"
         tools:layout="@layout/add_task_fragment" >
         <action
             android:id="@+id/action_addTaskFragment_to_tabMenuFragment"

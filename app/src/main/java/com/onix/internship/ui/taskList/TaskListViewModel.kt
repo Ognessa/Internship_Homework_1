@@ -11,7 +11,7 @@ class TaskListViewModel : BaseViewModel(){
     private val WEEK_DAYS_COUNT = 7
     private val weekDay : SimpleDateFormat = SimpleDateFormat("EEE")
     private val weekDayNum : SimpleDateFormat = SimpleDateFormat("dd")
-    private val weekMounth : SimpleDateFormat = SimpleDateFormat("MMMM")
+    private val weekMouth : SimpleDateFormat = SimpleDateFormat("MMMM")
 
     var currentDay :  String = ""
     var currentMounth :  String = ""
@@ -19,7 +19,7 @@ class TaskListViewModel : BaseViewModel(){
     init {
         val c = Calendar.getInstance()
         currentDay = weekDay.format(c.time)
-        currentMounth = weekMounth.format(c.time)
+        currentMounth = weekMouth.format(c.time)
     }
 
     fun getWeekDaysList(): ArrayList<WeekDayItem> {
