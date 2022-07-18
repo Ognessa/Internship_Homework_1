@@ -13,7 +13,7 @@ class AskLevelViewModel(private val pref : PreferenceStorage) : BaseViewModel(){
 
     fun updateLevel(value : Int){
         _level.postValue(value)
-        pref.save(Keys().levelKey, level.toString())
+        pref.save(Keys().levelKey, value.toString())
     }
 
 }

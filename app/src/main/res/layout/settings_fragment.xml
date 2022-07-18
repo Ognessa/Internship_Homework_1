@@ -17,8 +17,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_40"
-            android:paddingEnd="@dimen/padding_40"
             android:text="@string/level_question" />
 
         <SeekBar
@@ -26,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_40"
-            android:progress="@{settingsViewModel.level}"
-            android:max="5" />
+            android:max="5"
+            android:progress="@{settingsViewModel.level}"/>
 
         <TextView
             android:layout_width="match_parent"
