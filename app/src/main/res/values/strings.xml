@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name" translatable="false">Internship Onix</string>
+
+    <string name="age_question">Are you age more then 16?</string>
+    <string name="level_question">Whats your level?</string>
+    <string name="class_question">What is you class?</string>
+
+    <string name="level_format">%1$s from 5</string>
+
+    <string-array name="class_titles">
+        <item>Hero</item>
+        <item>Player</item>
+        <item>Master</item>
+    </string-array>
+    
+    <string name="next">Next</string>
+    <string name="prev">Prev</string>
+
+    <string name="tab_menu_map">Map</string>
+    <string name="tab_menu_points">Points</string>
+    <string name="tab_menu_settings">Settings</string>
+
 </resources>
