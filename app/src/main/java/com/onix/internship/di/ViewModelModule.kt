@@ -22,7 +22,7 @@ val viewModelModule = module {
     viewModel { LocationPermissionViewModel(get()) }
 
     viewModel { TabMenuViewModel() }
-    viewModel { MapViewModel() }
-    viewModel { PointsViewModel() }
+    viewModel { MapViewModel(get(), get()) }
+    viewModel { PointsViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
 }

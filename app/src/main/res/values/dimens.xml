@@ -7,7 +7,12 @@
     <dimen name="illustration_height">210dp</dimen>
 
     <dimen name="padding_40">40dp</dimen>
+    <dimen name="padding_5">5dp</dimen>
     <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+
+    <dimen name="rw_item_icon_size">40dp</dimen>
+    <dimen name="icon_on_map_size">60dp</dimen>
 
     <dimen name="space_between_btns">40dp</dimen>
 

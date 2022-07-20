@@ -17,5 +17,6 @@
         <item name="windowNoTitle">true</item>
 
         <item name="android:textSize">@dimen/standard_text_size</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
