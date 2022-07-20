@@ -40,9 +40,7 @@ class MapFragment : BaseFragment<MapFragmentBinding>(R.layout.map_fragment), OnM
 
         getUserLocation()
 
-        mapSupport = childFragmentManager.findFragmentById(
-            R.id.google_map) as SupportMapFragment
-
+        mapSupport = childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
         mapSupport.getMapAsync(this)
 
         binding.btnExport.setOnClickListener {

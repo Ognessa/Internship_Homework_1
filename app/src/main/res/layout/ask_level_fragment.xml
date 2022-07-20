@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="levelViewModel"
             type="com.onix.internship.ui.level.AskLevelViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +19,8 @@
             android:layout_height="@dimen/illustration_height"
             android:src="@drawable/level_illustration"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/level_illustration_description" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -68,17 +66,17 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_prev"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_marginEnd="@dimen/space_between_btns"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_between_btns"
                 android:text="@string/prev" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_next"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:enabled="@{levelViewModel.level.equals(0) ? false : true}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="@{levelViewModel.level.equals(0) ? false : true}"
                 android:text="@string/next" />
 
         </LinearLayout>

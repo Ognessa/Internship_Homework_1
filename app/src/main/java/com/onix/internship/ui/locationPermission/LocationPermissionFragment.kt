@@ -36,18 +36,18 @@ class LocationPermissionFragment : BaseFragment<LocationPermissionFragmentBindin
     ) { permissions ->
         when {
             permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                navigate()
+                checkPreferencesAndNavigate()
             }
             permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                navigate()
+                checkPreferencesAndNavigate()
             }
             else -> {
-                Toast.makeText(requireContext(), "Please allow location permission", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.permission_error, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun navigate(){
+    private fun checkPreferencesAndNavigate(){
         if(viewModel.checkPreferencesKeys())
             findNavController().navigate(LocationPermissionFragmentDirections.actionLocationPermissionFragmentToTabMenuFragment())
         else

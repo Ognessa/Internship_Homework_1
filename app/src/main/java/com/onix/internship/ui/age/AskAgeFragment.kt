@@ -20,8 +20,8 @@ class AskAgeFragment : BaseFragment<AskAgeFragmentBinding>(R.layout.ask_age_frag
         savedInstanceState: Bundle?
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        binding.ageViewModel = viewModel
 
+        binding.ageViewModel = viewModel
         binding.btnNext.setOnClickListener { moveNext() }
 
         return view

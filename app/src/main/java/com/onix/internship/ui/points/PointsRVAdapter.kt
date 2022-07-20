@@ -9,8 +9,12 @@ import com.onix.internship.R
 import com.onix.internship.arch.adapter.BaseRecyclerAdapter
 import com.onix.internship.databinding.PointListItemBinding
 import com.onix.internship.objects.Point
+import com.onix.internship.objects.PointsStore
+import org.koin.java.KoinJavaComponent.inject
 
 class PointsRVAdapter(private val context: Context) : BaseRecyclerAdapter<PointsRVAdapter.PointsViewHolder, Point>() {
+
+    private val pointsStore : PointsStore by inject(PointsStore::class.java)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointsViewHolder {
         return from(parent, context)
@@ -18,6 +22,11 @@ class PointsRVAdapter(private val context: Context) : BaseRecyclerAdapter<Points
 
     override fun onBindViewHolder(holder: PointsViewHolder, position: Int) {
         holder.bind(adapterItems[position])
+        holder.binding.ivDelete.setOnClickListener {
+            adapterItems.removeAt(position)
+            pointsStore.pointsList.removeAt(position)
+            notifyDataSetChanged()
+        }
     }
 
     class PointsViewHolder(val binding: PointListItemBinding, val context: Context) : RecyclerView.ViewHolder(binding.root){
