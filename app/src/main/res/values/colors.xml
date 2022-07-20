@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="main_purple">#5B67Ca</color>
+    <color name="dark_purple">#10275A</color>
+    <color name="search_back">#F6F6F6</color>
+    <color name="add_task_hint">#8A8BB3</color>
+
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/tab_menu_text" />
+
+    <item
+        android:id="@+id/taskListFragment"
+        android:icon="@drawable/ic_document"
+        android:title="@string/tab_menu_text" />
+
+    <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+
+    <item
+        android:id="@+id/activityFragment"
+        android:icon="@drawable/ic_activity"
+        android:title="@string/tab_menu_text" />
+
+    <item
+        android:id="@+id/folderFragment"
+        android:icon="@drawable/ic_folder"
+        android:title="@string/tab_menu_text" />
+
+</menu>

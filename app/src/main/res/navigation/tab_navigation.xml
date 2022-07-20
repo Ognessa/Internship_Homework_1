@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab_navigation"
+    app:startDestination="@id/taskListFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.onix.internship.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_taskListFragment"
+            app:destination="@id/taskListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.onix.internship.ui.taskList.TaskListFragment"
+        android:label="task_list_fragment"
+        tools:layout="@layout/task_list_fragment" >
+        <action
+            android:id="@+id/action_taskListFragment_to_activityFragment"
+            app:destination="@id/activityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/activityFragment"
+        android:name="com.onix.internship.ui.activity.ActivityFragment"
+        android:label="activity_fragment"
+        tools:layout="@layout/activity_fragment" >
+        <action
+            android:id="@+id/action_activityFragment_to_folderFragment"
+            app:destination="@id/folderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/folderFragment"
+        android:name="com.onix.internship.ui.folder.FolderFragment"
+        android:label="folder_fragment"
+        tools:layout="@layout/folder_fragment" >
+    </fragment>
+
+</navigation>

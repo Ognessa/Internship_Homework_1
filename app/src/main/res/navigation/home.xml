@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/tabMenuFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:id="@+id/tabMenuFragment"
+        android:name="com.onix.internship.ui.tabMenu.TabMenuFragment"
+        android:label="tab_menu_fragment"
+        tools:layout="@layout/tab_menu_fragment" >
+        <action
+            android:id="@+id/action_tabMenuFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.onix.internship.ui.addTask.AddTaskFragment"
+        android:label="Add Task"
+        tools:layout="@layout/add_task_fragment" >
+        <action
+            android:id="@+id/action_addTaskFragment_to_tabMenuFragment"
+            app:destination="@id/tabMenuFragment" />
+        <argument
+            android:name="currentDate"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
