@@ -3,12 +3,19 @@ package com.onix.internship.ui.age
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.onix.internship.arch.BaseViewModel
+import com.onix.internship.arch.lifecycle.SingleLiveEvent
 
 class AskAgeViewModel : BaseViewModel(){
-    private val _is18YearsOld = MutableLiveData(false)
-    val is18YearsOld : LiveData<Boolean> get() = _is18YearsOld
+    val moveNext = SingleLiveEvent<Boolean>()
 
-    fun updateIs18YOValue(){
-        _is18YearsOld.postValue(!_is18YearsOld.value!!)
+    private val _is16YearsOld = MutableLiveData(false)
+    val is16YearsOld : LiveData<Boolean> get() = _is16YearsOld
+
+    fun updateIs16YOValue(){
+        _is16YearsOld.postValue(!_is16YearsOld.value!!)
+    }
+
+    fun navigateNext(){
+        moveNext.postValue(true)
     }
 }

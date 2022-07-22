@@ -1,16 +1,17 @@
 package com.onix.internship.ui.askClass
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.onix.internship.arch.BaseFragment
 import com.onix.internship.R
+import com.onix.internship.arch.ext.navigate
 import com.onix.internship.databinding.AskClassFragmentBinding
+import com.onix.internship.objects.NavigateDirection
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AskClassFragment : BaseFragment<AskClassFragmentBinding>(R.layout.ask_class_fragment){
@@ -23,11 +24,21 @@ class AskClassFragment : BaseFragment<AskClassFragmentBinding>(R.layout.ask_clas
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        createClassesList(binding.rgClasses)
-        binding.btnPrev.setOnClickListener { movePrev() }
-        binding.btnNext.setOnClickListener { moveNext(binding.rgClasses) }
+        binding.askClassViewModel = viewModel
+        binding.navDirectionEnum = NavigateDirection.PREV
 
+        createClassesList(binding.rgClasses)
         return view
+    }
+
+    override fun setObservers() {
+        viewModel.move.observe(this){
+            when(it){
+                NavigateDirection.NEXT -> navigate(AskClassFragmentDirections.actionAskClassFragmentToTabMenuFragment())
+                NavigateDirection.PREV -> navigate(AskClassFragmentDirections.actionAskClassFragmentToAskLevelFragment())
+                else -> {}
+            }
+        }
     }
 
     private fun createClassesList(rgClasses : RadioGroup){
@@ -40,20 +51,9 @@ class AskClassFragment : BaseFragment<AskClassFragmentBinding>(R.layout.ask_clas
             rb.text = it
             rgClasses.addView(rb)
         }
-    }
-
-    private fun moveNext(rgClasses: RadioGroup){
-        if (rgClasses.checkedRadioButtonId != -1){
-            viewModel.saveClassToPref(rgClasses.checkedRadioButtonId)
-            findNavController().navigate(AskClassFragmentDirections.actionAskClassFragmentToTabMenuFragment())
-        }
-        else{
-            Toast.makeText(requireContext(), "Select your class", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun movePrev(){
-        findNavController().navigate(AskClassFragmentDirections.actionAskClassFragmentToAskLevelFragment())
+        rgClasses.setOnCheckedChangeListener { radioGroup, i ->
+            Log.d("DEBUG", "Checked")
+            viewModel.selectClass(i) }
     }
 
 }

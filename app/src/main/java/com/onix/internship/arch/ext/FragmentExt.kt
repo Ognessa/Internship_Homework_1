@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 
 fun Fragment.hideKeyboard() {
@@ -28,4 +29,8 @@ fun Fragment.navigate(@IdRes resId: Int, args: Bundle? = null, clearStack: Boole
             popBackStack()
         }
     }.navigate(resId, args)
+}
+
+fun Fragment.navigate(directions: NavDirections) {
+    findNavController().navigate(directions)
 }
