@@ -14,6 +14,11 @@ class PreferenceStorage constructor(private val context: Context) {
         prefsEdit.apply()
     }
 
+    fun check(_key: String, default: String = ""): Boolean {
+        val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
+        return !prefs.getString(_key, default).isNullOrEmpty()
+    }
+
     fun getString(_key: String, default: String = ""): String? {
         val prefs = context.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
         return prefs.getString(_key, default)

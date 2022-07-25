@@ -2,11 +2,75 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/locationPermissionFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:id="@+id/askAgeFragment"
+        android:name="com.onix.internship.ui.age.AskAgeFragment"
+        android:label="AskAgeFragment" >
+
+        <action
+            android:id="@+id/action_askAgeFragment_to_askLevelFragment"
+            app:destination="@id/askLevelFragment"
+            app:popUpTo="@id/askAgeFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/askLevelFragment"
+        android:name="com.onix.internship.ui.level.AskLevelFragment"
+        android:label="AskLevelFragment" >
+
+        <action
+            android:id="@+id/action_askLevelFragment_to_askClassFragment"
+            app:destination="@id/askClassFragment"
+            app:popUpTo="@id/askLevelFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_askLevelFragment_to_askAgeFragment"
+            app:destination="@id/askAgeFragment"
+            app:popUpTo="@id/askLevelFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/askClassFragment"
+        android:name="com.onix.internship.ui.askClass.AskClassFragment"
+        android:label="AskClassFragment" >
+
+        <action
+            android:id="@+id/action_askClassFragment_to_askLevelFragment"
+            app:destination="@id/askLevelFragment"
+            app:popUpTo="@id/askClassFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_askClassFragment_to_tabMenuFragment"
+            app:destination="@id/tabMenuFragment"
+            app:popUpTo="@id/askClassFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/locationPermissionFragment"
+        android:name="com.onix.internship.ui.locationPermission.LocationPermissionFragment"
+        android:label="LocationPermissionFragment" >
+        <action
+            android:id="@+id/action_locationPermissionFragment_to_tabMenuFragment"
+            app:destination="@id/tabMenuFragment"
+            app:popUpTo="@id/locationPermissionFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_locationPermissionFragment_to_askAgeFragment"
+            app:destination="@id/askAgeFragment"
+            app:popUpTo="@id/locationPermissionFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabMenuFragment"
+        android:name="com.onix.internship.ui.tabMenu.TabMenuFragment"
+        android:label="TabMenuFragment" />
 
 </navigation>

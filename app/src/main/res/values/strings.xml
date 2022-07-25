@@ -1,3 +1,36 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name" translatable="false">Lesson 8</string>
+
+    <string name="loading">Loading…</string>
+    <string name="age_question">Are you age more then 16?</string>
+    <string name="level_question">Whats your level?</string>
+    <string name="class_question">What is you class?</string>
+
+    <string name="level_format">%1$s from 5</string>
+
+    <string-array name="class_titles">
+        <item>Hero</item>
+        <item>Player</item>
+        <item>Master</item>
+    </string-array>
+
+    <string name="export">Export my\nposition</string>
+    <string name="next">Next</string>
+    <string name="prev">Prev</string>
+
+    <string name="tab_menu_map">Map</string>
+    <string name="tab_menu_points">Points</string>
+    <string name="tab_menu_settings">Settings</string>
+
+    <string name="permission_error">Please allow location permission</string>
+    <string name="add_point_exception">Can`t add point</string>
+
+    <!--Content description-->
+    <string name="fab_add_point_description">Add new point</string>
+    <string name="points_item_class_icon_description">Class icon</string>
+    <string name="points_item_delete_icon_description">Delete point</string>
+    <string name="level_illustration_description">Level illustration</string>
+    <string name="class_illustration_description">Class illustration</string>
+    <string name="age_illustration_description">Age illustration</string>
+
 </resources>
