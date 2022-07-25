@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/mainMenuFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:id="@+id/mainMenuFragment"
+        android:name="com.onix.internship.ui.mainFragment.MainMenuFragment"
+        android:label="MainMenuFragment" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.onix.internship.ui.addNote.AddNoteFragment"
+        android:label="AddNoteFragment" />
 
 </navigation>

@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name">Lesson 9</string>
+
+    <string name="notes_list_menu">Notes list</string>
+    <string name="emergency_menu">Emergency</string>
+    <string name="help_menu">Help</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
 </resources>
