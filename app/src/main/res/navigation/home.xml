@@ -9,14 +9,26 @@
         android:id="@+id/mainMenuFragment"
         android:name="com.onix.internship.ui.mainFragment.MainMenuFragment"
         android:label="MainMenuFragment" >
+
         <action
             android:id="@+id/action_mainMenuFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.onix.internship.ui.addNote.AddNoteFragment"
-        android:label="AddNoteFragment" />
+        android:label="AddNoteFragment" >
+
+        <argument
+            android:name="fragmentState"
+            app:argType="com.onix.internship.objects.AddNoteFragmentStates" />
+
+        <argument
+            android:name="editItemId"
+            app:argType="integer" />
+
+    </fragment>
 
 </navigation>

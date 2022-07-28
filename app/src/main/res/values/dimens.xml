@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_22">22dp</dimen>
     <dimen name="padding_22">22dp</dimen>
+
+    <dimen name="short_notes_item_size">20dp</dimen>
+    <dimen name="choose_color_size">40dp</dimen>
+
+    <dimen name="enter_title_height">100dp</dimen>
+    <dimen name="enter_description_height">200dp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
 </resources>

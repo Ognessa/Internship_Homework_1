@@ -5,6 +5,7 @@
     android:paddingLeft="@dimen/padding_22"
     android:paddingRight="@dimen/padding_22"
     android:layout_width="match_parent"
+    android:background="@drawable/drawer_header_decorator"
     android:layout_height="?attr/actionBarSize">
 
     <ImageView

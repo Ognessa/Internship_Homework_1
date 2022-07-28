@@ -1,17 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.addNote.AddNoteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.addNote.AddNoteFragment">
+        android:layout_height="match_parent">
 
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            app:title="@string/add_notes_menu"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
-    </FrameLayout>
+        <ImageView
+            android:id="@+id/iv_save_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_save"
+            android:layout_marginEnd="@dimen/margin_22"
+            android:onClick="@{_ -> viewModel.saveNoteEvent()}"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_marginEnd="@dimen/margin_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:context=".ui.addNote.AddNoteFragment">
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/enter_title_height"
+                android:gravity="start"
+                android:background="@android:color/transparent"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.updateTitle(s.toString())}"
+                android:hint="@string/title_hint" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                app:dividerColor="@android:color/holo_blue_light"/>
+
+            <EditText
+                android:id="@+id/et_description"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/enter_description_height"
+                android:gravity="start"
+                android:background="@android:color/transparent"
+                android:onTextChanged="@{(s, start, before, count) -> viewModel.updateDescription(s.toString())}"
+                android:hint="@string/description_hint" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                app:dividerColor="@android:color/holo_blue_light"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_colors_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                app:dividerColor="@android:color/holo_blue_light"/>
+
+            <CheckBox
+                android:id="@+id/cb_is_editable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{(viewModel.updateText == null) ? View.VISIBLE : View.GONE}"
+                android:onCheckedChanged="@{(_, isChecked) -> viewModel.updateEditAble(isChecked)}"
+                android:text="@string/enable_edit" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                app:dividerColor="@android:color/holo_blue_light"/>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

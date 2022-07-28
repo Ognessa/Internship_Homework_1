@@ -1,10 +1,28 @@
 <resources>
     <string name="app_name">Lesson 9</string>
 
+    <!--Screen titles-->
     <string name="notes_list_menu">Notes list</string>
     <string name="emergency_menu">Emergency</string>
     <string name="help_menu">Help</string>
+    <string name="add_notes_menu">Add notes</string>
+
+    <!--Add notes menu hint-->
+    <string name="title_hint">Enter title</string>
+    <string name="description_hint">Enter content</string>
+    <string name="choose_color">Choose color</string>
+    <string name="enable_edit">Edit is enabled</string>
+
+    <!--Descriptions-->
+    <string name="add_note_description">Add note</string>
+    <string name="hide_description">Hide note description</string>
+    <string name="edit_note_description">Edit note</string>
+
+    <!--Other-->
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="clear_db">Clear database</string>
 
+    <!--Errors-->
+    <string name="saving_note_error">Please, fill in all the fields</string>
 </resources>
