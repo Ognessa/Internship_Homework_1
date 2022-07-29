@@ -18,13 +18,13 @@
         android:name="com.onix.internship.ui.emergency.EmergencyFragment"
         android:label="EmergencyFragment">
         <action
-            android:id="@+id/action_emergencyFragment_to_helpFragment2"
-            app:destination="@id/helpFragment" />
+            android:id="@+id/action_emergencyFragment_to_clearDialogFragment"
+            app:destination="@id/clearDialogFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/helpFragment"
-        android:name="com.onix.internship.ui.help.HelpFragment"
-        android:label="HelpFragment" />
+    <dialog
+        android:id="@+id/clearDialogFragment"
+        android:name="com.onix.internship.ui.clearDialog.ClearDialogFragment"
+        android:label="ClearDialogFragment" />
 
 </navigation>

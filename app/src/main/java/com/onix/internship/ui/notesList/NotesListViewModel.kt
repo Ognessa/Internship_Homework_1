@@ -21,4 +21,25 @@ class NotesListViewModel(private val dataStore: DataStore) : BaseViewModel() {
         }
     }
 
+    fun deleteItem(notesData: NotesData){
+        launch {
+            withContext(Dispatchers.IO) {
+                dataStore.delete(notesData)
+                _notesUpdated.postValue(dataStore.gelAllData())
+            }
+        }
+    }
+
+    fun expandNote(it: NotesData) {
+        val test = mutableListOf<NotesData>()
+        _notesUpdated.value?.forEach { note ->
+            if (it.id == note.id) {
+                test.add(note.copy(notesState = note.notesState.not()))
+            } else {
+                test.add(note)
+            }
+        }
+        _notesUpdated.value = test
+    }
+
 }

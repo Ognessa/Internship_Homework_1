@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
 
     </fragment>
 
@@ -30,5 +33,9 @@
             app:argType="integer" />
 
     </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.onix.internship.ui.help.HelpFragment"
+        android:label="HelpFragment" />
 
 </navigation>

@@ -10,5 +10,6 @@ data class NotesData (
     @ColumnInfo (name = "title") var title : String,
     @ColumnInfo (name = "description") var description: String,
     @ColumnInfo (name = "color") var color : NotesColors,
-    @ColumnInfo (name = "is_editable") var isEditable : Boolean
+    @ColumnInfo (name = "is_editable") var isEditable : Boolean = true,
+    @ColumnInfo (name = "note_state") var notesState: Boolean = false
 )

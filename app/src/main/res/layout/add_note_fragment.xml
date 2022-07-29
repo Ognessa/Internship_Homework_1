@@ -28,7 +28,7 @@
             />
 
         <ImageView
-            android:id="@+id/iv_save_note"
+            android:id="@+id/iv_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_save"
@@ -85,9 +85,9 @@
 
             <LinearLayout
                 android:id="@+id/ll_colors_list"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" />
+                android:layout_height="wrap_content"/>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -100,6 +100,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="@{(viewModel.updateText == null) ? View.VISIBLE : View.GONE}"
                 android:onCheckedChanged="@{(_, isChecked) -> viewModel.updateEditAble(isChecked)}"
+                android:checked="@{viewModel.note.isEditable}"
                 android:text="@string/enable_edit" />
 
             <com.google.android.material.divider.MaterialDivider

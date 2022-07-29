@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.clearDialog.ClearDialogViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ui.clearDialog.ClearDialogFragment">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/margin_5"
+            android:text="@string/emergency_menu" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_5"
+            android:text="@string/clear_db_message" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_22"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:onClick="@{_ -> viewModel.cancel()}"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_margin="@dimen/margin_10"
+                android:text="@string/cancel"/>
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:onClick="@{_ -> viewModel.clearDB()}"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_margin="@dimen/margin_10"
+                android:text="@string/start"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

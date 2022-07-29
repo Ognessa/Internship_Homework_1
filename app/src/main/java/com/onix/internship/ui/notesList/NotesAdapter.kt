@@ -1,22 +1,28 @@
 package com.onix.internship.ui.notesList
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.onix.internship.R
 import com.onix.internship.arch.adapter.BaseRecyclerAdapter
 import com.onix.internship.databinding.NotesItemBinding
 import com.onix.internship.objects.NotesData
-import com.onix.internship.objects.getColor
 
-class NotesAdapter : BaseRecyclerAdapter<NotesAdapter.NotesHolder, NotesData>(){
+class NotesAdapter(
+    private val expandNote: (NotesData) -> Unit,
+    private val editNote: (NotesData) -> Unit
+    ) :
+    BaseRecyclerAdapter<NotesAdapter.NotesHolder, NotesData>(){
 
     class NotesHolder(val binding : NotesItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(it : NotesData){
+        fun bind(it : NotesData, expandNote: (NotesData) -> Unit, editNote: (NotesData) -> Unit){
             binding.noteData = it
-            binding.tvNoteTitle.setTextColor(getColor(it.color))
-            if(!it.isEditable) binding.ivEdit.visibility = View.GONE
+            binding.ivHideDescription.setOnClickListener { _ ->
+                expandNote(it)
+            }
+            binding.ivEdit.setOnClickListener { _ ->
+                editNote(it)
+            }
         }
     }
 
@@ -25,7 +31,7 @@ class NotesAdapter : BaseRecyclerAdapter<NotesAdapter.NotesHolder, NotesData>(){
     }
 
     override fun onBindViewHolder(holder: NotesHolder, position: Int) {
-        holder.bind(adapterItems[position])
+        holder.bind(adapterItems[position], expandNote, editNote)
     }
 
     companion object{

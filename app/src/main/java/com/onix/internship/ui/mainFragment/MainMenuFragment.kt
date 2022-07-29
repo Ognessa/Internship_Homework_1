@@ -25,8 +25,7 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
 
-        val navController =
-            (childFragmentManager.findFragmentById(R.id.hostNavFragment) as NavHostFragment).navController
+        val navController = (childFragmentManager.findFragmentById(R.id.hostNavFragment) as NavHostFragment).navController
 
         setupDrawerLayout(binding.drawerLayout, navController, binding.navigation, binding.toolbar)
         setupToolbar(binding.toolbar, binding.drawerLayout)
@@ -37,6 +36,14 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
             navigate(
                 MainMenuFragmentDirections.actionMainMenuFragmentToAddNoteFragment(
                     AddNoteFragmentStates.ADD_NEW_NOTE, 0
+                )
+            )
+        }
+
+        viewModel.navigateToEditNote.observe(this) {
+            navigate(
+                MainMenuFragmentDirections.actionMainMenuFragmentToAddNoteFragment(
+                    AddNoteFragmentStates.EDIT_OLD_NOTE, it
                 )
             )
         }
@@ -76,9 +83,7 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
                     true
                 }
                 R.id.helpFragment -> {
-                    navController.navigate(R.id.helpFragment)
-                    toolbar.setTitle(R.string.help_menu)
-                    viewModel.setAddNoteBtnVisible(false)
+                    navigate(MainMenuFragmentDirections.actionMainMenuFragmentToHelpFragment())
                     true
                 }
                 else -> {

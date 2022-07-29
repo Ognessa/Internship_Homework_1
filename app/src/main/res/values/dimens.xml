@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="standard_text_size">18sp</dimen>
+
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_22">22dp</dimen>
+
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
     <dimen name="padding_22">22dp</dimen>
 
     <dimen name="short_notes_item_size">20dp</dimen>

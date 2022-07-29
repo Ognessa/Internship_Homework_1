@@ -3,16 +3,15 @@ package com.onix.internship.ui.addNote
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.navArgs
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
+import com.onix.internship.arch.ext.getColor
 import com.onix.internship.arch.ext.navigateToPrevious
 import com.onix.internship.databinding.AddNoteFragmentBinding
-import com.onix.internship.objects.getColor
 import com.onix.internship.objects.getColorsList
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,11 +29,8 @@ class AddNoteFragment : BaseFragment<AddNoteFragmentBinding>(R.layout.add_note_f
 
         setupToolbar(binding.toolbar)
         createColorMenu(binding.llColorsList)
-
         if (viewModel.note.value == null)
             viewModel.initValue(args.fragmentState, args.editItemId)
-
-        Log.d("DEBUG", "${viewModel.note.value}")
     }
 
     override fun setObservers() {
@@ -42,12 +38,10 @@ class AddNoteFragment : BaseFragment<AddNoteFragmentBinding>(R.layout.add_note_f
             val selectColorDrawable = resources.getDrawable(R.drawable.selected_color_foreground, null)
             val transparentDrawable = resources.getDrawable(R.drawable.transparent, null)
 
-            binding.cbIsEditable.isChecked = it.isEditable
-
             colorViewList.forEach { view ->
                 val viewColor = (view.background as ColorDrawable).color
 
-                if (getColor(it.color) == viewColor)
+                if (getColor(it.color, resources) == viewColor)
                     view.foreground = selectColorDrawable
                 else
                     view.foreground = transparentDrawable
@@ -70,7 +64,7 @@ class AddNoteFragment : BaseFragment<AddNoteFragmentBinding>(R.layout.add_note_f
     private fun createColorMenu(llColorsListContainer: LinearLayout) {
         val colorsList = getColorsList()
 
-        colorsList?.forEach {
+        colorsList.forEach {
             val view = View(requireContext())
             llColorsListContainer.addView(view)
 
@@ -84,7 +78,8 @@ class AddNoteFragment : BaseFragment<AddNoteFragmentBinding>(R.layout.add_note_f
                     height = size
                     setMargins(margin, margin, margin, margin)
                 }
-                setBackgroundColor(getColor(it))
+
+                setBackgroundColor(getColor(it, resources))
 
                 setOnClickListener { _ ->
                     viewModel.updateColor(it)

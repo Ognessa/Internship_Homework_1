@@ -10,9 +10,14 @@ class MainMenuViewModel : BaseViewModel(){
     val addNoteBtnVisibility : LiveData<Boolean> get() = _addNoteBtnVisibility
 
     val navigateToAddNote = SingleLiveEvent<Boolean>()
+    val navigateToEditNote = SingleLiveEvent<Int>()
 
     fun setAddNoteBtnVisible(boolean: Boolean){
         _addNoteBtnVisibility.postValue(boolean)
+    }
+
+    fun navigateToEditNote(itemId : Int){
+        navigateToEditNote.value = itemId
     }
 
     fun navigate(){

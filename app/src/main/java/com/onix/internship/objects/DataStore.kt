@@ -14,6 +14,10 @@ class DataStore(context: Context) {
         return db.notesDao().getAll()
     }
 
+    fun getFilteredData(data : DataFilter, type : TypeFilter): List<NotesData> {
+        return db.notesDao().getFilteredData(data, type)
+    }
+
     fun getById(id : Int): NotesData {
         return db.notesDao().getById(id)
     }
@@ -27,10 +31,7 @@ class DataStore(context: Context) {
     }
 
     fun clearDB(){
-        db.notesDao().apply {
-            deleteAll()
-            deleteKey()
-        }
+        db.notesDao().deleteAll()
     }
 
     fun delete(note : NotesData){

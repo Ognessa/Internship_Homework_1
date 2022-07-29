@@ -1,6 +1,7 @@
 package com.onix.internship.ui.addNote
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.onix.internship.R
@@ -64,9 +65,11 @@ class AddNoteViewModel(private val dataStore: DataStore, private val application
     }
 
     fun updateColor(color: NotesColors) {
+        Log.d("DEBUG", "$color")
         val value = _note.value
         value?.color = color
         _note.postValue(value)
+
     }
 
     fun updateEditAble(boolean: Boolean) {

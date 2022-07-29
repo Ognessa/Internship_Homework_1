@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View"/>
+
         <variable
             name="noteData"
             type="com.onix.internship.objects.NotesData" />
@@ -18,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_5"
-            android:src="@drawable/ic_show"
+            android:src="@{noteData.notesState ? @drawable/ic_hide : @drawable/ic_show}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/hide_description" />
@@ -29,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_5"
             android:src="@drawable/ic_edit"
+            android:visibility="@{noteData.isEditable &amp; noteData.notesState ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:contentDescription="@string/edit_note_description" />
@@ -39,6 +42,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:layout_margin="@dimen/margin_5"
+            noteColor="@{noteData.color}"
             app:layout_constraintEnd_toStartOf="@+id/iv_hide_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,6 +54,7 @@
             android:layout_height="wrap_content"
             android:textStyle="italic"
             android:text="@{noteData.description}"
+            android:visibility="@{noteData.notesState ? View.VISIBLE : View.GONE}"
             android:layout_marginTop="@dimen/margin_5"
             android:layout_marginBottom="@dimen/margin_5"
             app:layout_constraintEnd_toEndOf="@+id/tv_note_title"
