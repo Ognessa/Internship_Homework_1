@@ -16,3 +16,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/schemas/com.onix.internship.data.database.AppDatabase/1.json
