@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_navigation"
+    app:startDestination="@id/notesListFragment">
+
+    <fragment
+        android:id="@+id/notesListFragment"
+        android:name="com.onix.internship.ui.notesList.NotesListFragment"
+        android:label="NotesListFragment">
+        <action
+            android:id="@+id/action_notesListFragment_to_emergencyFragment2"
+            app:destination="@id/emergencyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/emergencyFragment"
+        android:name="com.onix.internship.ui.emergency.EmergencyFragment"
+        android:label="EmergencyFragment">
+        <action
+            android:id="@+id/action_emergencyFragment_to_clearDialogFragment"
+            app:destination="@id/clearDialogFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/clearDialogFragment"
+        android:name="com.onix.internship.ui.clearDialog.ClearDialogFragment"
+        android:label="ClearDialogFragment" />
+
+</navigation>

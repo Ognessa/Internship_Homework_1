@@ -1,9 +1,11 @@
 package com.onix.internship.arch.ext
 
 import android.annotation.SuppressLint
+import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RawRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
@@ -15,6 +17,8 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.onix.internship.R
+import com.onix.internship.objects.NotesColors
 import com.onix.internship.utils.AppUtils
 
 @BindingAdapter("circleImage", "placeholder", requireAll = false)
@@ -85,5 +89,21 @@ fun SwipeRefreshLayout.onRefresh(callback: () -> Unit) {
     setOnRefreshListener {
         callback.invoke()
         isRefreshing = false
+    }
+}
+
+@BindingAdapter("noteColor")
+fun TextView.noteColor(noteColor: NotesColors){
+    this.setTextColor(getColor(noteColor, resources))
+}
+
+fun getColor(color: NotesColors, resources : Resources):  Int {
+    return when (color) {
+        NotesColors.RED -> resources.getColor(R.color.red, null)
+        NotesColors.YELLOW -> resources.getColor(R.color.yellow, null)
+        NotesColors.GREEN -> resources.getColor(R.color.green, null)
+        NotesColors.PINK -> resources.getColor(R.color.pink, null)
+        NotesColors.BLUE -> resources.getColor(R.color.blue, null)
+        NotesColors.LIGHT_BLUE -> resources.getColor(R.color.light_blue, null)
     }
 }

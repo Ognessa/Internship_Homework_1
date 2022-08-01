@@ -1,3 +1,44 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name">Lesson 9</string>
+
+    <!--Screen titles-->
+    <string name="notes_list_menu">Notes list</string>
+    <string name="emergency_menu">Emergency</string>
+    <string name="help_menu">Help</string>
+    <string name="add_notes_menu">Add notes</string>
+
+    <!--Add notes menu hint-->
+    <string name="title_hint">Enter title</string>
+    <string name="description_hint">Enter content</string>
+    <string name="choose_color">Choose color</string>
+    <string name="enable_edit">Edit is enabled</string>
+
+    <!--Descriptions-->
+    <string name="add_note_description">Add note</string>
+    <string name="hide_description">Hide note description</string>
+    <string name="edit_note_description">Edit note</string>
+
+    <!--Errors-->
+    <string name="saving_note_error">Please, fill in all the fields</string>
+
+    <!--Other-->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="clear_db">Clear database</string>
+    <string name="clear_db_message">This action delete all your data</string>
+    <string name="cancel">Cancel</string>
+    <string name="start">Start</string>
+
+    <!--Strings in HelpFragment-->
+    <string name="content_of_notes">Content of notes\na couple of text line\n\n</string>
+    <string name="collapsed_notes_title">Collapsed notes title</string>
+    <string name="expanded_notes_title">Expanded notes title</string>
+    <string name="title">Title</string>
+    <string name="editable_expanded_notes">Editable expanded notes\n</string>
+    <string name="sort_notes">Sort notes</string>
+    <string name="swipe_to_delete">Swipe to delete</string>
+    <string name="expand_content">Expand content</string>
+    <string name="edit_notes">Edit notes</string>
+    <string name="add_notes">Add notes</string>
+
 </resources>
