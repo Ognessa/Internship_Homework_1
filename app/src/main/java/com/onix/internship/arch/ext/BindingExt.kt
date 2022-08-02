@@ -3,7 +3,9 @@ package com.onix.internship.arch.ext
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RawRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
@@ -15,6 +17,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.onix.internship.R
 import com.onix.internship.utils.AppUtils
 
 @BindingAdapter("circleImage", "placeholder", requireAll = false)
@@ -85,5 +88,33 @@ fun SwipeRefreshLayout.onRefresh(callback: () -> Unit) {
     setOnRefreshListener {
         callback.invoke()
         isRefreshing = false
+    }
+}
+
+@BindingAdapter("deviceValue")
+fun ImageView.deviceValue(value : String){
+    if(value.contains("https://")){
+        this.visibility = View.VISIBLE
+        val placeholder = R.drawable.ic_image_placeholder
+        Glide.with(context)
+            .load(Uri.parse(value))
+            .apply(RequestOptions().circleCrop())
+            .placeholder(placeholder)
+            .error(placeholder)
+            .into(this)
+    }
+    else{
+        this.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("deviceValue")
+fun TextView.deviceValue(value : String){
+    if(!value.contains("https://")){
+        this.visibility = View.VISIBLE
+        this.text = value
+    }
+    else{
+        this.visibility = View.GONE
     }
 }

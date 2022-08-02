@@ -2,11 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/deviceListFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:id="@+id/deviceListFragment"
+        android:name="com.onix.internship.ui.deviceList.DeviceListFragment"
+        android:label="DeviceListFragment" >
+
+        <action
+            android:id="@+id/action_deviceListFragment_to_addDeviceFragment"
+            app:destination="@id/addDeviceFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addDeviceFragment"
+        android:name="com.onix.internship.ui.addDevice.AddDeviceFragment"
+        android:label="AddDeviceFragment" />
 
 </navigation>
