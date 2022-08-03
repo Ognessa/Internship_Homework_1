@@ -4,8 +4,8 @@ import kotlinx.serialization.*
 
 @Serializable
 data class DeviceData(
-    val room : String,
-    val type : String,
-    val subtype : String,
-    val value : String
+    @SerialName("room") val room : String,
+    @SerialName("type") val type : String,
+    @SerialName("subtype") val subtype : String,
+    @SerialName("value") val value : String
 )

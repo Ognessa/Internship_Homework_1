@@ -98,7 +98,6 @@ fun ImageView.deviceValue(value : String){
         val placeholder = R.drawable.ic_image_placeholder
         Glide.with(context)
             .load(Uri.parse(value))
-            .apply(RequestOptions().circleCrop())
             .placeholder(placeholder)
             .error(placeholder)
             .into(this)

@@ -19,9 +19,11 @@ class DeviceListFragment : BaseFragment<DeviceListFragmentBinding>(R.layout.devi
         viewModel.getDataFromApi()
 
         val adapter = DevicesAdapter()
-        adapter.setContent(viewModel.getDeviceList())
         binding.rvDeviceList.adapter = adapter
 
+        viewModel.deviceList.observe(viewLifecycleOwner){
+            adapter.setContent(it)
+        }
     }
 
     override fun setObservers() {
