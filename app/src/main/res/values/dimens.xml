@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <dimen name="margin_5">5dp</dimen>
-
-    <dimen name="standard_text_size">18sp</dimen>
-
-    <dimen name="image_size">45dp</dimen>
-    <dimen name="card_view_size">300dp</dimen>
-
+    <dimen name="margin_14dp">14dp</dimen>
+    <dimen name="card_view_image_size">194dp</dimen>
 </resources>

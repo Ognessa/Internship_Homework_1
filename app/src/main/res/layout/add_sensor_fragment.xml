@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.addSensor.AddSensorViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/add_new_sensor_title"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/card_setting_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_setting_view"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/materialButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleText">
+
+            <!-- Title, secondary and supporting text -->
+            <TextView
+                android:id="@+id/roomTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/room_menu"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintBottom_toTopOf="@+id/typeTitleText"
+                app:layout_constraintEnd_toStartOf="@+id/room_text_input_choice"
+                app:layout_constraintHorizontal_weight="1.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/room_text_input_choice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_14dp"
+                android:text="@={viewModel.model.room}"
+                app:layout_constraintBottom_toBottomOf="@+id/roomTitleText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toEndOf="@+id/roomTitleText"
+                app:layout_constraintTop_toTopOf="@+id/roomTitleText" />
+
+            <TextView
+                android:id="@+id/typeTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/type_menu"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintBottom_toTopOf="@+id/subTypeTitleText"
+                app:layout_constraintEnd_toStartOf="@+id/type_spinner_choice"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roomTitleText" />
+
+            <Spinner
+                android:id="@+id/type_spinner_choice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_14dp"
+                app:layout_constraintBottom_toBottomOf="@+id/typeTitleText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toEndOf="@+id/typeTitleText"
+                app:layout_constraintTop_toTopOf="@+id/typeTitleText" />
+
+            <TextView
+                android:id="@+id/subTypeTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/subtype_menu"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/subType_spinner_choice"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/typeTitleText" />
+
+            <Spinner
+                android:id="@+id/subType_spinner_choice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_14dp"
+                app:layout_constraintBottom_toBottomOf="@+id/subTypeTitleText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintStart_toEndOf="@+id/subTypeTitleText"
+                app:layout_constraintTop_toTopOf="@+id/subTypeTitleText" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_sensor_btn"
+            android:onClick="@{_ -> viewModel.addSensor()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_setting_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

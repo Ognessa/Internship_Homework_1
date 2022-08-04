@@ -1,21 +1,24 @@
 <resources>
     <string name="app_name">Lesson 10</string>
-    <string name="room_title_hint">Enter your room title</string>
 
-    <string-array name="devices">
+    <string name="add_new_sensor_title">Add new sensor</string>
+    <string name="room_menu">Room:</string>
+    <string name="type_menu">Type:</string>
+    <string name="subtype_menu">Subtype:</string>
+    <string name="add_sensor_btn">Add sensor</string>
+    <string name="delete_btn">Delete</string>
+
+    <string-array name="type">
         <item>Sensor</item>
         <item>Camera</item>
         <item>Sound</item>
         <item>Light</item>
     </string-array>
 
-    <string-array name="subtype">
-        <item>Switch</item>
-        <item>Onetime</item>
-        <item>Level integer</item>
-        <item>Level decimal</item>
+    <string-array name="sub_type">
+        <item>switch</item>
+        <item>onetime</item>
+        <item>level</item>
     </string-array>
-
-    <string name="add_device">Add device</string>
 
 </resources>

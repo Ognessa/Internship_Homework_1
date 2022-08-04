@@ -2,22 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/deviceListFragment">
-
+    app:startDestination="@id/sensorsListFragment">
     <fragment
-        android:id="@+id/deviceListFragment"
-        android:name="com.onix.internship.ui.deviceList.DeviceListFragment"
-        android:label="DeviceListFragment" >
-
+        android:id="@+id/sensorsListFragment"
+        android:name="com.onix.internship.ui.sensors.SensorsListFragment"
+        android:label="SensorsListFragment" >
         <action
-            android:id="@+id/action_deviceListFragment_to_addDeviceFragment"
-            app:destination="@id/addDeviceFragment" />
-
+            android:id="@+id/action_sensorsListFragment_to_addSensorFragment"
+            app:destination="@id/addSensorFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/addDeviceFragment"
-        android:name="com.onix.internship.ui.addDevice.AddDeviceFragment"
-        android:label="AddDeviceFragment" />
-
+        android:id="@+id/addSensorFragment"
+        android:name="com.onix.internship.ui.addSensor.AddSensorFragment"
+        android:label="AddSensorFragment" />
 </navigation>

@@ -3,9 +3,7 @@ package com.onix.internship.arch.ext
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.RawRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
@@ -18,7 +16,6 @@ import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.onix.internship.R
-import com.onix.internship.utils.AppUtils
 
 @BindingAdapter("circleImage", "placeholder", requireAll = false)
 fun ImageView.bindCircleImage(image: String?, placeholder: Drawable?) {
@@ -75,14 +72,6 @@ fun AppCompatTextView.bindUserName(name: String?) {
     text = "$userName:"
 }
 
-@SuppressLint("SetTextI18n")
-@BindingAdapter("dateFormat")
-fun AppCompatTextView.bindDateTime(dateTime: String?) {
-    if (!dateTime.isNullOrBlank()) {
-        text = AppUtils.getDate(dateTime)
-    }
-}
-
 @BindingAdapter("onRefresh")
 fun SwipeRefreshLayout.onRefresh(callback: () -> Unit) {
     setOnRefreshListener {
@@ -92,28 +81,16 @@ fun SwipeRefreshLayout.onRefresh(callback: () -> Unit) {
 }
 
 @BindingAdapter("deviceValue")
-fun ImageView.deviceValue(value : String){
-    if(value.contains("https://")){
-        this.visibility = View.VISIBLE
-        val placeholder = R.drawable.ic_image_placeholder
+fun ImageView.deviceValue(value: String) {
+    if (value.contains("https://")) {
         Glide.with(context)
             .load(Uri.parse(value))
-            .placeholder(placeholder)
-            .error(placeholder)
             .into(this)
-    }
-    else{
-        this.visibility = View.GONE
-    }
-}
-
-@BindingAdapter("deviceValue")
-fun TextView.deviceValue(value : String){
-    if(!value.contains("https://")){
-        this.visibility = View.VISIBLE
-        this.text = value
-    }
-    else{
-        this.visibility = View.GONE
+    } else if (value == "ONETIME") {
+        Glide.with(context)
+            .load("https://www.wrenkitchens.com/blog/wp-content/uploads/2021/12/2022-kitchen-design-trends-dark-kitchen-2048x1366.jpg")
+            .into(this)
+    } else {
+        this.setImageResource(R.drawable.ic_none_image)
     }
 }
