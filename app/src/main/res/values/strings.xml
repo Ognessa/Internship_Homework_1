@@ -8,17 +8,13 @@
     <string name="add_sensor_btn">Add sensor</string>
     <string name="delete_btn">Delete</string>
 
-    <string-array name="type">
-        <item>Sensor</item>
-        <item>Camera</item>
-        <item>Sound</item>
-        <item>Light</item>
-    </string-array>
+    <string name="sensor_type">Sensor</string>
+    <string name="camera_type">Camera</string>
+    <string name="sound_type">Sound</string>
+    <string name="light_type">Light</string>
 
-    <string-array name="sub_type">
-        <item>switch</item>
-        <item>onetime</item>
-        <item>level</item>
-    </string-array>
+    <string name="switch_subtype">Switch</string>
+    <string name="onetime_subtype">Onetime</string>
+    <string name="level_subtype">Level</string>
 
 </resources>

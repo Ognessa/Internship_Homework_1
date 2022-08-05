@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="margin_8dp">8dp</dimen>
     <dimen name="margin_14dp">14dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+
+    <dimen name="title_text_size">36sp</dimen>
+
     <dimen name="card_view_image_size">194dp</dimen>
+    <dimen name="add_sensor_form_size">500dp</dimen>
+
 </resources>
