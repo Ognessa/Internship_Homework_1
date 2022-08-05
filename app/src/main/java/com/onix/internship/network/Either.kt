@@ -1,4 +1,4 @@
-package com.taekscode.network.response
+package com.onix.internship.network
 
 class Either<out T>(val value: Any?) {
 

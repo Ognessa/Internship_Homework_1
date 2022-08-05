@@ -45,15 +45,17 @@
 
                 <TextView
                     android:id="@+id/card_item_text_room"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_14dp"
+                    android:layout_marginEnd="@dimen/margin_14dp"
                     android:layout_marginTop="@dimen/margin_14dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="@{String.valueOf(`Room: `  + cardsItem.room)}"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     app:layout_constraintBottom_toTopOf="@id/card_item_text_type"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/card_item_img" />
 

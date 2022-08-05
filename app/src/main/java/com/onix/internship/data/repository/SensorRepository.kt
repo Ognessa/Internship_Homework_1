@@ -3,7 +3,7 @@ package com.onix.internship.data.repository
 import com.onix.internship.data.mapper.HomeInfoMapper
 import com.onix.internship.entity.DeviceData
 import com.onix.internship.network.NetworkService
-import com.taekscode.network.response.Either
+import com.onix.internship.network.Either
 import java.lang.Error
 
 class SensorRepository(

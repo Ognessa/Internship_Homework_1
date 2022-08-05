@@ -7,8 +7,8 @@ import com.onix.internship.data.repository.SensorRepository
 import com.onix.internship.data.storage.SensorStorage
 import com.onix.internship.entity.DeviceData
 import com.onix.internship.ui.sensors.adapter.OnSensorClickListener
-import com.taekscode.network.response.onFailure
-import com.taekscode.network.response.onSuccess
+import com.onix.internship.network.onFailure
+import com.onix.internship.network.onSuccess
 import kotlinx.coroutines.launch
 
 class SensorsListViewModel(

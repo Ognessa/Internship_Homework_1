@@ -2,8 +2,6 @@ package com.onix.internship.data.storage
 
 import com.onix.internship.entity.DeviceData
 import com.onix.internship.entity.SensorSubType
-import java.math.RoundingMode
-import java.text.DecimalFormat
 import kotlin.random.Random
 
 class SensorProvider {
