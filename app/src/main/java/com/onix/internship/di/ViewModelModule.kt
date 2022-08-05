@@ -8,6 +8,6 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { MainViewModel() }
-    viewModel { SensorsListViewModel(get(), get()) }
+    viewModel { SensorsListViewModel(get(), get(), get()) }
     viewModel { AddSensorViewModel(get(), get()) }
 }

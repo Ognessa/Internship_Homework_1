@@ -3,24 +3,25 @@ package com.onix.internship.data.repository
 import com.onix.internship.data.mapper.HomeInfoMapper
 import com.onix.internship.entity.DeviceData
 import com.onix.internship.network.NetworkService
+import com.taekscode.network.response.Either
 import java.lang.Error
 
 class SensorRepository(
     private val networkService: NetworkService,
     private val homeInfoMapper: HomeInfoMapper
 ) {
-    suspend fun getSensors(): List<DeviceData> {
+    suspend fun getSensors(): Either<List<DeviceData>> {
         return try {
             val response = networkService.getJsonData()
             val body = response.body()
 
             if(!response.isSuccessful || body == null) {
-                listOf()
+                Either.failure(Throwable("Request error"))
             } else {
-                homeInfoMapper.map(body).house
+                Either.success(homeInfoMapper.map(body).house)
             }
         } catch (e:Error){
-            listOf()
+            Either.failure(e)
         }
     }
 }

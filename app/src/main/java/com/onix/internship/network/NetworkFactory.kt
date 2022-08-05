@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
 class NetworkFactory {
+    private val baseUrl = "https://onix-systems.github.io"
 
     fun <S> createService(protocol: Class<S>): S {
         return retrofit.create(protocol)
@@ -16,7 +17,7 @@ class NetworkFactory {
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit: Retrofit
         get() = Retrofit.Builder()
-            .baseUrl("https://onix-systems.github.io")
+            .baseUrl(baseUrl)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .client(okHttpClient)
             .build()
