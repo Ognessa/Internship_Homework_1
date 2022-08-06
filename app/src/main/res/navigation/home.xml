@@ -2,11 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
-
+    app:startDestination="@id/sensorsListFragment">
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
-
+        android:id="@+id/sensorsListFragment"
+        android:name="com.onix.internship.ui.sensors.SensorsListFragment"
+        android:label="SensorsListFragment" >
+        <action
+            android:id="@+id/action_sensorsListFragment_to_addSensorFragment"
+            app:destination="@id/addSensorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSensorFragment"
+        android:name="com.onix.internship.ui.addSensor.AddSensorFragment"
+        android:label="AddSensorFragment" />
 </navigation>

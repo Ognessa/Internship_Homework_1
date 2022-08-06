@@ -14,7 +14,6 @@ import com.onix.internship.arch.ext.hideKeyboard
 abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: Int) : Fragment() {
 
     protected lateinit var binding: T
-        private set
 
     protected abstract val viewModel: BaseViewModel
 
@@ -38,10 +37,10 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resId: I
 
     private fun onBaseObservers() {
         viewModel.loading.observe(viewLifecycleOwner) { hideKeyboard() }
-        viewModel.errorEvent.observe(viewLifecycleOwner) { showSnack(it) }
+        viewModel.errorEvent.observe(viewLifecycleOwner) { showToast(it) }
     }
 
-    protected fun showSnack(msg: String) {
+    private fun showToast(msg: String) {
         Snackbar.make(this.requireView(), msg, Snackbar.LENGTH_SHORT).show()
     }
 

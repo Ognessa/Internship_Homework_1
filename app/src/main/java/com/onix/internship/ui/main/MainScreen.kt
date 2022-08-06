@@ -16,5 +16,4 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             supportFragmentManager.findFragmentById(R.id.homeHostNavFragment) as NavHostFragment
         navHostFragment.navController
     }
-
 }

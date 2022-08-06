@@ -8,12 +8,10 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.onix.internship.arch.ext.hideKeyboard
 
 abstract class BaseDialog<T : ViewDataBinding>(@LayoutRes private val resId: Int) : DialogFragment() {
-
     protected lateinit var binding: T
         private set
 
@@ -45,5 +43,4 @@ abstract class BaseDialog<T : ViewDataBinding>(@LayoutRes private val resId: Int
     protected fun showSnack(msg: String) {
         Snackbar.make(this.requireView(), msg, Snackbar.LENGTH_SHORT).show()
     }
-
 }

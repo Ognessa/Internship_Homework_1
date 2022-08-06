@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name">Lesson 10</string>
+
+    <string name="add_new_sensor_title">Add new sensor</string>
+    <string name="room_menu">Room:</string>
+    <string name="type_menu">Type:</string>
+    <string name="subtype_menu">Subtype:</string>
+    <string name="add_sensor_btn">Add sensor</string>
+    <string name="delete_btn">Delete</string>
+
+    <string name="sensor_type">Sensor</string>
+    <string name="camera_type">Camera</string>
+    <string name="sound_type">Sound</string>
+    <string name="light_type">Light</string>
+
+    <string name="switch_subtype">Switch</string>
+    <string name="onetime_subtype">Onetime</string>
+    <string name="level_subtype">Level</string>
+
 </resources>
