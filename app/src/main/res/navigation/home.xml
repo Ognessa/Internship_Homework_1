@@ -2,11 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/mainMenuFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:id="@+id/mainMenuFragment"
+        android:name="com.onix.internship.ui.mainMenu.MainMenuFragment"
+        android:label="MainMenuFragment" >
+
+        <action
+            android:id="@+id/action_mainMenuFragment_to_photoEditorFragment"
+            app:destination="@id/photoEditorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/photoEditorFragment"
+        android:name="com.onix.internship.ui.editor.PhotoEditorFragment"
+        android:label="PhotoEditorFragment" />
 
 </navigation>

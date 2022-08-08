@@ -31,3 +31,7 @@ fun Fragment.navigate(@IdRes resId: Int, args: Bundle? = null, clearStack: Boole
         }
     }.navigate(resId, args)
 }
+
+fun Fragment.navigate(navDirections: NavDirections) {
+    findNavController().navigate(navDirections)
+}

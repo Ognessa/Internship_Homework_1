@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Internship Onix</string>
+
+    <string name="import_from_gallery">Edit photo from Gallery</string>
+    <string name="import_from_camera">Edit photo from Camera</string>
+
 </resources>
