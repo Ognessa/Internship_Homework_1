@@ -2,7 +2,6 @@ package com.onix.internship.ui.mainMenu
 
 import android.Manifest
 import android.app.Activity
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -31,19 +30,19 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
 
     override fun setObservers() {
         viewModel.galleryImport.observe(this) {
-            importFromGallery()
+            checkGalleryPermission()
         }
 
         viewModel.cameraImport.observe(this) {
-            importFromCamera()
+            checkCameraPermission()
         }
     }
 
-    private fun importFromGallery() {
+    private fun checkGalleryPermission() {
         locationPermissionRequest.launch(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE))
     }
 
-    private fun importFromCamera() {
+    private fun checkCameraPermission() {
         locationPermissionRequest.launch(arrayOf(Manifest.permission.CAMERA))
     }
 
@@ -55,8 +54,7 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
                 imageFromGallery()
             }
             permissions.getOrDefault(Manifest.permission.CAMERA, false) -> {
-                //imageFromCamera()
-                dispatchTakePictureIntent()
+                imageFromCamera()
             }
             else -> {
                 showSnack("Allow permission, please")
@@ -64,30 +62,29 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
         }
     }
 
-    private fun imageFromCamera(){
+    private fun imageFromCamera() {
         val i = Intent()
         i.action = MediaStore.ACTION_IMAGE_CAPTURE
-        launchSomeActivity.launch(i)
+        launchCameraActivity.launch(i)
     }
 
     private fun imageFromGallery() {
         val i = Intent()
         i.type = "image/*"
         i.action = Intent.ACTION_GET_CONTENT
-        launchSomeActivity.launch(i)
+        launchGalleryActivity.launch(i)
     }
 
-    private var launchSomeActivity = registerForActivityResult(
+    private var launchGalleryActivity = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result: ActivityResult ->
-        if (result.resultCode == Activity.RESULT_OK){
+        if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data
 
             if (data != null && data.data != null) {
                 val selectedImageUri = data.data
-                val selectedImageBitmap: Bitmap
                 try {
-                    selectedImageBitmap = MediaStore.Images.Media.getBitmap(
+                    val selectedImageBitmap = MediaStore.Images.Media.getBitmap(
                         requireActivity().contentResolver,
                         selectedImageUri
                     )
@@ -100,20 +97,18 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
         }
     }
 
-    private fun dispatchTakePictureIntent() {
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-        } catch (e: ActivityNotFoundException) {
-            // display error state to the user
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            viewModel.saveImage(imageBitmap)
-            navigate(MainMenuFragmentDirections.actionMainMenuFragmentToPhotoEditorFragment())
+    private var launchCameraActivity = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data = result.data
+            try {
+                val imageBitmap = data?.extras?.get("data") as Bitmap
+                viewModel.saveImage(imageBitmap)
+                navigate(MainMenuFragmentDirections.actionMainMenuFragmentToPhotoEditorFragment())
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
     }
 
