@@ -1,9 +1,10 @@
 package com.onix.internship.ui.mainMenu
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -12,7 +13,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
 import com.onix.internship.arch.ext.navigate
+import com.onix.internship.data.repository.ImageRepository
 import com.onix.internship.databinding.MainMenuFragmentBinding
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.IOException
 
@@ -20,8 +23,7 @@ import java.io.IOException
 class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_menu_fragment) {
 
     override val viewModel: MainMenuViewModel by viewModel()
-
-    val REQUEST_IMAGE_CAPTURE = 1
+    private val imageRepository: ImageRepository by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,35 +32,11 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
 
     override fun setObservers() {
         viewModel.galleryImport.observe(this) {
-            checkGalleryPermission()
+            imageFromGallery()
         }
 
         viewModel.cameraImport.observe(this) {
-            checkCameraPermission()
-        }
-    }
-
-    private fun checkGalleryPermission() {
-        locationPermissionRequest.launch(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE))
-    }
-
-    private fun checkCameraPermission() {
-        locationPermissionRequest.launch(arrayOf(Manifest.permission.CAMERA))
-    }
-
-    private val locationPermissionRequest = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        when {
-            permissions.getOrDefault(Manifest.permission.WRITE_EXTERNAL_STORAGE, false) -> {
-                imageFromGallery()
-            }
-            permissions.getOrDefault(Manifest.permission.CAMERA, false) -> {
-                imageFromCamera()
-            }
-            else -> {
-                showSnack("Allow permission, please")
-            }
+            imageFromCamera()
         }
     }
 
@@ -78,22 +56,29 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
     private var launchGalleryActivity = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result: ActivityResult ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data = result.data
-
-            if (data != null && data.data != null) {
-                val selectedImageUri = data.data
-                try {
-                    val selectedImageBitmap = MediaStore.Images.Media.getBitmap(
-                        requireActivity().contentResolver,
-                        selectedImageUri
-                    )
-                    viewModel.saveImage(selectedImageBitmap)
-                    navigate(MainMenuFragmentDirections.actionMainMenuFragmentToPhotoEditorFragment())
-                } catch (e: IOException) {
-                    e.printStackTrace()
+        try {
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.let { intent ->
+                    intent.data?.let {
+                        if (Build.VERSION.SDK_INT < 28) {
+                            val bitmap = MediaStore.Images.Media.getBitmap(
+                                requireActivity().contentResolver,
+                                it
+                            )
+                            imageRepository.saveImage(bitmap)
+                        } else {
+                            val source = ImageDecoder.createSource(
+                                requireActivity().contentResolver,
+                                it
+                            )
+                            imageRepository.saveImage(ImageDecoder.decodeBitmap(source))
+                        }
+                        navigateToCrop()
+                    }
                 }
             }
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
     }
 
@@ -101,15 +86,22 @@ class MainMenuFragment : BaseFragment<MainMenuFragmentBinding>(R.layout.main_men
         ActivityResultContracts.StartActivityForResult()
     ) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
-            val data = result.data
             try {
-                val imageBitmap = data?.extras?.get("data") as Bitmap
-                viewModel.saveImage(imageBitmap)
-                navigate(MainMenuFragmentDirections.actionMainMenuFragmentToPhotoEditorFragment())
+                result.data?.let { intent ->
+                    intent.extras?.let {
+                        val imageBitmap = it.get("data") as Bitmap
+                        imageRepository.saveImage(imageBitmap)
+                        navigateToCrop()
+                    }
+                }
             } catch (e: IOException) {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun navigateToCrop() {
+        navigate(MainMenuFragmentDirections.actionMainMenuFragmentToCropFragment())
     }
 
 }

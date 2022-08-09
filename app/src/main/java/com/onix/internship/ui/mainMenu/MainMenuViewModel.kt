@@ -1,12 +1,9 @@
 package com.onix.internship.ui.mainMenu
 
-import android.graphics.Bitmap
 import com.onix.internship.arch.BaseViewModel
 import com.onix.internship.arch.lifecycle.SingleLiveEvent
-import com.onix.internship.data.repository.ImageRepository
-import kotlin.random.Random
 
-class MainMenuViewModel(val imageRepository: ImageRepository) : BaseViewModel(){
+class MainMenuViewModel : BaseViewModel(){
 
     val galleryImport = SingleLiveEvent<Unit>()
     val cameraImport = SingleLiveEvent<Unit>()
@@ -17,9 +14,5 @@ class MainMenuViewModel(val imageRepository: ImageRepository) : BaseViewModel(){
 
     fun cameraImport(){
         cameraImport.postValue(Unit)
-    }
-
-    fun saveImage(img : Bitmap){
-        imageRepository.imageBitmap = img
     }
 }

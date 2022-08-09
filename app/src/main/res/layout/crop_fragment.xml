@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.crop.CropViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme">
+
+            <ImageView
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_15"
+                android:onClick="@{() -> viewModel.onClickSave()}"
+                android:src="@drawable/ic_save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/restore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_15"
+                android:onClick="@{() -> viewModel.onClickRestore()}"
+                android:src="@drawable/ic_restore"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/crop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_15"
+                android:onClick="@{() -> viewModel.onClickCrop()}"
+                android:src="@drawable/ic_crop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/restore"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.naver.android.helloyako.imagecrop.view.ImageCropView xmlns:imagecrop="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageCropView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                imagecrop:gridInnerColor="#66ffffff"
+                imagecrop:gridInnerStroke="1dp"
+                imagecrop:gridOuterColor="#ffffff"
+                imagecrop:gridOuterStroke="1dp"
+                imagecrop:outsideLayerColor="#99000000"
+                imagecrop:setInnerGridMode="on"
+                imagecrop:setOuterGridMode="on" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <Button
+                android:id="@+id/ratio11btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onClickRatio(1, 1)}"
+                android:text="1:1" />
+
+            <Button
+                android:id="@+id/ratio34btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onClickRatio(3, 4)}"
+                android:text="3:4" />
+
+            <Button
+                android:id="@+id/ratio43btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onClickRatio(4, 3)}"
+                android:text="4:3" />
+
+            <Button
+                android:id="@+id/ratio169btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onClickRatio(16, 9)}"
+                android:text="16:9" />
+
+            <Button
+                android:id="@+id/ratio916btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onClickRatio(9, 16)}"
+                android:text="9:16" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

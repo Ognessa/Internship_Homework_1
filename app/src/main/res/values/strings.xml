@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name">Photo editor</string>
 
     <string name="import_from_gallery">Edit photo from Gallery</string>
     <string name="import_from_camera">Edit photo from Camera</string>
+
+    <string name="can_not_crop">Can not crop</string>
+    <string name="fail_to_crop">Fail to crop</string>
 
 </resources>

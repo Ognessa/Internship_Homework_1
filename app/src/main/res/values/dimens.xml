@@ -2,6 +2,7 @@
 <resources>
 
     <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
 
     <dimen name="start_animation_height">300dp</dimen>
 </resources>
