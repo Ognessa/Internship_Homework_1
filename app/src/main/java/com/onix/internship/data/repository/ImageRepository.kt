@@ -38,11 +38,9 @@ class ImageRepository(private val context: Context) {
     }
 
     fun saveImage(bitmap: Bitmap) {
-        if(list.size > maxListSize){
+        list.add(bitmap)
+
+        if(list.size > maxListSize)
             list.removeFirst()
-            list.add(bitmap)
-        }else{
-            list.add(bitmap)
-        }
     }
 }

@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="@{() -> viewModel.onClickRatio(1, 1)}"
-                android:text="1:1" />
+                android:text="@string/one_to_one" />
 
             <Button
                 android:id="@+id/ratio34btn"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="@{() -> viewModel.onClickRatio(3, 4)}"
-                android:text="3:4" />
+                android:text="@string/three_to_four" />
 
             <Button
                 android:id="@+id/ratio43btn"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="@{() -> viewModel.onClickRatio(4, 3)}"
-                android:text="4:3" />
+                android:text="@string/four_to_three" />
 
             <Button
                 android:id="@+id/ratio169btn"
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="@{() -> viewModel.onClickRatio(16, 9)}"
-                android:text="16:9" />
+                android:text="@string/sixteen_to_nine" />
 
             <Button
                 android:id="@+id/ratio916btn"
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="@{() -> viewModel.onClickRatio(9, 16)}"
-                android:text="9:16" />
+                android:text="@string/nine_to_sixteen" />
         </LinearLayout>
     </LinearLayout>
 </layout>

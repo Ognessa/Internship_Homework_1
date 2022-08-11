@@ -27,6 +27,14 @@
     <fragment
         android:id="@+id/photoEditorFragment"
         android:name="com.onix.internship.ui.editor.PhotoEditorFragment"
-        android:label="PhotoEditorFragment" />
+        android:label="PhotoEditorFragment" >
+        <action
+            android:id="@+id/action_photoEditorFragment_to_colorEditorFragment"
+            app:destination="@id/colorEditorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/colorEditorFragment"
+        android:name="com.onix.internship.ui.colorEditor.ColorEditorFragment"
+        android:label="ColorEditorFragment" />
 
 </navigation>

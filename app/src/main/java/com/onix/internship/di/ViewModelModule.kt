@@ -1,5 +1,6 @@
 package com.onix.internship.di
 
+import com.onix.internship.ui.colorEditor.ColorEditorViewModel
 import com.onix.internship.ui.crop.CropViewModel
 import com.onix.internship.ui.editor.PhotoEditorViewModel
 import com.onix.internship.ui.main.MainViewModel
@@ -12,4 +13,5 @@ val viewModelModule = module {
     viewModel { MainMenuViewModel() }
     viewModel { CropViewModel() }
     viewModel { PhotoEditorViewModel() }
+    viewModel { ColorEditorViewModel() }
 }
