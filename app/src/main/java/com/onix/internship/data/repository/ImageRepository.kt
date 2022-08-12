@@ -5,8 +5,9 @@ import android.content.Context
 import android.graphics.Bitmap
 import androidx.core.graphics.drawable.toBitmap
 import com.onix.internship.R
+import java.util.*
 
-class ImageRepository(private val context: Context) {
+class ImageRepository(val context: Context) {
     private val list = mutableListOf<Bitmap>()
 
     private val minListSize = 1

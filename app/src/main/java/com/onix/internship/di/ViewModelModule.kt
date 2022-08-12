@@ -11,7 +11,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { MainMenuViewModel() }
-    viewModel { CropViewModel() }
-    viewModel { PhotoEditorViewModel() }
-    viewModel { ColorEditorViewModel() }
+    viewModel { CropViewModel(get()) }
+    viewModel { PhotoEditorViewModel(get(), get()) }
+    viewModel { ColorEditorViewModel(get(), get()) }
 }

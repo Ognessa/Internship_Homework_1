@@ -12,7 +12,7 @@ open class BaseViewModel : ViewModel() {
     val loading = MutableLiveData(false)
     val errorEvent = SingleLiveEvent<String>()
 
-    protected fun showMsgError(msg: String?) {
+    protected fun showSnack(msg: String?) {
         msg?.let { errorEvent.postValue(it) }
     }
 

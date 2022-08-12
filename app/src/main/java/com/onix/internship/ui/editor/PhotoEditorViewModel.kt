@@ -1,45 +1,60 @@
 package com.onix.internship.ui.editor
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.ColorFilter
+import androidx.constraintlayout.utils.widget.ImageFilterView
 import com.onix.internship.arch.BaseViewModel
-import com.onix.internship.arch.lifecycle.SingleLiveEvent
+import com.onix.internship.data.repository.ImageRepository
 import com.onix.internship.objects.FilterData
+import com.onix.internship.objects.ImageHelper
 
-class PhotoEditorViewModel : BaseViewModel(){
+class PhotoEditorViewModel(
+    private val imageRepository: ImageRepository,
+    private val imageHelper: ImageHelper
+) : BaseViewModel(){
 
-    private val filterHistory = mutableListOf(FilterData())
+    val model = PhotoEditorModel()
+
     private val minListSize = 1
     private val maxListSize = 2
 
-    val saveEvent = SingleLiveEvent<Unit>()
-
-    private val _restoreEvent = MutableLiveData<Unit>()
-    val restoreEvent : LiveData<Unit> get() = _restoreEvent
-
     fun getFilterData(): FilterData {
-        return filterHistory.last().copy()
+        return model.filterHistory.last().copy()
     }
 
     fun restoreFilter(): FilterData {
-        return if (filterHistory.size != minListSize){
-            filterHistory.removeLast()
-            filterHistory.last().copy()
+        return if (model.filterHistory.size != minListSize){
+            model.filterHistory.removeLast()
+            model.filterHistory.last().copy()
         } else{
-            filterHistory.last().copy()
+            model.filterHistory.last().copy()
         }
     }
 
     fun saveFilterData(data: FilterData){
-        filterHistory.add(data)
-        if (filterHistory.size > maxListSize) filterHistory.removeFirst()
+        model.filterHistory.add(data)
+
+        if (model.filterHistory.size > maxListSize)
+            model.filterHistory.removeFirst()
+    }
+
+    fun getImage(): Bitmap {
+        return imageRepository.getImage()
+    }
+
+    fun saveFilteredImage(view: ImageFilterView, activity: Activity){
+        imageRepository.saveImage(
+            imageHelper.createFilteredImage(view, activity)
+        )
+        imageRepository.saveAllChanges()
     }
 
     fun onClickSave() {
-        saveEvent.value = Unit
+        model.saveAndNavigateEvent.value = Unit
     }
 
     fun onClickRestore() {
-        _restoreEvent.value = Unit
+        model.mutableRestoreEvent.value = Unit
     }
 }

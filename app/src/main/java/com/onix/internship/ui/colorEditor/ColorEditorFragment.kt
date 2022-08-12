@@ -19,26 +19,24 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ColorEditorFragment : BaseFragment<ColorEditorFragmentBinding>(R.layout.color_editor_fragment) {
 
     override val viewModel: ColorEditorViewModel by viewModel()
-    private val imageRepository: ImageRepository by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = viewModel
-        binding.ivEditImage.setImageBitmap(imageRepository.getImage())
+        binding.ivEditImage.setImageBitmap(viewModel.getImage())
         setupColorSeekbar()
     }
 
     override fun setObservers() {
         viewModel.saveEvent.observe(this){
-            imageRepository.saveImage(
-                ImageHelper().createFilteredImage(binding.ivEditImage)
-            )
-            imageRepository.saveAllChanges()
+            viewModel.saveFilteredImage(binding.ivEditImage, requireActivity())
+            viewModel.saveImageToMemory()
             showSnack("saved")
         }
 
         viewModel.restoreEvent.observe(this){
+            binding.ivEditImage.colorFilter = null
         }
     }
 
@@ -47,12 +45,6 @@ class ColorEditorFragment : BaseFragment<ColorEditorFragmentBinding>(R.layout.co
             setOnColorChangeListener(object : ColorSeekBar.OnColorChangeListener {
                 override fun onColorChangeListener(color: Int) {
                     changeHue(binding.ivEditImage, color)
-                }
-            })
-
-            setOnStopTouchTrack(object : ColorSeekBar.OnStopTouchTrack{
-                override fun onStopTouchTrack() {
-                    imageRepository.saveImage(binding.ivEditImage.drawable.toBitmap())
                 }
             })
         }

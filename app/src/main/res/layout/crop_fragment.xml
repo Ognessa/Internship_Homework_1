@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.onix.internship.ui.crop.CropViewModel" />
@@ -65,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="visible"
+                aspectRation="@{viewModel.model.ratioEvent}"
                 imagecrop:gridInnerColor="#66ffffff"
                 imagecrop:gridInnerStroke="1dp"
                 imagecrop:gridOuterColor="#ffffff"

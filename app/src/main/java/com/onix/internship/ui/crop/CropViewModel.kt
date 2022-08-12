@@ -1,32 +1,58 @@
 package com.onix.internship.ui.crop
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.graphics.Bitmap
+import com.onix.internship.R
 import com.onix.internship.arch.BaseViewModel
-import com.onix.internship.arch.lifecycle.SingleLiveEvent
+import com.onix.internship.data.repository.ImageRepository
 
-class CropViewModel : BaseViewModel(){
+class CropViewModel(
+    private val imageRepository : ImageRepository
+    ) : BaseViewModel(){
 
-    private val _ratioEvent = MutableLiveData<Pair<Int, Int>>()
-    val ratioEvent: LiveData<Pair<Int, Int>> = _ratioEvent
-
-    val cropEvent = SingleLiveEvent<Unit>()
-    val saveEvent = SingleLiveEvent<Unit>()
-    val restoreEvent = SingleLiveEvent<Unit>()
+   val model = CropModel()
 
     fun onClickRatio(width: Int, height: Int) {
-        _ratioEvent.value = Pair(width, height)
+        if (isPossibleCrop(width, height, imageRepository.getImage())) {
+            model.ratioEvent.set(Pair(width, height))
+        } else {
+            showSnack(imageRepository.context.resources.getString(R.string.can_not_crop))
+        }
     }
 
     fun onClickCrop() {
-        cropEvent.value = Unit
+        model.cropEvent.value = Unit
     }
 
     fun onClickSave() {
-        saveEvent.value = Unit
+        model.saveAndNavigateEvent.value = Unit
     }
 
     fun onClickRestore() {
-        restoreEvent.value = Unit
+        model.restoreEvent.value = Unit
+    }
+
+    fun getImage(): Bitmap {
+        return imageRepository.getImage()
+    }
+
+    fun saveImage(bitmap: Bitmap){
+        imageRepository.saveImage(bitmap)
+    }
+
+    fun saveResult(bitmap: Bitmap){
+        imageRepository.saveImage(bitmap)
+        imageRepository.saveAllChanges()
+    }
+
+    fun restoreImage(): Bitmap {
+        return imageRepository.restoreImage()
+    }
+
+    private fun isPossibleCrop(widthRatio: Int, heightRatio: Int, bitmap : Bitmap): Boolean {
+        bitmap.let {
+            val width = it.width
+            val height = it.height
+            return !(width < widthRatio && height < heightRatio)
+        }
     }
 }

@@ -15,6 +15,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.naver.android.helloyako.imagecrop.view.ImageCropView
 import com.onix.internship.utils.AppUtils
 
 @BindingAdapter("circleImage", "placeholder", requireAll = false)
@@ -86,4 +87,9 @@ fun SwipeRefreshLayout.onRefresh(callback: () -> Unit) {
         callback.invoke()
         isRefreshing = false
     }
+}
+
+@BindingAdapter("aspectRation")
+fun ImageCropView.setAspectRatio(aspectRation : Pair<Int, Int>, ){
+    this.setAspectRatio(aspectRation.first, aspectRation.second)
 }
