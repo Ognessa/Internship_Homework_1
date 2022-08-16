@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Internship Onix</string>
+    <string name="app_name">Photo editor</string>
+
+    <string name="import_from_gallery">Edit photo from Gallery</string>
+    <string name="import_from_camera">Edit photo from Camera</string>
+
+    <string name="can_not_crop">Can not crop</string>
+    <string name="fail_to_crop">Fail to crop</string>
+
+    <string name="constraint">Constraint:</string>
+    <string name="brightness">Brightness:</string>
+    <string name="saturation">Saturation:</string>
+
+    <string name="one_to_one">1:1</string>
+    <string name="three_to_four">3:4</string>
+    <string name="four_to_three">4:3</string>
+    <string name="sixteen_to_nine">16:9</string>
+    <string name="nine_to_sixteen">9:16</string>
+
 </resources>

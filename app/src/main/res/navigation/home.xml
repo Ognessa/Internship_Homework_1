@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/mainMenuFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:id="@+id/mainMenuFragment"
+        android:name="com.onix.internship.ui.mainMenu.MainMenuFragment"
+        android:label="MainMenuFragment" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_cropFragment"
+            app:destination="@id/cropFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cropFragment"
+        android:name="com.onix.internship.ui.crop.CropFragment"
+        android:label="crop_fragment"
+        tools:layout="@layout/crop_fragment" >
+        <action
+            android:id="@+id/action_cropFragment_to_photoEditorFragment"
+            app:destination="@id/photoEditorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/photoEditorFragment"
+        android:name="com.onix.internship.ui.editor.PhotoEditorFragment"
+        android:label="PhotoEditorFragment" >
+        <action
+            android:id="@+id/action_photoEditorFragment_to_colorEditorFragment"
+            app:destination="@id/colorEditorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/colorEditorFragment"
+        android:name="com.onix.internship.ui.colorEditor.ColorEditorFragment"
+        android:label="ColorEditorFragment" />
 
 </navigation>

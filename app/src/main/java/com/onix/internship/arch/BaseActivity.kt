@@ -21,7 +21,7 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val resId: I
         binding = DataBindingUtil.setContentView(this, resId)
 
         setObservers()
-        viewModel.errorEvent.observe(this) { showToast(it) }
+        viewModel.errorEvent.observe(this) { showSnack(it) }
     }
 
     protected fun showFragment(resId: Int, args: Bundle? = null, clearStack: Boolean = false) {
@@ -31,7 +31,7 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val resId: I
         navController.navigate(resId, args)
     }
 
-    protected fun showToast(msg: String) {
+    protected fun showSnack(msg: String) {
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_SHORT).show()
     }
 }
