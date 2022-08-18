@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+
+    <dimen name="flow_vertical_gap">8dp</dimen>
+
+    <dimen name="standard_text_size">16sp</dimen>
+    <dimen name="title_text_size">18sp</dimen>
+
+    <dimen name="sono_image_size">50dp</dimen>
+    <dimen name="full_sono_image_size">130dp</dimen>
+</resources>

@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">Internship Onix</string>
+
+    <string name="simple_search_fr">Search</string>
+    <string name="advanced_search_fr">Advanced search</string>
+
+    <string name="genus">Genus</string>
+    <string name="subspecies">Subspecies</string>
+    <string name="background_species">Background Species</string>
+    <string name="sound_type">Sound Type</string>
+    <string name="location">Location</string>
+    <string name="country">Country</string>
+    <string name="remarks">Remarks</string>
+    <string name="recordist">Recordist</string>
+
+    <string name="search">Search</string>
+
+    <string name="record_title">XC%1$s • %2$s • %3$s %4$s %5$s</string>
+    <string name="elevation">%1$s m</string>
+
+    <string name="recording_data"><u>Recording data</u></string>
+    <string name="recordist_title">Recordist</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="location_title">Location</string>
+    <string name="country_title">Country</string>
+    <string name="elevation_title">Elevation</string>
+    <string name="background_title">Background</string>
+
+    <string name="audio_file_properties"><u>Audio file properties</u></string>
+    <string name="file_type">File type</string>
+    <string name="length">Length</string>
+
+    <string name="sound_characteristics"><u>Sound characteristics</u></string>
+    <string name="type">Type</string>
+
+    <string name="remarks_from_the_recordist"><u>Remarks from the Recordist</u></string>
+    <string name="remark">Remark</string>
+    <string name="bird_seen">Bird seen</string>
+    <string name="playback_used">Playback used</string>
+
+    <string name="rating"><u>Rating</u></string>
+
 </resources>

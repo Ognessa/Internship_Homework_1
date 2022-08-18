@@ -3,7 +3,8 @@ package com.onix.internship.arch.ext
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.widget.ImageView
+import android.view.View
+import android.widget.*
 import androidx.annotation.RawRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
@@ -15,6 +16,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.onix.internship.R
 import com.onix.internship.utils.AppUtils
 
 @BindingAdapter("circleImage", "placeholder", requireAll = false)
@@ -85,5 +87,40 @@ fun SwipeRefreshLayout.onRefresh(callback: () -> Unit) {
     setOnRefreshListener {
         callback.invoke()
         isRefreshing = false
+    }
+}
+
+@BindingAdapter("loadUrlImage")
+fun ImageView.loadUrlImage(image: String?) {
+    val url = "https:$image"
+    Glide.with(context)
+        .load(Uri.parse(url))
+        .placeholder(R.drawable.ic_image_placeholder)
+        .error(R.drawable.ic_image_placeholder)
+        .into(this)
+}
+
+@BindingAdapter("listData", "callback")
+fun Spinner.setListData(array : Array<out String>, callback: (String) -> Unit){
+    val adapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, array.toList())
+    this.adapter = adapter
+
+    this.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
+            callback.invoke(array[pos])
+        }
+
+        override fun onNothingSelected(p0: AdapterView<*>?) {}
+    }
+}
+
+@BindingAdapter("fileType")
+fun TextView.setFileType(fileName : String){
+    if(fileName.contains('.')){
+        val type = fileName.subSequence(fileName.lastIndexOf('.'), fileName.length)
+        this.text = type
+    } else {
+        this.text = fileName
     }
 }

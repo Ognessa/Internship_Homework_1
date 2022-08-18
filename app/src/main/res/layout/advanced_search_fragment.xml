@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.advancedSearch.AdvancedSearchViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_5"
+        tools:context=".ui.advancedSearch.AdvancedSearchFragment">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/genus"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateGenus(s.toString())}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/subspecies"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateSubspecies(s.toString())}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/background_species"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateBackgroundSpecies(s.toString())}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/sound_type"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateSoundType(s.toString())}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateLocation(s.toString())}"/>
+
+        <Spinner
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/remarks"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateRemarks(s.toString())}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/recordist"
+            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateRecordist(s.toString())}"/>
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{_ -> viewModel.startSearch()}"
+            android:text="@string/search"/>
+    </LinearLayout>
+</layout>

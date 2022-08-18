@@ -2,11 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@+id/tabMenuFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:id="@+id/tabMenuFragment"
+        android:name="com.onix.internship.ui.tabMenu.TabMenuFragment"
+        android:label="TabMenuFragment" >
+        <action
+            android:id="@+id/action_tabMenuFragment_to_soundListFragment"
+            app:destination="@id/soundListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/soundListFragment"
+        android:name="com.onix.internship.ui.soundList.SoundListFragment"
+        android:label="SoundListFragment" >
+        <action
+            android:id="@+id/action_soundListFragment_to_moreInfoFragment"
+            app:destination="@id/moreInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moreInfoFragment"
+        android:name="com.onix.internship.ui.moreInfo.MoreInfoFragment"
+        android:label="MoreInfoFragment" />
 
 </navigation>
