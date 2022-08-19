@@ -7,8 +7,5 @@ import retrofit2.http.Query
 
 interface NetworkService {
     @GET("/api/2/recordings")
-    suspend fun simpleSearch(@Query("query")query : String) : Response<ApiData>
-
-    @GET("/api/2/recordings")
-    suspend fun advancedSearch(@Query("query") query : String) : Response<ApiData>
+    suspend fun search(@Query("query")query : String) : Response<ApiData>
 }

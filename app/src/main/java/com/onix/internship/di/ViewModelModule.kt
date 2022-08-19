@@ -14,6 +14,6 @@ val viewModelModule = module {
     viewModel { SimpleSearchViewModel(get()) }
     viewModel { AdvancedSearchViewModel(get()) }
     viewModel { SoundListViewModel(get(), get(), get()) }
-    viewModel { MoreInfoViewModel(get(), get()) }
+    viewModel { MoreInfoViewModel(get(), get(), get()) }
     viewModel { MainViewModel() }
 }

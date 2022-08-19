@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.onix.internship.R
 import com.onix.internship.arch.BaseFragment
+import com.onix.internship.arch.ext.hideKeyboard
 import com.onix.internship.arch.ext.navigate
 import com.onix.internship.databinding.TabMenuFragmentBinding
 import com.onix.internship.ui.advancedSearch.AdvancedSearchFragment
@@ -29,12 +30,9 @@ class TabMenuFragment : BaseFragment<TabMenuFragmentBinding>(R.layout.tab_menu_f
     }
 
     override fun setObservers() {
-        viewModel.searchModel.simpleSearch.observe(this){
-            viewModel.simpleSearch(it)
-        }
-
-        viewModel.searchModel.advancedSearch.observe(this){
-            viewModel.advancedSearch(it)
+        viewModel.searchModel.search.observe(this){
+            hideKeyboard()
+            viewModel.search(it)
         }
 
         viewModel.searchModel.navigateToSoundsList.observe(this){

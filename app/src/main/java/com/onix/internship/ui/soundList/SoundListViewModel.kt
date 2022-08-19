@@ -16,8 +16,11 @@ class SoundListViewModel(
     val navigate = SingleLiveEvent<Unit>()
 
     fun getRecordingsList(): List<RecordingData> {
-        val list = apiDataRepository.apiData.recordings
-        return list.subList(0, list.lastIndex)
+        return apiDataRepository.apiData.recordings
+    }
+
+    fun checkListIsEmpty(): Boolean {
+        return apiDataRepository.apiData.recordings.isEmpty()
     }
 
     fun selectRecord(recordingData: RecordingData){

@@ -41,6 +41,8 @@
     <string name="bird_seen">Bird seen</string>
     <string name="playback_used">Playback used</string>
 
+    <string name="nothing_find">No recordings found</string>
+
     <string name="rating"><u>Rating</u></string>
 
 </resources>

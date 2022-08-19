@@ -15,10 +15,9 @@ class AdvancedSearchFragment : BaseFragment<AdvancedSearchFragmentBinding>(R.lay
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
-        viewModel.clearMap()
 
         binding.country.setListData(resources.getStringArray(R.array.countries_array)){
-            viewModel.updateCountry(it)
+            viewModel.model.cnt.set(it)
         }
     }
 

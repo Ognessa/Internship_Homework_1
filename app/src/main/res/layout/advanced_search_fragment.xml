@@ -20,31 +20,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/genus"
-            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateGenus(s.toString())}"/>
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.gen}"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/subspecies"
-            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateSubspecies(s.toString())}"/>
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.ssp}"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/background_species"
-            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateBackgroundSpecies(s.toString())}"/>
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.also}"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/sound_type"
-            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateSoundType(s.toString())}"/>
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.type}"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/location"
-            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateLocation(s.toString())}"/>
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.loc}"/>
 
         <Spinner
             android:id="@+id/country"
@@ -55,13 +65,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/remarks"
-            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateRemarks(s.toString())}"/>
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.rmk}"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/recordist"
-            android:onTextChanged="@{(s, start, before, count) -> viewModel.updateRecordist(s.toString())}"/>
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.rec}"/>
 
         <Button
             android:id="@+id/search"

@@ -8,7 +8,7 @@ class SimpleSearchViewModel(
 ) : BaseViewModel(){
 
     fun startSearch(query : String){
-        searchModel.simpleSearch.postValue(query)
+        searchModel.search.postValue(query)
     }
 
 }
