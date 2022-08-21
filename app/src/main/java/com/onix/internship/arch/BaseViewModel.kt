@@ -10,10 +10,10 @@ import kotlinx.coroutines.launch
 open class BaseViewModel : ViewModel() {
 
     val loading = MutableLiveData(false)
-    val errorEvent = SingleLiveEvent<String>()
+    val massageEvent = SingleLiveEvent<String>()
 
-    protected fun showMsgError(msg: String?) {
-        msg?.let { errorEvent.postValue(it) }
+    protected fun showSnack(msg: String?) {
+        msg?.let { massageEvent.postValue(it) }
     }
 
     protected fun launch(block: suspend CoroutineScope.() -> Unit) =

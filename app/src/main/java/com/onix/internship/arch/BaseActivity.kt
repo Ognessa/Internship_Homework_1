@@ -21,7 +21,7 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val resId: I
         binding = DataBindingUtil.setContentView(this, resId)
 
         setObservers()
-        viewModel.errorEvent.observe(this) { showToast(it) }
+        viewModel.massageEvent.observe(this) { showToast(it) }
     }
 
     protected fun showFragment(resId: Int, args: Bundle? = null, clearStack: Boolean = false) {

@@ -8,7 +8,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.onix.internship.arch.ext.hideKeyboard
 
@@ -39,7 +38,7 @@ abstract class BaseDialog<T : ViewDataBinding>(@LayoutRes private val resId: Int
 
     private fun onBaseObservers() {
         viewModel.loading.observe(viewLifecycleOwner) { hideKeyboard() }
-        viewModel.errorEvent.observe(viewLifecycleOwner) { showSnack(it) }
+        viewModel.massageEvent.observe(viewLifecycleOwner) { showSnack(it) }
     }
 
     protected fun showSnack(msg: String) {
