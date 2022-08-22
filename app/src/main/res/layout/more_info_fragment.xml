@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.moreInfo.MoreInfoViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_5"
+            tools:context=".ui.moreInfo.MoreInfoFragment">
+
+            <ImageView
+                android:id="@+id/sono"
+                loadUrlImage="@{viewModel.model.recordingData.sono.small}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/full_sono_image_size"
+                android:layout_margin="@dimen/margin_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/playSound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{_ -> viewModel.playRecording()}"
+                android:src="@{viewModel.model.recordingData.isPlaying ? @drawable/ic_pause : @drawable/ic_play}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sono" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{@string/record_title(viewModel.model.recordingData.id, viewModel.model.recordingData.en, viewModel.model.recordingData.gen, viewModel.model.recordingData.sp, viewModel.model.recordingData.ssp)}"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/playSound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/playSound"
+                app:layout_constraintTop_toTopOf="@+id/playSound" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:text="@string/recording_data"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/playSound" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                app:constraint_referenced_ids="recordist_title,recordist,date_title,date,time_title,time,latitude_title,latitude,longitude_title,longitude,location_title,location,сountry_title,сountry,elevation_title,elevation,also_title,also"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="@dimen/flow_vertical_gap"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/recordist_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/recordist_title" />
+
+            <TextView
+                android:id="@+id/recordist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.rec}" />
+
+            <TextView
+                android:id="@+id/date_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/date" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.date}" />
+
+            <TextView
+                android:id="@+id/time_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/time" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.time}" />
+
+            <TextView
+                android:id="@+id/latitude_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/latitude" />
+
+            <TextView
+                android:id="@+id/latitude"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.lat}" />
+
+            <TextView
+                android:id="@+id/longitude_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/longitude" />
+
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.lng}" />
+
+            <TextView
+                android:id="@+id/location_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/location_title" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.loc}" />
+
+            <TextView
+                android:id="@+id/сountry_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/country_title" />
+
+            <TextView
+                android:id="@+id/сountry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.cnt}" />
+
+            <TextView
+                android:id="@+id/elevation_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/elevation_title" />
+
+            <TextView
+                android:id="@+id/elevation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{@string/elevation(viewModel.model.recordingData.alt)}" />
+
+            <TextView
+                android:id="@+id/also_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/background_title" />
+
+            <TextView
+                android:id="@+id/also"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.also.toString()}" />
+
+            <TextView
+                android:id="@+id/audio_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:text="@string/audio_file_properties"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/flow" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                app:constraint_referenced_ids="file_type_title,file_type,length_title,length"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="@dimen/flow_vertical_gap"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@+id/audio_properties" />
+
+            <TextView
+                android:id="@+id/file_type_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/file_type" />
+
+            <TextView
+                android:id="@+id/file_type"
+                fileType="@{viewModel.model.recordingData.fileName}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/length_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/length" />
+
+            <TextView
+                android:id="@+id/length"
+                fileType="@{viewModel.model.recordingData.length}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sound_characteristics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:text="@string/sound_characteristics"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/flow2" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                app:constraint_referenced_ids="type_title,type"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="@dimen/flow_vertical_gap"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@+id/sound_characteristics" />
+
+            <TextView
+                android:id="@+id/type_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/type" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.type}" />
+
+            <TextView
+                android:id="@+id/remarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:text="@string/remarks_from_the_recordist"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/flow3" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                app:constraint_referenced_ids="remark_title,remark,bird_seen_title,bird_seen,playback_used_title,playback_used,rating_title,rating"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="@dimen/flow_vertical_gap"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@+id/remarks" />
+
+            <TextView
+                android:id="@+id/remark_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/remark" />
+
+            <TextView
+                android:id="@+id/remark"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.rmk}" />
+
+            <TextView
+                android:id="@+id/bird_seen_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/bird_seen" />
+
+            <TextView
+                android:id="@+id/bird_seen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.birdSeen}" />
+
+            <TextView
+                android:id="@+id/playback_used_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/playback_used" />
+
+            <TextView
+                android:id="@+id/playback_used"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.playbackUsed}" />
+
+            <TextView
+                android:id="@+id/rating_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rating"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.model.recordingData.q}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_download"
+                android:onClick="@{ _ -> viewModel.downloadFile()}"
+                android:layout_margin="@dimen/margin_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flow4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

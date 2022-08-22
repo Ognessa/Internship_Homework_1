@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.onix.internship.ui.advancedSearch.AdvancedSearchViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_5"
+        tools:context=".ui.advancedSearch.AdvancedSearchFragment">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/genus"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.gen}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/subspecies"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.ssp}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/background_species"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.also}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/sound_type"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.type}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.loc}"/>
+
+        <Spinner
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/remarks"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.rmk}"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/recordist"
+            android:inputType="text"
+            android:maxLines="1"
+            android:text="@={viewModel.model.rec}"/>
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{_ -> viewModel.startSearch()}"
+            android:text="@string/search"/>
+    </LinearLayout>
+</layout>
