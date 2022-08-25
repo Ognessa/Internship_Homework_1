@@ -1,6 +1,5 @@
 package com.onix.internship.arch.ext
 
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
 import androidx.annotation.RawRes
@@ -12,21 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
-
-@BindingAdapter("circleImage", "placeholder", requireAll = false)
-fun ImageView.bindCircleImage(image: String?, placeholder: Drawable?) {
-    if (image.isNullOrEmpty()) {
-        setImageDrawable(placeholder)
-    } else {
-        Glide.with(context)
-            .load(Uri.parse(image))
-            .apply(RequestOptions().circleCrop())
-            .placeholder(placeholder)
-            .error(placeholder)
-            .into(this)
-    }
-}
+import com.onix.internship.R
 
 @BindingAdapter("gifImage", requireAll = false)
 fun ImageView.bindGifView(
@@ -66,4 +51,13 @@ fun SwipeRefreshLayout.onRefresh(callback: () -> Unit) {
         callback.invoke()
         isRefreshing = false
     }
+}
+
+@BindingAdapter("imageUrl")
+fun ImageView.getImageByUrl(imageUrl : String){
+    Glide.with(context)
+        .load(Uri.parse(imageUrl))
+        .placeholder(R.drawable.ic_image_search)
+        .error(R.drawable.ic_image_error)
+        .into(this)
 }
