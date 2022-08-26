@@ -5,5 +5,5 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single { PreferenceStorage(get()) }
-    single { MemeRepository(get(), get()) }
+    single { MemeRepository(get()) }
 }

@@ -3,6 +3,7 @@ package com.onix.internship
 import android.app.Application
 import com.onix.internship.di.*
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class InternshipApp : Application() {
@@ -14,6 +15,7 @@ class InternshipApp : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
+            androidLogger()
             androidContext(this@InternshipApp)
             modules(appModules)
         }
