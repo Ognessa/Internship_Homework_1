@@ -1,3 +1,13 @@
 <resources>
+
     <string name="app_name">Internship Onix</string>
+
+    <string-array name="filter_list">
+        <item>All</item>
+        <item>Cat</item>
+        <item>Koala</item>
+        <item>Human</item>
+        <item>Cartoon</item>
+    </string-array>
+
 </resources>
