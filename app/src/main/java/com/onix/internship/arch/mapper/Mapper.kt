@@ -1,9 +1,6 @@
 package com.onix.internship.arch.mapper
 
-abstract class Mapper<in T, out E> {
+interface Mapper<in Model, out DomainModel> {
 
-    abstract fun map (from : T) : E
-
-    open fun map (from : List<T>) = from.map{ map(it) }
-
+    fun toDomain(model: Model): DomainModel
 }
