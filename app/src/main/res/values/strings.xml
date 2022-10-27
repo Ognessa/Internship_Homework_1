@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Internship Onix</string>
+
+    <string name="all_copy_label">Copy</string>
+    <string name="all_edit_label">Edit</string>
+    <string name="all_delete_label">Delete</string>
 </resources>

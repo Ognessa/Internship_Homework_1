@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/copyMessageItem"
+        android:icon="@drawable/ic_android"
+        android:title="@string/all_copy_label" />
+
+    <item
+        android:id="@+id/editMessageItem"
+        android:icon="@drawable/ic_android"
+        android:title="@string/all_edit_label" />
+
+    <item
+        android:id="@+id/deleteMessageItem"
+        android:icon="@drawable/ic_android"
+        android:title="@string/all_delete_label" />
+</menu>
