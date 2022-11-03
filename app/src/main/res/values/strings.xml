@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Internship Onix</string>
+
+    <string name="age_text">Your age: %s</string>
 </resources>

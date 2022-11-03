@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.onix.internship.ui.home.HomeModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_5">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconDrawable="@drawable/ic_search"
+            app:endIconMode="custom"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={model.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/ageNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/age_text(model.personDataEntity.age)}"
+            app:layout_constraintBottom_toTopOf="@+id/ageImage"
+            app:layout_constraintTop_toBottomOf="@+id/nameInputLayout" />
+
+        <ImageView
+            android:id="@+id/ageImage"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ageNum"
+            app:personData="@{model.personDataEntity}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
