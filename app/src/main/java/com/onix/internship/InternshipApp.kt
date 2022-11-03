@@ -1,17 +1,20 @@
 package com.onix.internship
 
 import android.app.Application
-import com.onix.internship.di.mapperModule
-import com.onix.internship.di.providerModule
-import com.onix.internship.di.repositoryModule
-import com.onix.internship.di.viewModelModule
+import com.onix.internship.di.defaultDomainModule
+import com.onix.internship.di.defaultInterceptor
+import com.onix.internship.di.defaultPresentation
+import com.onix.internship.di.viewModels
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class InternshipApp : Application() {
 
+    private val appModule =
+        defaultInterceptor + defaultDomainModule + defaultPresentation + viewModels
+
     private val appModules by lazy {
-        listOf(mapperModule, repositoryModule, providerModule, viewModelModule)
+        appModule
     }
 
     override fun onCreate() {
@@ -21,5 +24,4 @@ class InternshipApp : Application() {
             modules(appModules)
         }
     }
-
 }

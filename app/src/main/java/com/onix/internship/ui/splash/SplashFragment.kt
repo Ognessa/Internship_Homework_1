@@ -1,22 +1,14 @@
 package com.onix.internship.ui.splash
 
 import com.onix.internship.R
-import com.onix.internship.arch.BaseFragment
+import com.onix.internship.arch.controller.BaseViewModel
+import com.onix.internship.arch.ui.fragment.BaseFragment
 import com.onix.internship.databinding.SplashFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_fragment) {
 
-    override val viewModel: SplashViewModel by viewModel()
+    private val viewModel: SplashViewModel by viewModel()
 
-    override fun setObservers() {
-        viewModel.initEvent.observe(this) {
-            if (it) showFragment()
-        }
-    }
-
-    private fun showFragment() {
-        //navigate(R.id.canvasFragment, clearStack = true)
-    }
-
+    override fun getViewModel(): BaseViewModel = viewModel
 }
