@@ -17,4 +17,6 @@ sealed class NetworkConfiguration {
     abstract class AuthConfiguration(val tokenProvider: TokenProvider) : NetworkConfiguration() {
         override val withAuth: Boolean = true
     }
+
+    abstract class SimpleConfiguration : NetworkConfiguration()
 }
