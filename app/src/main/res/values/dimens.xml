@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="choose_country_frame_height">40dp</dimen>
+    <dimen name="choose_country_frame_corner_radius">6dp</dimen>
+
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_30">30sp</dimen>
+</resources>

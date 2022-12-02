@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Internship Onix</string>
+
+    <string name="choose_country_title">permanent\nresident</string>
+    <string name="lorem">lorem ipsum dolor sit amet consectetur. porttitor magna mi gravita amet.</string>
+
+    <string name="tax_residence_hint">country of tax residence</string>
+    <string name="citizenship_hint">country of citizenship</string>
+
+    <string name="next_btn_text">next</string>
 </resources>
