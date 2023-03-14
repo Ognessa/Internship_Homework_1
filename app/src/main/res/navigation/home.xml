@@ -7,6 +7,14 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.onix.internship.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_customCameraActivity"
+            app:destination="@id/customCameraActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/customCameraActivity"
+        android:name="com.onix.internship.ui.customCamera.CustomCameraActivity"
+        android:label="CustomCameraActivity" />
 
 </navigation>

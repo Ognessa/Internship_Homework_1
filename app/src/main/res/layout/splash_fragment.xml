@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.onix.internship.R"/>
+
+        <import type="com.onix.internship.R" />
     </data>
 
     <FrameLayout
@@ -13,10 +13,12 @@
         android:layout_height="match_parent"
         tools:context=".ui.splash.CanvasFragment">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:gifImage="@{R.raw.cat}" />
+            android:layout_gravity="center"
+            android:text="Open camera" />
 
     </FrameLayout>
 </layout>
