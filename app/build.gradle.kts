@@ -56,11 +56,9 @@ dependencies {
 
     implementation("io.insert-koin:koin-android:3.2.0")
 
-    implementation("com.github.bumptech.glide:glide:4.14.2")
-
-    implementation("io.coil-kt:coil:1.4.0")
-    implementation("io.coil-kt:coil-gif:1.4.0")
-    implementation("com.github.bumptech.glide:glide:4.14.2")
+    implementation("io.coil-kt:coil:2.2.2")
+    implementation("io.coil-kt:coil-gif:2.2.2")
+    implementation("com.github.bumptech.glide:glide:4.15.0")
 
     implementation(project(":data"))
     implementation(project(":domain"))
