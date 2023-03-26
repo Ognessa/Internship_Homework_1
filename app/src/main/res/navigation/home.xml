@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.onix.internship.ui.splash.SplashFragment"
+        android:name="com.onix.internship.ui.gallery.GalleryFragment"
         android:label="SplashFragment" />
 
 </navigation>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Internship Onix</string>
+
+    <string name="gallery_empty_text">No media yet</string>
 </resources>
