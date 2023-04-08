@@ -14,13 +14,16 @@ import com.onix.internship.ui.gallery.adapter.model.GalleryAdapterModel
 import com.onix.internship.ui.gallery.adapter.model.GalleryMapper
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 //TODO ask read storage permission
 class GalleryFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_fragment) {
 
     private val viewModel: GalleryViewModel by viewModel()
 
-    private val galleryAdapter: GalleryAdapter by lazy { GalleryAdapter() }
+    private val galleryAdapter: GalleryAdapter by lazy {
+        GalleryAdapter(
+            presenter = viewModel
+        )
+    }
 
     private val mapper: GalleryMapper.UrlToGalleryModel by lazy {
         GalleryMapper.UrlToGalleryModel(
@@ -57,10 +60,7 @@ class GalleryFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_frag
             MediaStore.Files.FileColumns.TITLE
         )
         val selection = (MediaStore.Files.FileColumns.MEDIA_TYPE + "="
-                + MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE
-                + " OR "
-                + MediaStore.Files.FileColumns.MEDIA_TYPE + "="
-                + MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO)
+                + MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE)
         val queryUri = MediaStore.Files.getContentUri("external")
 
         val cursor = requireActivity().contentResolver.query(

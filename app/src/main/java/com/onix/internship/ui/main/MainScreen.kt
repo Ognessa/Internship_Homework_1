@@ -1,5 +1,7 @@
 package com.onix.internship.ui.main
 
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.onix.internship.R
@@ -12,5 +14,10 @@ class MainScreen : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.homeHostNavFragment) as NavHostFragment
         navHostFragment.navController
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 }
