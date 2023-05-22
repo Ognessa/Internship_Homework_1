@@ -13,8 +13,6 @@ import com.onix.internship.arch.ui.fragment.BaseFragment
 import com.onix.internship.databinding.SplashFragmentBinding
 import com.onix.internship.ui.splash.adapter.ImageCarrouselAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.math.max
-import kotlin.math.min
 
 class SplashFragment : BaseFragment<SplashFragmentBinding>(R.layout.splash_fragment) {
 
