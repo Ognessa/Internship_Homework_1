@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.onix.internship.ui.editor.EditorModeTypes" />
+
+        <variable
+            name="model"
+            type="com.onix.internship.ui.editor.EditorModel" />
+
+        <variable
+            name="presenter"
+            type="com.onix.internship.ui.editor.EditorPresenter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/editorRootContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/editorToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/undoBtn"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_undo"
+                    android:onClick="@{() -> presenter.onUndoPressed(imageEditor)}"
+                    android:text="Undo"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:rippleColor="@null" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/redoBtn"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_redo"
+                    android:onClick="@{() -> presenter.onRedoPressed(imageEditor)}"
+                    android:text="Redo"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:rippleColor="@null" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/saveBtn"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_save"
+                    android:onClick="@{() -> presenter.onSavePressed(imageEditor)}"
+                    android:text="Save"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:rippleColor="@null" />
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <com.onix.internship.ui.editor.view.ImageEditorView
+            android:id="@+id/imageEditor"
+            brushColor="@{model.selectedColor}"
+            editorMode="@{model.selectedMode}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomBtnsContainer"
+            app:layout_constraintTop_toBottomOf="@+id/editorToolbar" />
+
+        <LinearLayout
+            android:id="@+id/bottomBtnsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/colorBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                drawTint="@{model.selectedColor}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_circle"
+                android:onClick="@{() -> presenter.onColorPressed()}"
+                android:text="Color"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/rectangleBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == EditorModeTypes.RECTANGLE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_rectangle"
+                android:onClick="@{() -> presenter.onRectPressed()}"
+                android:text="Rectangel"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/lineBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == EditorModeTypes.LINE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_line"
+                android:onClick="@{() -> presenter.onLinePressed()}"
+                android:text="Line"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/arrowBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == EditorModeTypes.ARROW}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_arrow"
+                android:onClick="@{() -> presenter.onArrowPressed()}"
+                android:text="Arrow"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -19,3 +19,8 @@ fun ImageView.setImage(iconProvider: IconProvider?) {
 fun ImageView.gifImage(@RawRes gifImageId: Int) {
     loadGif(gifImageId)
 }
+
+@BindingAdapter("backgroundColor")
+fun ImageView.setBackgroundSelectedColor(backgroundColor: Int){
+    this.setBackgroundColor(backgroundColor)
+}

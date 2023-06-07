@@ -7,14 +7,17 @@ import com.onix.internship.arch.ui.recycler.BaseRecyclerAdapter
 import com.onix.internship.arch.ui.recycler.BaseViewHolder
 import com.onix.internship.ui.gallery.adapter.model.GalleryAdapterModel
 
-class GalleryAdapter : BaseRecyclerAdapter<GalleryAdapterModel>() {
+class GalleryAdapter(
+    private val presenter: GalleryAdapterPresenter
+) : BaseRecyclerAdapter<GalleryAdapterModel>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): BaseViewHolder<GalleryAdapterModel, out ViewDataBinding> {
         return GalleryViewHolder(
-            binding = inflate(parent, R.layout.item_gallery)
+            binding = inflate(parent, R.layout.item_gallery),
+            presenter = presenter
         )
     }
 }

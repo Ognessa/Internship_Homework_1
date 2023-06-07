@@ -59,6 +59,7 @@ dependencies {
     implementation("io.coil-kt:coil:2.2.2")
     implementation("io.coil-kt:coil-gif:2.2.2")
     implementation("com.github.bumptech.glide:glide:4.15.0")
+    implementation("com.burhanrashid52:photoeditor:3.0.1")
 
     implementation(project(":data"))
     implementation(project(":domain"))

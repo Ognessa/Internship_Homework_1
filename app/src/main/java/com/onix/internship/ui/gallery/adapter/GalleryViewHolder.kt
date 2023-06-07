@@ -8,7 +8,8 @@ import com.onix.internship.databinding.ItemGalleryBinding
 import com.onix.internship.ui.gallery.adapter.model.GalleryAdapterModel
 
 class GalleryViewHolder(
-    binding: ViewDataBinding
+    binding: ViewDataBinding,
+    private val presenter: GalleryAdapterPresenter
 ) : BaseViewHolder<GalleryAdapterModel, ItemGalleryBinding>(binding) {
 
     override fun bindView(position: Int) {
@@ -16,8 +17,9 @@ class GalleryViewHolder(
         binding.image.load(item.url) {
             error(R.drawable.placeholder)
         }
+
         binding.root.setOnClickListener {
-            item.selected.set(!item.selected.get())
+            presenter.onImageClick(item.url)
         }
     }
 }
