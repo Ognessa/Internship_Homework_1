@@ -8,6 +8,8 @@
     <color name="colorBlack">#FF000000</color>
     <color name="colorWhite">#FFFFFFFF</color>
 
+    <color name="colorTextSecondary">#8EB3CD</color>
+
     <color name="orange">#EF6E00</color>
 
     <!-- Editor colors -->

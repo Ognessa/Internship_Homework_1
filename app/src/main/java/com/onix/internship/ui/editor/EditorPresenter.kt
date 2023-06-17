@@ -12,6 +12,8 @@ interface EditorPresenter {
 
     fun onArrowPressed()
 
+    fun onDrawPressed()
+
     fun onTextPressed()
 
     fun onUndoPressed(view: ImageEditorView)

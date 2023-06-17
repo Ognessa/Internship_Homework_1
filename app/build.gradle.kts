@@ -61,6 +61,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.15.0")
     implementation("com.burhanrashid52:photoeditor:3.0.1")
 
+    implementation("net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3")
+
     implementation(project(":data"))
     implementation(project(":domain"))
 }

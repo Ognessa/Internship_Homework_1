@@ -88,10 +88,13 @@
 
         <LinearLayout
             android:id="@+id/bottomBtnsContainer"
+            isVisible="@{model.showEditorControls}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="false"
             android:orientation="horizontal"
-            android:weightSum="4"
+            android:stateListAnimator="@null"
+            android:weightSum="6"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.button.MaterialButton
@@ -151,6 +154,33 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:rippleColor="@null" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/drawBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == EditorModeTypes.DRAW}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_draw"
+                android:onClick="@{() -> presenter.onDrawPressed()}"
+                android:text="Draw"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/textBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == EditorModeTypes.TEXT}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_text"
+                android:onClick="@{() -> presenter.onTextPressed()}"
+                android:text="Text"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

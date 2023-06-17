@@ -17,7 +17,6 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 
-//TODO remove context, use imageManager
 class EditorViewModel(
     private val context: Context,
     private val editorManager: EditorManager
@@ -91,12 +90,18 @@ class EditorViewModel(
         setMode(EditorModeTypes.ARROW)
     }
 
+    override fun onDrawPressed() {
+        setMode(EditorModeTypes.DRAW)
+    }
+
     override fun onTextPressed() {
         setMode(EditorModeTypes.TEXT)
     }
 
     private fun setMode(mode: EditorModeTypes) {
-        model.selectedMode.set(mode)
+        if (model.selectedMode.get() != mode) {
+            model.selectedMode.set(mode)
+        }
     }
 
     override fun onUndoPressed(view: ImageEditorView) {

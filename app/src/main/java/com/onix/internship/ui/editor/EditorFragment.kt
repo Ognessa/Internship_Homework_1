@@ -9,6 +9,7 @@ import com.onix.internship.arch.controller.BaseViewModel
 import com.onix.internship.arch.ui.fragment.BaseFragment
 import com.onix.internship.databinding.FragmentEditorBinding
 import com.onix.internship.ui.editor.colors.ColorPickerDialogFragment
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditorFragment : BaseFragment<FragmentEditorBinding>(R.layout.fragment_editor) {
@@ -21,6 +22,10 @@ class EditorFragment : BaseFragment<FragmentEditorBinding>(R.layout.fragment_edi
         binding.presenter = viewModel
         setupStartColor()
         listenFragmentResult()
+        binding.imageEditor.setModeChangeListener {
+            viewModel.model.selectedMode.set(it)
+        }
+        listenKeyboardChanges()
     }
 
     override fun setObservers() {
@@ -39,6 +44,12 @@ class EditorFragment : BaseFragment<FragmentEditorBinding>(R.layout.fragment_edi
     private fun listenFragmentResult() {
         setFragmentResultListener(ColorPickerDialogFragment.SELECTED_COLOR) { requestKey, bundle ->
             viewModel.model.selectedColor.set(bundle.getInt(requestKey))
+        }
+    }
+
+    private fun listenKeyboardChanges() {
+        KeyboardVisibilityEvent.registerEventListener(requireActivity()) { isOpen ->
+            viewModel.model.showEditorControls.set(!isOpen)
         }
     }
 

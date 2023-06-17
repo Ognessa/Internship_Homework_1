@@ -16,10 +16,10 @@
         android:theme="@style/Theme.internship">
         <activity
             android:name=".ui.main.MainScreen"
-            android:configChanges="orientation"
+            android:configChanges="orientation|screenSize|screenLayout"
             android:exported="true"
             android:screenOrientation="sensor"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

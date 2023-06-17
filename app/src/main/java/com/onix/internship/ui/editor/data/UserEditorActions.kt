@@ -12,6 +12,23 @@ sealed class UserEditorActions : Parcelable {
         val startPoint: PointF,
         val endPoint: PointF,
         val brushColor: Int,
+        val brushSize: Float,
         val action: EditorModeTypes
+    ) : UserEditorActions()
+
+    @Parcelize
+    data class FigureDraw(
+        val points: List<PointF>,
+        val brushSize: Float,
+        val brushColor: Int
+    ) : UserEditorActions()
+
+    @Parcelize
+    data class TextDraw(
+        val startPoint: PointF,
+        val endPoint: PointF,
+        val text: String,
+        val textSize: Float,
+        val brushColor: Int
     ) : UserEditorActions()
 }
