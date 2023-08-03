@@ -2,5 +2,12 @@
 <resources>
 
     <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+
+    <dimen name="padding_16">16dp</dimen>
+
+    <dimen name="width_100">100dp</dimen>
+
+    <dimen name="text_25">25sp</dimen>
 
 </resources>

@@ -7,6 +7,16 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.onix.internship.ui.gallery.GalleryFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment">
+
+        <action
+            android:id="@+id/action_splashFragment_to_recorderFragment"
+            app:destination="@id/recorderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recorderFragment"
+        android:name="com.onix.internship.ui.recorder.RecorderFragment"
+        android:label="RecorderFragment" />
 
 </navigation>

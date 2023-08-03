@@ -2,4 +2,6 @@
     <string name="app_name">Internship Onix</string>
 
     <string name="gallery_empty_text">No media yet</string>
+
+    <string name="audio_timer_pattern">%s / %s</string>
 </resources>
