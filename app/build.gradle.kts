@@ -8,12 +8,12 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = extra.get("applicationID") as String
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = extra.get("versionCode") as Int
         versionName = extra.get("versionName") as String
     }
@@ -37,22 +37,23 @@ android {
     buildFeatures {
         dataBinding = true
     }
+    namespace = "com.onix.internship"
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
+    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
-    implementation("androidx.activity:activity-ktx:1.6.1")
-    implementation("androidx.fragment:fragment-ktx:1.5.5")
+    implementation("androidx.activity:activity-ktx:1.7.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
 
     implementation("io.insert-koin:koin-android:3.2.0")
 

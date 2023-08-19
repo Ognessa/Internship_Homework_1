@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
     }
 
     buildTypes {
@@ -27,6 +27,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
+    namespace = "com.onix.internship.data"
 }
 
 dependencies {
