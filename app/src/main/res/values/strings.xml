@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Internship Onix</string>
+
+    <string name="dragAndDropTitleLabel">ITEM %d</string>
+
+    <string name="move_to_linear_label">Move to Linear</string>
+    <string name="move_to_grid_label">Move to Grid</string>
 </resources>
