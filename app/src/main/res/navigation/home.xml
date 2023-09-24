@@ -7,6 +7,31 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.onix.internship.ui.gallery.GalleryFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment">
+
+        <action
+            android:id="@+id/action_splashFragment_to_videoEditorFragment"
+            app:destination="@id/videoEditorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/videoEditorFragment"
+        android:name="com.onix.internship.ui.editor.VideoEditorFragment"
+        android:label="VideoEditorFragment">
+
+        <action
+            android:id="@+id/action_videoEditorFragment_to_colorPickerDialogFragment"
+            app:destination="@id/colorPickerDialogFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/colorPickerDialogFragment"
+        android:name="com.onix.internship.ui.editor.colors.ColorPickerDialogFragment"
+        android:label="ColorPickerDialogFragment">
+
+        <argument
+            android:name="selectedColor"
+            app:argType="integer" />
+    </dialog>
 
 </navigation>

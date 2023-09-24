@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.onix.internship.ui.editor.colors.adapter.model.ColorModel" />
+
+        <variable
+            name="pickerModel"
+            type="com.onix.internship.ui.editor.colors.ColorPickerModel" />
+
+        <variable
+            name="presenter"
+            type="com.onix.internship.ui.editor.colors.adapter.ColorPickerAdapterPresenter" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/colorItemContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/colorItem"
+            android:layout_width="@dimen/width_24"
+            android:layout_height="@dimen/height_24"
+            android:layout_marginHorizontal="@dimen/margin_8"
+            android:background="@{model.color}"
+            android:foreground="@{(model.hasBorder) ? @drawable/ic_color_border : null}"
+            android:onClick="@{() -> presenter.onColorSelected(model)}"
+            android:src="@{(model.color == pickerModel.selectedColor) ? @drawable/ic_color_selected : null}"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:background="@color/blue"
+            tools:src="@drawable/ic_color_selected" />
+
+    </FrameLayout>
+</layout>

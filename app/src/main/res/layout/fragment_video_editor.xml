@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.onix.internship.ui.editor.VideoEditorModeTypes" />
+
+        <variable
+            name="presenter"
+            type="com.onix.internship.ui.editor.VideoEditorPresenter" />
+
+        <variable
+            name="model"
+            type="com.onix.internship.ui.editor.VideoEditorModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/videoEditorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/styledPlayerControlView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shutter_background_color="@android:color/transparent"
+            app:surface_type="texture_view" />
+
+        <com.google.android.exoplayer2.ui.StyledPlayerControlView
+            android:id="@+id/styledPlayerControlView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/bottomBtnsContainer" />
+
+        <LinearLayout
+            android:id="@+id/bottomBtnsContainer"
+            isVisible="@{model.showEditorControls}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="false"
+            android:orientation="horizontal"
+            android:stateListAnimator="@null"
+            android:weightSum="6"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/colorBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                drawTint="@{model.selectedColor}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_circle"
+                android:onClick="@{() -> presenter.onColorPressed()}"
+                android:text="@string/item_color_picker_label"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/rectangleBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == VideoEditorModeTypes.RECTANGLE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_rectangle"
+                android:onClick="@{() -> presenter.onRectPressed()}"
+                android:text="@string/item_rect_label"
+                android:textSize="@dimen/text_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/lineBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == VideoEditorModeTypes.LINE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_line"
+                android:onClick="@{() -> presenter.onLinePressed()}"
+                android:text="@string/item_line_label"
+                android:textSize="@dimen/text_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/arrowBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == VideoEditorModeTypes.ARROW}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_arrow"
+                android:onClick="@{() -> presenter.onArrowPressed()}"
+                android:text="@string/item_arrow_label"
+                android:textSize="@dimen/text_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/drawBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == VideoEditorModeTypes.DRAW}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_draw"
+                android:onClick="@{() -> presenter.onDrawPressed()}"
+                android:text="@string/item_arrow_draw"
+                android:textSize="@dimen/text_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/textBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                selected="@{model.selectedMode == VideoEditorModeTypes.TEXT}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_text"
+                android:onClick="@{() -> presenter.onTextPressed()}"
+                android:text="@string/item_arrow_text"
+                android:textSize="@dimen/text_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:rippleColor="@null" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

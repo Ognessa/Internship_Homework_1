@@ -2,4 +2,13 @@
     <string name="app_name">Internship Onix</string>
 
     <string name="gallery_empty_text">No media yet</string>
+
+    <string name="item_color_picker_label">Color</string>
+    <string name="item_rect_label">Rectangle</string>
+    <string name="item_line_label">Line</string>
+    <string name="item_arrow_label">Arrow</string>
+    <string name="item_arrow_draw">Draw</string>
+    <string name="item_arrow_text">Text</string>
+
+    <string name="color_picker_title">Color</string>
 </resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.onix.internship.ui.editor.colors.ColorPickerModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/colorPickerRootContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog_rounded_corners"
+        android:paddingBottom="@dimen/padding_24">
+
+        <View
+            android:id="@+id/dialogColorPickerTopDivider"
+            android:layout_width="@dimen/width_48"
+            android:layout_height="@dimen/height_3"
+            android:layout_marginTop="@dimen/margin_4"
+            android:alpha="0.1"
+            android:background="@color/colorBlack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/colorPickerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:gravity="center"
+            android:paddingTop="@dimen/padding_3"
+            android:paddingBottom="@dimen/padding_7"
+            android:text="@string/color_picker_title"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_20"
+            app:layout_constraintTop_toBottomOf="@+id/dialogColorPickerTopDivider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/colorsList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/colorPickerTitle"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_color_picker" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
